@@ -63,8 +63,8 @@ require(['jquery',
 		window.lodash = lodash;
 
 		var app = new Gonrin.Application({
-			// serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')+"/inven",
-			serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''),
+			serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')+"/inven",
+			// serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''),
 			router: new Router(),
 			lang: lang,
 			layout: layout,
