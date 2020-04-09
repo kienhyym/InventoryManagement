@@ -725,8 +725,8 @@ define(function (require) {
                                     <div title="${item.item_name}" style="margin-left: auto; margin-right: auto; left: 0px; right: 0px;width: 90px;height:170px;position: relative;">
                                         <input class="item-checkbox" item-id="${item.id}" type="checkbox" style="position: absolute; top: 0px; left: 0px;width:90px;height: 90px;opacity:0">
                                         <img src="static/img/user.png" style="width:90px;height: 90px;">
-                                        <label class="item-chose" style="position: absolute;top:70px;right:3px;display:none"><i class="fa fa-check-square-o text-success" aria-hidden="true"></i></label>
-                                        <label class="item-not-chose"  style="position: absolute;top:70px;right:3px"><i class="fa fa-square-o" aria-hidden="true"></i></label>
+                                        <label class="item-chose" style="position: absolute;top:70px;right:3px;display:none"><i class="far fa-check-square text-success" aria-hidden="true"></i></label>
+                                        <label class="item-not-chose"  style="position: absolute;top:70px;right:3px"><i class="far fa-square" aria-hidden="true"></i></label>
                                         <label class="item-name" purchase-cost=${item.purchase_cost}  style="font-size: 10px;width:100%;overflow: hidden;text-overflow: ellipsis;line-height: 20px;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;">${item.item_name}</label>
                                         </div>
                                 </div>
@@ -873,6 +873,18 @@ define(function (require) {
                     }
                     if (lengthAllData >= 6) {
                         self.$el.find('.page-max').show()
+                    }
+                    if (lengthAllData == 1) {
+                        $(self.$el.find('.page-number')[2]).hide()
+                        $(self.$el.find('.page-number')[3]).hide()
+                        $(self.$el.find('.page-number')[4]).hide()
+                    }
+                    if (lengthAllData == 2) {
+                        $(self.$el.find('.page-number')[3]).hide()
+                        $(self.$el.find('.page-number')[4]).hide()
+                    }
+                    if (lengthAllData == 3) {
+                        $(self.$el.find('.page-number')[4]).hide()
                     }
                     self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
                     self.htmlShowItem(0, text)

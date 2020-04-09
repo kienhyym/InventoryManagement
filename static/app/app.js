@@ -65,11 +65,7 @@ require(['jquery',
 		if (domain !== "http://0.0.0.0:7100"){
 			domain = domain+"/inven"
 		}
-		console.log('xxxxxxxxxxxxxxxx',domain)
-
 		var app = new Gonrin.Application({
-			
-			// serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')+"/inven",
 			serviceURL: domain,
 			router: new Router(),
 			lang: lang,
