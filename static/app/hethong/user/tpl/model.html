@@ -1,72 +1,60 @@
-<div block-bind="content">
-		<!-- Page Header -->
-		<div class="page-header row no-gutters py-2">
-			
+<div block-bind="content" style="margin-top: 30px">
+	<div class="card">
+		<div class="card-header  border-bottom">
+			<div class="row">
+				<div class="col-md-7 col-7">
+					<h6 class="m-0 pt-2">Thông tin tiền tệ:</h6>
+				</div>
+				<div class="col-md-5 col-5 text-right">
+					<div block-bind="toolbar"></div>
+				</div>
+			</div>
 		</div>
-		<!-- End Page Header -->
-		<div class="row">
-			<div class="col-lg-8 col-md-12">
-				<div class="card  card-small mb-4">
-					<div class="card-header  border-bottom">
-						<div class="row">
-							<div class="col-md-7">
-								<h6 class="m-0 pt-2">Thông tin chi tiết người dùng</h6>
-							</div>
-							<div class="col-md-5 text-right">
-								<div block-bind="toolbar"></div>
-							</div>
+		<div class=" card-body">
+			<div class="needs-validation" novalidate="">
+				<div class="row mb-3">
+					<div class="col-md-6 ">
+						<label>Tên</label>
+						<input type="text" class="form-control" id="name" data-bind="value:name" placeholder="Nhập tên "
+							required="">
+						<div class="invalid-feedback">
+							Vui lòng nhập Tên.
 						</div>
 					</div>
-	
-				<div class="card-body">
-					<div class="needs-validation" novalidate="">
-						<div class="row mb-3">
-
-							<div class="col-md-6 ">
-								<label>Tên</label>
-								<input type="text" class="form-control" id="name" data-bind="value:name" placeholder="Nhập tên "
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập Tên.
-								</div>
-							</div>
 
 
-							<div class="col-md-6">
-								<label for="email">Email <span class="text-muted"></span></label>
-								<input type="email" class="form-control" id="email" data-bind="value:email"
-									placeholder="nhập email">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-
-
+					<div class="col-md-6">
+						<label for="email">Email <span class="text-muted"></span></label>
+						<input type="email" class="form-control" id="email" data-bind="value:email"
+							placeholder="nhập email">
+						<div class="invalid-feedback">
+							Vui lòng nhập email.
 						</div>
-						<div class="row mb-3">
-							<div class="col-md-6">
-								<label for="phone_number">Điện thoại liên hệ</label>
-								<input type="text" class="form-control" id="phone_number" data-bind="value:phone_number"
-									placeholder="..." required="">
-							</div>
-							<!-- <div class="col-md-6">
+					</div>
+
+
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="phone_number">Điện thoại liên hệ</label>
+						<input type="text" class="form-control" id="phone_number" data-bind="value:phone_number"
+							placeholder="..." required="">
+					</div>
+					<!-- <div class="col-md-6">
 								<label for="rank">Vai trò<span class="text-muted"></span></label>
 								<input type="text" data-bind="value:rank" id="rank" />
 							</div> -->
+					<div class="col-md-6 password">
+						<label for="password">Password</label>
+						<input id="password" class="form-control" required type="password" data-bind="value:password" />
+						<div class="invalid-feedback">
+							Vui lòng nhập email.
 						</div>
-
-						
-						<div class="row mb-3">
-							<div class="col-md-6 password">
-								<label for="password">Password</label>
-								<input id="password" class="form-control" required type="password" data-bind="value:password" />
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-						</div>
-					</div>	
+					</div>
 				</div>
+
+
+
 			</div>
 		</div>
 	</div>

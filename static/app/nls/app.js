@@ -3,7 +3,7 @@ define({
         "CREATE": "Tạo mới",
         "EDIT": "Sửa",
         "SAVE": "Lưu",
-        "BACK": "Quay lại",
+        "BACK": "<i class='fas fa-reply'></i>",
         "DELETE": "Xoá",
         "SELECT": "Chọn",
         "CANCEL": "Huỷ",

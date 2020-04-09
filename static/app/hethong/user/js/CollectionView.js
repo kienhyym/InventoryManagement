@@ -36,6 +36,24 @@ define(function (require) {
                 }
             }
         },
+        tools: [
+			{
+				name: "defaultgr",
+				type: "group",
+				groupClass: "toolbar-group",
+				buttons: [
+					{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-primary font-weight-bold",
+						label: "+ Người dùng",
+						command: function () {
+							var self = this;
+							this.getApp().getRouter().navigate("#user/model");
+						}
+					},
+				]
+			}],
         render: function () {
             
             this.applyBindings();   

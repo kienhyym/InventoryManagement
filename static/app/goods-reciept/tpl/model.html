@@ -1,180 +1,198 @@
-
 <div block-bind="content" style="position: relative;">
     <div class="card chose-item">
         <div class="card-body">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="d-flex justify-content-between">
-                    <label class="m-0">Danh sách trang thiết bị</label>
+                    <label class="m-0 pt-2">Danh sách hàng hóa</label>
                     <div class="row">
-                        <button class="btn btn-secondary p-1 btn-quaylai">Quay lại</button>
-                        <button class="btn btn-success p-1 btn-hoantat">Hoàn tất</button>
+                        <button class="btn btn-dark p-1 btn-quaylai"><i class="fas fa-reply"></i></button>
+                        <button class="btn btn-primary p-1 btn-hoantat">Hoàn tất</button>
                     </div>
                 </div>
                 <div>
-                    <input type="text" class="col-lg-12 col-md-12 col-sm-12 col-12 form-control m-2" id="input-search" placeholder="nhập tên thiết bị để tìm kiếm ..">
+                    <input type="text" class="col-lg-12 col-md-12 col-sm-12 col-12 form-control m-2" id="input-search"
+                        placeholder="nhập tên thiết bị để tìm kiếm ..">
                 </div>
-    
-                <div class="trang-thiet-bi-y-te row" >
+
+                <div class="trang-thiet-bi-y-te row">
                 </div>
                 <div class="row text-right d-flex justify-content-end">
                     <ul class="pagination">
-                        <li class="page-item page-number page-min"><a class="page-link" style="cursor: pointer">1</a></li>
+                        <li class="page-item page-number page-min"><a class="page-link" style="cursor: pointer">1</a>
+                        </li>
                         <li class="page-item page-3dot-min"><a class="page-link" style="cursor: pointer">...</a></li>
-    
+
                         <li class="page-item page-number active"><a class="page-link" style="cursor: pointer">1</a></li>
                         <li class="page-item page-number"><a class="page-link" style="cursor: pointer">2</a></li>
                         <li class="page-item page-number"><a class="page-link" style="cursor: pointer">3</a></li>
                         <li class="page-item page-number"><a class="page-link" style="cursor: pointer">4</a></li>
-    
+
                         <li class="page-item page-3dot-max"><a class="page-link" style="cursor: pointer">...</a></li>
-                        <li class="page-item page-number page-max"><a class="page-link" style="cursor: pointer">0</a></li>
+                        <li class="page-item page-number page-max"><a class="page-link" style="cursor: pointer">0</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="toolbar" block-bind="toolbar" style="margin: 15px" style="position: relative">
+
+
+    <!-- <div class="toolbar" block-bind="toolbar" style="margin: 15px" style="position: relative">
         <button class="btn btn-sm btn-primary" id="print" style="position: absolute; right: 10px"><i
                 class="icon-download"></i></button>
-    </div>
-
-    <div class="row body-view" style="margin-top: 7px">
-        <div class="col-md-8 col-lg-8 col-sm-6 col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title"><i class="icon-location text-success"></i><label class="mb-0 ml-1"
-                            style="font-size: 14px">THÔNG TIN PHIẾU</label></h1>
-
-                    <div class="row" style="margin-top: 15px">
-                        <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                            <div class="form-group" style="position: relative">
-                                <label>Mã phiếu nhập</label>
-                                <input type="text" class="form-control" placeholder="Mã phiếu" id="text-copy" readonly
-                                    data-bind="value:goodsreciept_no">
-                                <span class="input-group-text icon-paper-stack"
-                                    style="height: 36px; position: absolute; top: 45%; right: 0px;" id="copy-no"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                            <div class="form-group">
-                                <label>Loại tiền</label>
-                                <input type="text" class="form-control" placeholder="Loại tiền" id="currency">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" style="margin-top: 15px">
-                        <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                            <div class="form-group">
-                                <label>Kho</label>
-                                <input type="text" class="form-control" id="warehouse">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                            <div class="form-group">
-                                <label>Loại thuế</label>
-                                <input type="text" class="form-control" placeholder="Loại thuế"
-                                    data-bind="value:taxtype">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card" style="margin-bottom: 10px; margin-top: 30px">
-                <div class="card-body">
-                    <h1 class="card-title"><i class="icon-location text-success"></i><label class="mb-0 ml-1"
-                            style="font-size: 14px">THÔNG TIN BÊN BÁN</label></h1>
-                    <div class="form-group row">
-
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                            <label>Công ty</label>
-                            <input type="text" class="form-control" id="organization">
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nguoiDaiDien">
-                            <label>Đại diện</label>
-                            <input type="text" class="form-control" placeholder="Chọn công ty để chọn người đại diện"
-                                id="contact">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-4 col-sm-6 col-12" style="margin-top: 7px">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title"><i class="icon-location text-success"></i><label class="mb-0 ml-1"
-                            style="font-size: 14px">THÔNG TIN THANH TOÁN</label></h1>
-                    <div class="form-group">
-                        <label>Mã thanh toán</label>
-                        <input type="text" class="form-control" readonly data-bind="value:payment_no">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Trạng thái</label>
-
-                        <div id="payment_status" class="float-right"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Thuế (%)</label>
-                        <input type="text" class="form-control" id="tax_percent" data-bind="value:tax_percent">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Thuế (VNĐ)</label>
-                        <input type="text" class="form-control" id="tax_amount" data-bind="value:tax_amount">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Ghi chú</label>
-                        <textarea rows="3" type="text" class="form-control" data-bind="value:note"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div> -->
     <div class="card">
-        <div class="card-body">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="overflow: auto; height: 500px;">
-                <table class="table table-responsive" style="height: 500px; overflow: auto; width: 100%;">
-                    <thead>
-                        <tr>
-                            <td style="min-width: 350px;" id="show-list-item"><i class="fa fa-search"
-                                    style="font-size: 17px; color: #666"></i>&nbsp;Hàng hóa</td>
-                            <!-- <td style="min-width: 150px">Loại</td> -->
-                            <td style="min-width: 150px;text-align: center;">Giá mua</td>
-                            <td style="min-width: 120px;text-align: center;">Số lượng</td>
-                            <td style="min-width: 150px; text-align: center;">Thành tiền</td>
-                        </tr>
-                    </thead>
-                    <tbody id="body-items"></tbody>
-                </table>
+        <div class="card-header  border-bottom">
+            <div class="row">
+                <div class="col-md-7 col-7">
+                    <h6 class="m-0 pt-2">Thông tin phiếu nhập:</h6>
+                </div>
+                <div class="col-md-5 col-5 text-right">
+                    <div block-bind="toolbar"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="mt-3">
+        <div class=" card-body">
+            <div class="row body-view" style="margin-top: 7px">
+                <div class="col-md-8 col-lg-8 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="card-title"><i class="icon-location text-success"></i><label class="mb-0 ml-1"
+                                    style="font-size: 14px">THÔNG TIN PHIẾU</label></h1>
 
-        <div class="card">
-            <div class="card-body">
-                <div class="form-group row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="">Tổng mặt hàng</label>
-                            <input type="text" class="form-control" id="total_item" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label>Tổng số lượng</label>
-                            <input type="text" class="form-control" id="total_quantity" disabled>
+                            <div class="row" style="margin-top: 15px">
+                                <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                    <div class="form-group" style="position: relative">
+                                        <label>Mã phiếu nhập</label>
+                                        <input type="text" class="form-control" placeholder="Mã phiếu" id="text-copy"
+                                            readonly data-bind="value:goodsreciept_no">
+                                        <span class="input-group-text icon-paper-stack"
+                                            style="height: 36px; position: absolute; top: 45%; right: 0px;"
+                                            id="copy-no"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label>Loại tiền</label>
+                                        <input type="text" class="form-control" placeholder="Loại tiền" id="currency">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 15px">
+                                <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label>Kho</label>
+                                        <input type="text" class="form-control" id="warehouse">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label>Loại thuế</label>
+                                        <input type="text" class="form-control" placeholder="Loại thuế"
+                                            data-bind="value:taxtype">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="">Tổng tiền sau thuế</label>
-                            <input type="text" class="form-control" data-bind="value:amount" disabled>
+                    <div class="card" style="margin-bottom: 10px; margin-top: 30px">
+                        <div class="card-body">
+                            <h1 class="card-title"><i class="icon-location text-success"></i><label class="mb-0 ml-1"
+                                    style="font-size: 14px">THÔNG TIN BÊN BÁN</label></h1>
+                            <div class="form-group row">
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <label>Công ty</label>
+                                    <input type="text" class="form-control" id="organization">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 nguoiDaiDien">
+                                    <label>Đại diện</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Chọn công ty để chọn người đại diện" id="contact">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="">Tổng tiền</label>
-                            <input type="text" class="form-control" data-bind="value:net_amount" disabled>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-6 col-12" style="margin-top: 7px">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="card-title"><i class="icon-location text-success"></i><label class="mb-0 ml-1"
+                                    style="font-size: 14px">THÔNG TIN THANH TOÁN</label></h1>
+                            <div class="form-group">
+                                <label>Mã thanh toán</label>
+                                <input type="text" class="form-control" readonly data-bind="value:payment_no">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+
+                                <div id="payment_status" class="float-right"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Thuế (%)</label>
+                                <input type="text" class="form-control" id="tax_percent" data-bind="value:tax_percent">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Thuế (VNĐ)</label>
+                                <input type="text" class="form-control" id="tax_amount" data-bind="value:tax_amount">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ghi chú</label>
+                                <textarea rows="3" type="text" class="form-control" data-bind="value:note"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="overflow: auto; height: 500px;">
+                        <table class="table table-responsive" style="height: 500px; overflow: auto; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <td style="min-width: 350px;" id="show-list-item"><i class="fa fa-search"
+                                            style="font-size: 17px; color: #666"></i>&nbsp;Hàng hóa</td>
+                                    <!-- <td style="min-width: 150px">Loại</td> -->
+                                    <td style="min-width: 150px;text-align: center;">Giá mua</td>
+                                    <td style="min-width: 120px;text-align: center;">Số lượng</td>
+                                    <td style="min-width: 150px; text-align: center;">Thành tiền</td>
+                                </tr>
+                            </thead>
+                            <tbody id="body-items"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="">Tổng mặt hàng</label>
+                                    <input type="text" class="form-control" id="total_item" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tổng số lượng</label>
+                                    <input type="text" class="form-control" id="total_quantity" disabled>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="">Tổng tiền sau thuế</label>
+                                    <input type="text" class="form-control" data-bind="value:amount" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tổng tiền</label>
+                                    <input type="text" class="form-control" data-bind="value:net_amount" disabled>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

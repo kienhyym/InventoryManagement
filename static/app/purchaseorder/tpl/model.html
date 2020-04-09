@@ -1,5 +1,5 @@
-<div class="card">
-    <div class="card-body">
+<!-- <div class="card"> -->
+<!-- <div class="card-body">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="toolbar" block-bind="toolbar" style="position: relative">
                 <button class="btn btn-sm btn-primary" id="print" style="position: absolute; right: 10px"><i
@@ -7,113 +7,127 @@
                 <button class="btn btn-sm btn-success" id="auto-save"
                     style="position: absolute; left: 20px; width: 10px; height: 10px;">Lưu</button>
             </div>
-
             <div style="position: relative; height: 100px;" class="col-lg-12 col-md-12 col-sm-12 col-12 hide ml-2"
                 id="show-propressbar">
                 <div id="progressBar" class="text-center" style="height: 100px;
             position: absolute; width: 100%;"></div>
             </div>
-        </div>
-        <div class="row" style="margin-top: 25px;">
-            <div class="col-md-4 col-lg-4 col-sm-12 col-12"
-                style="background: white; flex: 1 1 100%; box-sizing: border-box; flex-direction: column; display: flex; max-height: 100%;">
-                <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-                    <h1 class="card-title"><i class="icon-location text-success"></i><label class="mb-0 ml-1"
-                            style="font-size: 14px">THÔNG TIN PHIẾU</label></h1>
-                    <div class="row form-group mt-3">
-                        <div class="col-md-4 col-lg-4 col-sm-4 col-5">
-                            <span>Mã phiếu</span>
-                        </div>
-                        <div class="col-md-8 col-lg-8 col-sm-8 col-7">
-                            <i id="purchaseorder_no">(Hệ thống tự động tạo)</i>
-                        </div>
-                    </div>
-                    <div class="row form-group mt-3">
-                        <div class="col-md-4 col-lg-4 col-sm-4 col-5">
-                            <span>Ngày yêu cầu</span>
-                        </div>
-                        <div class="col-md-8 col-lg-8 col-sm-8 col-7">
-                            <i id="created_at"></i>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-lg-12 col-md-12 col-sm-6 col-sm-6">
-                            <div class="form-group">
-                                <label>Điểm bán</label>
-                                <input class="form-control" data-bind="value:workstation_name" />
-                            </div>
-                            <div class="form-group">
-                                <label>Mã số thuế</label>
-                                <input class="form-control" data-bind="value:tax_code" />
-                            </div>
-                            <div class="form-group">
-                                <label>Địa chỉ</label>
-                                <input class="form-control" data-bind="value:address" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-6 col-sm-6">
-                            <div class="form-group">
-                                <label>Người yêu cầu</label>
-                                <input class="form-control" data-bind="value:proponent" />
-                            </div>
-                            <div class="form-group">
-                                <label>Số điện thoại</label>
-                                <input class="form-control" data-bind="value:phone" />
-                            </div>
-                            <div class="form-group">
-                                <label>Ghi chú</label>
-                                <textarea class="form-control" data-bind="value:description"></textarea>
-                            </div>
-                        </div>
-                    </div>
+        </div> -->
+<div block-bind="content" style="margin-top: 30px">
+    <div class="card">
+        <div class="card-header  border-bottom">
+            <div class="row">
+                <div class="col-md-7 col-7">
+                    <h6 class="m-0 pt-2">Thông tin tiền tệ:</h6>
                 </div>
+                <div class="col-md-5 col-5 text-right">
+                    <div block-bind="toolbar"></div>
+                </div>
+            </div>
+        </div>
+        <div class=" card-body">
+            <div class="row" style="margin-top: 25px;">
+                <div class="col-md-4 col-lg-4 col-sm-12 col-12"
+                    style="background: white; flex: 1 1 100%; box-sizing: border-box; flex-direction: column; display: flex; max-height: 100%;">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                        <h1 class="card-title"><i class="icon-location text-success"></i><label class="mb-0 ml-1"
+                                style="font-size: 14px">THÔNG TIN PHIẾU</label></h1>
+                        <div class="row form-group mt-3">
+                            <div class="col-md-4 col-lg-4 col-sm-4 col-5">
+                                <span>Mã phiếu</span>
+                            </div>
+                            <div class="col-md-8 col-lg-8 col-sm-8 col-7">
+                                <i id="purchaseorder_no">(Hệ thống tự động tạo)</i>
+                            </div>
+                        </div>
+                        <div class="row form-group mt-3">
+                            <div class="col-md-4 col-lg-4 col-sm-4 col-5">
+                                <span>Ngày yêu cầu</span>
+                            </div>
+                            <div class="col-md-8 col-lg-8 col-sm-8 col-7">
+                                <i id="created_at"></i>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-lg-12 col-md-12 col-sm-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Điểm bán</label>
+                                    <input class="form-control" data-bind="value:workstation_name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Mã số thuế</label>
+                                    <input class="form-control" data-bind="value:tax_code" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Địa chỉ</label>
+                                    <input class="form-control" data-bind="value:address" />
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Người yêu cầu</label>
+                                    <input class="form-control" data-bind="value:proponent" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Số điện thoại</label>
+                                    <input class="form-control" data-bind="value:phone" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Ghi chú</label>
+                                    <textarea class="form-control" data-bind="value:description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            </div>
-            <div class="col-md-8 col-lg-8 col-sm-12 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div id="add-item" style="margin: 7px"></div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="overflow: auto; height: 500px;">
-                                <table class="table table-responsive" style="height: 500px; overflow: auto;">
-                                    <thead>
-                                        <tr>
-                                            <td style="min-width: 250px;">Hàng hóa</td>
-                                            <td style="min-width: 170px">Giá bán</td>
-                                            <td style="min-width: 100px">SL</td>
-                                            <!-- <td style="min-width: 170px; text-align: right;">Thành tiền</td> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody id="" data-bind="list:details"></tbody>
-                                </table>
+                </div>
+                <div class="col-md-8 col-lg-8 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div id="add-item" style="margin: 7px"></div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12"
+                                    style="overflow: auto; height: 500px;">
+                                    <table class="table table-responsive" style="height: 500px; overflow: auto;">
+                                        <thead>
+                                            <tr>
+                                                <td style="min-width: 250px;">Hàng hóa</td>
+                                                <td style="min-width: 170px">Giá bán</td>
+                                                <td style="min-width: 100px">SL</td>
+                                                <!-- <td style="min-width: 170px; text-align: right;">Thành tiền</td> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody id="" data-bind="list:details"></tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card col-md-12 col-lg-12 col-12 col-sm-12 " style="margin-bottom: 10px; margin-top: 30px">
-        <div class="card-body">
-            <div class="form-group row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="">Tổng mặt hàng</label>
-                        <input type="text" class="form-control" id="total_item" disabled>
+        <div class="card col-md-12 col-lg-12 col-12 col-sm-12 " style="margin-bottom: 10px; margin-top: 30px">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="">Tổng mặt hàng</label>
+                            <input type="text" class="form-control" id="total_item" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Tổng số lượng</label>
+                            <input type="text" class="form-control" id="total_quantity" disabled>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Tổng số lượng</label>
-                        <input type="text" class="form-control" id="total_quantity" disabled>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="">Tổng tiền sau thuế</label>
-                        <input type="text" class="form-control" data-bind="value:amount" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Tổng tiền</label>
-                        <input type="text" class="form-control" data-bind="value:net_amount" disabled>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="">Tổng tiền sau thuế</label>
+                            <input type="text" class="form-control" data-bind="value:amount" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tổng tiền</label>
+                            <input type="text" class="form-control" data-bind="value:net_amount" disabled>
+                        </div>
                     </div>
                 </div>
             </div>

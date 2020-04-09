@@ -1,21 +1,28 @@
-<div block-bind="toolbar"></div>
 <div block-bind="content" style="margin-top: 30px">
-
-	<div class="form-group row">
-		<label class="col-lg-2 col-md-3 col-sm-2 col-3 col-form-label">Tên</label>
-		<div class="col-sm-7 col-md-7 col-lg-5 col-9">
-			<input class="form-control" data-bind="value:currency_name" type="text" />
+	<div class="card">
+		<div class="card-header  border-bottom">
+			<div class="row">
+				<div class="col-md-7 col-7">
+					<h6 class="m-0 pt-2">Thông tin tiền tệ:</h6>
+				</div>
+				<div class="col-md-5 col-5 text-right">
+					<div block-bind="toolbar"></div>
+				</div>
+			</div>
+		</div>
+		<div class=" card-body">
+			<div class="col-md-6">
+				<label>Tên:</label>
+				<input type="text" class="form-control" data-bind="value:currency_name" placeholder="..." required="">
+			</div>
+			<div class="col-md-6">
+				<label>Mã:</label>
+				<input type="text" class="form-control" data-bind="value:currency_code" placeholder="..." required="">
+			</div>
+			<div class="col-md-6">
+				<label>Ký hiệu tiền tệ:</label>
+				<input type="text" class="form-control" data-bind="value:currency_symbol" placeholder="..." required="">
+			</div>
 		</div>
 	</div>
-	<div class="form-group row">
-		<label class="col-lg-2 col-md-3 col-sm-2 col-3 col-form-label">Code</label>
-		<div class="col-sm-7 col-md-7 col-lg-5 col-9">
-			<input class="form-control" data-bind="value:currency_code" type="text" />
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-lg-2 col-md-3 col-sm-2 col-3 col-form-label">Symbol</label>
-		<div class="col-sm-7 col-md-7 col-lg-5 col-9">
-			<input class="form-control" data-bind="value:currency_symbol" type="text" />
-		</div>
-	</div>
+</div>

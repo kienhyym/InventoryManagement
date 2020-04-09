@@ -121,7 +121,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-secondary btn btn-sm",
+						buttonClass: "btn-dark btn btn-sm",
 						label: "TRANSLATE:BACK",
 						command: function () {
 							var self = this;
@@ -131,7 +131,7 @@ define(function (require) {
 					{
 						name: "save",
 						type: "button",
-						buttonClass: "btn-success btn btn-sm",
+						buttonClass: "btn-primary btn btn-sm",
 						label: "TRANSLATE:SAVE",
 						// visible: function () {
 						// 	return false;

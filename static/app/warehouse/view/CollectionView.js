@@ -338,34 +338,52 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-	var template = require('text!app/warehouse/tpl/collection.html'),
-		schema = require('json!schema/WarehouseSchema.json');
+    var template = require('text!app/warehouse/tpl/collection.html'),
+        schema = require('json!schema/WarehouseSchema.json');
 
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "warehouse",
-        uiControl:{
+        tools: [
+            {
+                name: "defaultgr",
+                type: "group",
+                groupClass: "toolbar-group",
+                buttons: [
+                    {
+                        name: "create",
+                        type: "button",
+                        buttonClass: "btn btn-primary font-weight-bold",
+                        label: "+ Kho",
+                        command: function () {
+                            var self = this;
+                            this.getApp().getRouter().navigate("#warehouse/model");
+                        }
+                    },
+                ]
+            }],
+        uiControl: {
             fields: [
                 {
-                    field: "warehouse_name", label: "vai trò", width: 250, readonly: true,
+                    field: "warehouse_name", label: "Tên kho", width: 250, readonly: true,
                 },
-                
+
 
             ],
             onRowClick: function (event) {
                 if (event.rowId) {
-                    var path =  this.collectionName + '/model?id=' + event.rowId;
+                    var path = this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
                 }
             }
         },
         render: function () {
-            this.applyBindings();   
+            this.applyBindings();
             return this;
         },
-        
+
     });
 
 });

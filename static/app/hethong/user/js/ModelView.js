@@ -25,18 +25,17 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm btn-secondary",
-						label: "TRANSLATE:Quay lại",
+						buttonClass: "btn-dark btn-sm",
+						label: "TRANSLATE:BACK",
 						command: function () {
 							var self = this;
 							Backbone.history.history.back();
-
 						}
 					},
 					{
 						name: "save",
 						type: "button",
-						buttonClass: "btn-success btn-sm",
+						buttonClass: "btn-primary btn-sm",
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;

@@ -77,7 +77,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-light btn btn-sm",
+						buttonClass: "btn-dark btn btn-sm",
 						label: "TRANSLATE:BACK",
 						command: function () {
 							var self = this;

@@ -1,23 +1,26 @@
-<div class="card">
-	<div class="toolbar" block-bind="toolbar" style="margin: 15px"></div>
-	<div block-bind="content">
-		<div class="card-body row">
-			<!-- <div class="col-md-6 col-lg-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="">Tên công ty</label>
-					<input type="text" class="form-control" data-bind="dict:organization">
+<div block-bind="content" style="margin-top: 30px">
+	<div class="card">
+		<div class="card-header  border-bottom">
+			<div class="row">
+				<div class="col-md-7 col-7">
+					<h6 class="m-0 pt-2">Thông tin kho:</h6>
 				</div>
-			</div> -->
+				<div class="col-md-5 col-5 text-right">
+					<div block-bind="toolbar"></div>
+				</div>
+			</div>
+		</div>
+		<div class="card-body row">
 			<div class="col-md-6 col-lg-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="">Tên kho</label>
-					<input type="text" class="form-control" data-bind="value:warehouse_name" >
+					<input type="text" class="form-control" data-bind="value:warehouse_name">
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="">Mã</label>
-					<input type="text" class="form-control" data-bind="value:warehouse_no" >
+					<input type="text" class="form-control" data-bind="value:warehouse_no">
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-6 col-sm-6 col-12">
@@ -97,7 +100,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </div>

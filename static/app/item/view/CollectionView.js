@@ -94,6 +94,24 @@ define(function (require) {
             },
 
         },
+        tools: [
+			{
+				name: "defaultgr",
+				type: "group",
+				groupClass: "toolbar-group",
+				buttons: [
+					{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-primary font-weight-bold",
+						label: "+ Mặt hàng",
+						command: function () {
+							var self = this;
+							this.getApp().getRouter().navigate("#item/model");
+						}
+					},
+				]
+			}],
 
         render: function () {
             var self = this;
