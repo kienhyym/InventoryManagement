@@ -130,201 +130,169 @@ define(function (require) {
                 },
             ]
         },
-        tools: [
-            {
-                name: "defaultgr",
-                type: "group",
-                groupClass: "toolbar-group",
-                buttons: [
-                    {
-                        name: "back",
-                        type: "button",
-                        buttonClass: "btn-dark btn-sm",
-                        label: "TRANSLATE:BACK",
-                        command: function () {
-                            var self = this;
-                            Backbone.history.history.back();
-                        }
-                    },
-                    {
-                        name: "save",
-                        type: "button",
-                        buttonClass: "btn-primary btn-sm",
-                        label: "TRANSLATE:Lưu",
-                        command: function () {
-                            var self = this;
+        // tools: [
+        //     {
+        //         name: "defaultgr",
+        //         type: "group",
+        //         groupClass: "toolbar-group",
+        //         buttons: [
 
-                            self.model.save(null, {
-                                success: function (model, respose, options) {
-                                    self.createItem(respose.id);
-                                    self.updateItem();
-                                    self.deleteItem();
-                                    self.getApp().notify("Lưu thông tin thành công");
-                                    self.getApp().getRouter().navigate(self.collectionName + "/collection");
-                                },
-                                error: function (xhr, status, error) {
-                                    try {
-                                        if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
-                                            self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
-                                            self.getApp().getRouter().navigate("login");
-                                        } else {
-                                            self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
-                                        }
-                                    }
-                                    catch (err) {
-                                        self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+        //         ],
+        //     }],
+        tools: [{
+            name: "defaultgr",
+            type: "group",
+            groupClass: "toolbar-group",
+            buttons: [
+                {
+                    name: "back",
+                    type: "button",
+                    buttonClass: "btn-dark btn-sm",
+                    label: "TRANSLATE:BACK",
+                    command: function () {
+                        var self = this;
+                        Backbone.history.history.back();
+                    }
+                },
+                {
+                    name: "save",
+                    type: "button",
+                    buttonClass: "btn-primary btn-sm",
+                    label: "TRANSLATE:Lưu",
+                    command: function () {
+                        var self = this;
+
+                        self.model.save(null, {
+                            success: function (model, respose, options) {
+                                self.createItem(respose.id);
+                                self.updateItem();
+                                self.deleteItem();
+                                self.getApp().notify("Lưu thông tin thành công");
+                                self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                            },
+                            error: function (xhr, status, error) {
+                                try {
+                                    if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+                                        self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+                                        self.getApp().getRouter().navigate("login");
+                                    } else {
+                                        self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
                                     }
                                 }
-                            });
+                                catch (err) {
+                                    self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+                                }
+                            }
+                        });
 
 
-                        }
+                    }
+                },
+                {
+                    name: "delete",
+                    type: "button",
+                    buttonClass: "btn btn-danger btn-sm btn-delete hide",
+                    label: "Xóa",
+                    visible: function () {
+                        return this.getApp().getRouter().getParam("id") !== null;
                     },
-                ],
-            }],
-        // tools: [{
-        //     name: "defaultgr",
-        //     type: "group",
-        //     groupClass: "toolbar-group",
-        //     buttons: [{
-        //         name: "back",
-        //         type: "button",
-        //         buttonClass: "btn btn-secondary btn-sm",
-        //         label: "Quay lại",
-        //         command: function () {
-        //             var self = this;
-        //             if ($("body").hasClass("sidebar-icon-only")) {
-        //                 $("#btn-menu").trigger("click");
-        //             }
-        //             Backbone.history.history.back();
-        //         }
-        //     },
-        //     {
-        //         name: "save",
-        //         type: "button",
-        //         buttonClass: "btn-primary btn btn-sm",
-        //         label: "Lưu",
-        //         command: function () {
-        //             var self = this;
+                    command: function () {
+                        var self = this;
 
-        //             self.model.save({
-        //                 success: function (model, respose, options) {
-        //                     console.log(respose.id)
-        //                     self.createItem(respose.id);
-        //                     toastr.info('Lưu thông tin thành công');
-        //                     self.getApp().getRouter().navigate(self.collectionName + "/collection");
-        //                 },
-        //                 error: function (model, xhr, options) {
-        //                     toastr.error('Đã có lỗi xảy ra');
+                        $.jAlert({
+                            'title': 'Bạn có chắc muốn xóa?',
+                            'content': '<button class="btn btn-sm btn-danger" id="yes">Có!</button><button class="btn btn-sm btn-light" id="no">Không</button>',
+                            'theme': 'red',
+                            'onOpen': function ($el) {
+                                $el.find("#yes").on("click", function () {
+                                    self.model.set("deleted", true);
+                                    self.getApp().saveLog("delete", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                                    self.model.save(null, {
+                                        success: function (model, respose, options) {
+                                            $el.closeAlert();
+                                            if ($("body").hasClass("sidebar-icon-only")) {
+                                                $("#btn-menu").trigger("click");
+                                            }
+                                            toastr.error('Xóa dữ liệu thành công');
+                                            self.getApp().getRouter().navigate(self.collectionName + "/collection");
 
-        //                 }
-        //             });
-        //         }
-        //     },
-        //     {
-        //         name: "delete",
-        //         type: "button",
-        //         buttonClass: "btn btn-danger btn-sm btn-delete hide",
-        //         label: "Xóa",
-        //         visible: function () {
-        //             return this.getApp().getRouter().getParam("id") !== null;
-        //         },
-        //         command: function () {
-        //             var self = this;
-        //             // $.jAlert({
-        //             //     'title': 'Bạn có chắc muốn xóa?',
-        //             //     'content': '<button class="btn btn-sm btn-danger" id="yes">Có!</button><button class="btn btn-sm btn-light" id="no">Không</button>',
-        //             //     'theme': 'red',
-        //             //     'onOpen': function ($el) {
-        //             //         $el.find("#yes").on("click", function () {
-        //             //             self.model.set("deleted", true);
-        //             //             self.getApp().saveLog("delete", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-        //             //             self.model.save(null, {
-        //             //                 success: function (model, respose, options) {
-        //             //                     $el.closeAlert();
-        //             //                     if ($("body").hasClass("sidebar-icon-only")) {
-        //             //                         $("#btn-menu").trigger("click");
-        //             //                     }
-        //             //                     toastr.error('Xóa dữ liệu thành công');
-        //             //                     self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                                        },
+                                        error: function (model, xhr, options) {
+                                            toastr.error('Lưu thông tin không thành công!');
 
-        //             //                 },
-        //             //                 error: function (model, xhr, options) {
-        //             //                     toastr.error('Lưu thông tin không thành công!');
+                                        }
+                                    });
+                                });
+                                $el.find("#no").on("click", function () {
+                                    $el.closeAlert();
+                                })
+                            }
+                        });
+                    }
+                },
 
-        //             //                 }
-        //             //             });
-        //             //         });
-        //             //         $el.find("#no").on("click", function () {
-        //             //             $el.closeAlert();
-        //             //         })
-        //             //     }
-        //             // });
-        //         }
-        //     },
+                {
+                    name: "confirm",
+                    type: "button",
+                    buttonClass: "btn btn-warning btn-sm btn-confirm hide",
+                    label: "Duyệt yêu cầu",
+                    visible: function () {
+                        return this.getApp().getRouter().getParam("id") !== null;
+                    },
+                    command: function () {
+                        loader.show();
+                        var self = this;
+                        var warehouseID = self.model.get("warehouse_id");
+                        var items = self.model.get("details");
+                        $.ajax({
+                            method: "POST",
+                            url: self.getApp().serviceURL + "/api/v1/warehouse/add-item",
+                            data: JSON.stringify({
+                                warehouse_id: warehouseID,
+                                items: items,
+                                user_id: self.getApp().currentUser.id
+                            }),
+                            success: function (response) {
+                                if (response) {
+                                    self.model.set("payment_status", "confirm");
+                                    self.getApp().saveLog("confirm", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                                    // self.$el.find(".save").trigger("click");
+                                }
+                                loader.hide();
+                            },
+                            error: function () {
+                                loader.hide();
+                            }
+                        })
+                    }
+                },
+                {
+                    name: "bill",
+                    type: "button",
+                    buttonClass: "btn-primary btn btn-sm btn-paid hide",
+                    label: "Thanh toán",
+                    visible: function () {
+                        return this.getApp().getRouter().getParam("id") !== null;
+                    },
+                    command: function () {
+                        var self = this;
+                        var paymentView = new PaymentView({
+                            "viewData": self.model.toJSON()
+                        });
+                        paymentView.dialog({
+                            // size: "large"
+                        });
+                        paymentView.on("close", function (e) {
+                            self.model.set("payment_status", "paid");
+                            self.model.set("payment_no", e.payment_no);
+                            self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                            // self.$el.find(".save").trigger("click");
+                        });
 
-        //     {
-        //         name: "confirm",
-        //         type: "button",
-        //         buttonClass: "btn btn-warning btn-sm btn-confirm hide",
-        //         label: "Duyệt yêu cầu",
-        //         visible: function () {
-        //             return this.getApp().getRouter().getParam("id") !== null;
-        //         },
-        //         command: function () {
-        //             loader.show();
-        //             var self = this;
-        //             var warehouseID = self.model.get("warehouse_id");
-        //             var items = self.model.get("details");
-        //             $.ajax({
-        //                 method: "POST",
-        //                 url: self.getApp().serviceURL + "/api/v1/warehouse/add-item",
-        //                 data: JSON.stringify({
-        //                     warehouse_id: warehouseID,
-        //                     items: items,
-        //                     user_id: self.getApp().currentUser.id
-        //                 }),
-        //                 success: function (response) {
-        //                     if (response) {
-        //                         self.model.set("payment_status", "confirm");
-        //                         self.getApp().saveLog("confirm", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-        //                         // self.$el.find(".save").trigger("click");
-        //                     }
-        //                     loader.hide();
-        //                 },
-        //                 error: function () {
-        //                     loader.hide();
-        //                 }
-        //             })
-        //         }
-        //     },
-        //     {
-        //         name: "bill",
-        //         type: "button",
-        //         buttonClass: "btn-primary btn btn-sm btn-paid hide",
-        //         label: "Thanh toán",
-        //         visible: function () {
-        //             return this.getApp().getRouter().getParam("id") !== null;
-        //         },
-        //         command: function () {
-        //             var self = this;
-        //             var paymentView = new PaymentView({
-        //                 "viewData": self.model.toJSON()
-        //             });
-        //             paymentView.dialog({
-        //                 // size: "large"
-        //             });
-        //             paymentView.on("close", function (e) {
-        //                 self.model.set("payment_status", "paid");
-        //                 self.model.set("payment_no", e.payment_no);
-        //                 self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-        //                 // self.$el.find(".save").trigger("click");
-        //             });
-
-        //         }
-        //     },
-        //     ],
-        // }],
+                    }
+                },
+            ],
+        }],
 
 
         render: function () {
@@ -779,7 +747,7 @@ define(function (require) {
             var listSelectedItems = JSON.parse(localStorage.getItem("listItem"))
             var savedItemSelected = self.model.get('details')
             savedItemSelected.forEach(function (item, idnex) {
-                if(listSelectedItems == null){
+                if (listSelectedItems == null) {
                     listSelectedItems = []
                 }
                 listSelectedItems.push({ "item_id": item.item_id, "item_name": item.item_name, "purchase_cost": item.purchase_cost })
@@ -796,9 +764,9 @@ define(function (require) {
                 self.$el.find('.btn-hoantat').unbind('click').bind('click', function () {
                     self.$el.find('.chose-item').hide()
                     self.$el.find('.body-item-new').remove()
-                    listSelectedItems.forEach(function(item,index){
-                        savedItemSelected.forEach(function(item2,index2){
-                            if(item.item_id == item2.item_id){
+                    listSelectedItems.forEach(function (item, index) {
+                        savedItemSelected.forEach(function (item2, index2) {
+                            if (item.item_id == item2.item_id) {
                                 listSelectedItems.splice(index, 1);
                             }
                         })

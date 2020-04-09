@@ -40,7 +40,7 @@ async def add_item_in_warehouse(request):
             new_item.warehouse_id = warehouse_id
             new_item.item_exid = _.get("item_exid", None)
             new_item.item_name = _.get("item_name", None)
-            new_item.item_no = _.get("item_no", None).upper()
+            new_item.item_no = _.get("item_no", None)
             new_item.purchase_cost = _.get("purchase_cost", 0)
             new_item.list_price = _.get("list_price", 0)
             new_item.quantity = _.get("quantity", 0)
