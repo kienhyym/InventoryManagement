@@ -63,8 +63,8 @@ require(['jquery',
 		window.lodash = lodash;
 
 		var app = new Gonrin.Application({
-			serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')+"/inven",
-			// serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''),
+			// serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')+"/inven",
+			serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''),
 			router: new Router(),
 			lang: lang,
 			layout: layout,
@@ -91,6 +91,7 @@ require(['jquery',
 			postLogin: function (data) {
 				var self = this;
 				loader.show();
+
 				self.currentTenant = data.current_tenant_id;
 				self.currentUser = new Gonrin.User(data);
 				var tpl = gonrin.template(layout)({});
@@ -109,6 +110,13 @@ require(['jquery',
 					self.router.navigate("changepassword");
 				});
 				loader.hide();
+				//edit user-panel
+				$('.user-panel image img').attr('src',self.currentUser.user_image)
+				$('.user-info p').html(self.currentUser.name)
+				$('.user-panel').unbind('click').bind('click', function () {
+					var path = 'user/model?id=' + self.currentUser.id;
+					self.router.navigate(path);
+				})
 			},
 			bind_event: function () {
 				var self = this;

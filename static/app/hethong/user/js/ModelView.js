@@ -44,7 +44,7 @@ define(function (require) {
 								success: function (model, respose, options) {
 
 									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									self.getApp().getRouter().refresh();
 								},
 								error: function (xhr, status, error) {
 									try {

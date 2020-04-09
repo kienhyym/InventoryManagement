@@ -5,16 +5,6 @@ define(function (require) {
 		Gonrin = require('gonrin');
 	return [
 		{
-			"text": "<label class='m-0 ml-4'>Nhân viên</label>",
-			"type": "view",
-			"collectionName": "user",
-			"route": "user/collection",
-			"$ref": "app/hethong/user/js/CollectionView",
-			"visible": function () {
-				return true
-			}
-		},
-		{
 			"text": "Vật tư y tế",
 			"icon": "fa fa-book",
 			"type": "view",
