@@ -18,7 +18,8 @@ class Config(object):
     TRANSACTION_TOKEN_EXPIRE_TIME = 120
     
     # DOMAIN_URL = 'http://127.0.0.1:7100'
-    DOMAIN_URL = 'https://upstart.vn/inven'
+    # DOMAIN_URL = 'https://upstart.vn/inven'
+    DOMAIN_URL = 'http://103.74.122.225:7100'
 
     MAIL_SERVER_HOST = 'kienhyym.gmail.com'
     MAIL_SERVER_PORT = 587
