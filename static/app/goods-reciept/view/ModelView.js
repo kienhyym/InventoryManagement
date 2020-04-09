@@ -137,15 +137,15 @@ define(function (require) {
                 groupClass: "toolbar-group",
                 buttons: [
                     {
-						name: "back",
-						type: "button",
-						buttonClass: "btn-dark btn-sm",
-						label: "TRANSLATE:BACK",
-						command: function () {
-							var self = this;
-							Backbone.history.history.back();
-						}
-					},
+                        name: "back",
+                        type: "button",
+                        buttonClass: "btn-dark btn-sm",
+                        label: "TRANSLATE:BACK",
+                        command: function () {
+                            var self = this;
+                            Backbone.history.history.back();
+                        }
+                    },
                     {
                         name: "save",
                         type: "button",
@@ -360,7 +360,6 @@ define(function (require) {
 
         registerEvent: function () {
             var self = this;
-
             // self.changeDetails = self.model.get("details");
             self.loadCombox();
             // self.toggleEvent();
@@ -697,7 +696,6 @@ define(function (require) {
 
             }
         },
-
         ShowListItem: function () {
             var self = this;
             self.$el.find('#show-list-item').unbind('click').bind('click', function () {
@@ -774,12 +772,18 @@ define(function (require) {
                     localStorage.setItem("listItem", JSON.stringify(selectItemList))
                 }
                 self.showSelectedItem()
-
             })
         },
         showSelectedItem: function () {
             var self = this;
             var listSelectedItems = JSON.parse(localStorage.getItem("listItem"))
+            var savedItemSelected = self.model.get('details')
+            savedItemSelected.forEach(function (item, idnex) {
+                if(listSelectedItems == null){
+                    listSelectedItems = []
+                }
+                listSelectedItems.push({ "item_id": item.item_id, "item_name": item.item_name, "purchase_cost": item.purchase_cost })
+            })
             if (listSelectedItems != undefined && listSelectedItems != null) {
                 listSelectedItems.forEach(function (item, index) {
                     var itemCheckBox = self.$el.find('.item-checkbox[item-id = ' + item.item_id + ']')
@@ -792,8 +796,14 @@ define(function (require) {
                 self.$el.find('.btn-hoantat').unbind('click').bind('click', function () {
                     self.$el.find('.chose-item').hide()
                     self.$el.find('.body-item-new').remove()
+                    listSelectedItems.forEach(function(item,index){
+                        savedItemSelected.forEach(function(item2,index2){
+                            if(item.item_id == item2.item_id){
+                                listSelectedItems.splice(index, 1);
+                            }
+                        })
+                    })
                     self.htmlShowSelectedItem(listSelectedItems);
-
                 })
             }
         },
@@ -853,8 +863,8 @@ define(function (require) {
             var self = this;
             self.$el.find('.body-item-new .itemRemove').unbind('click').bind('click', function () {
                 $(self.$el.find('.body-item-new')[$(this).attr('ind')]).remove();
-                listSelectedItems.splice($(this).attr('ind'),1);
-                localStorage.setItem('listItem',JSON.stringify(listSelectedItems))
+                listSelectedItems.splice($(this).attr('ind'), 1);
+                localStorage.setItem('listItem', JSON.stringify(listSelectedItems))
                 self.taxExcluded();
             })
         },
