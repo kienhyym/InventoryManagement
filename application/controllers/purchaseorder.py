@@ -10,7 +10,7 @@ from gatco_restapi.helpers import to_dict
 
 from application.models.purchaseorder import *
 from application.models.consumablesupplies import Item
-from application.models.models import User
+from application.models.user import User
 from application.models.workstation import *
 
 # from application.models.deliverynote import *

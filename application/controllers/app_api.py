@@ -12,7 +12,7 @@ import copy
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
 from application.database import db, redisdb
-from application.models.models import *
+from application.models.user import *
 from datetime import datetime
 from application.server import app
 from gatco_restapi.helpers import to_dict
@@ -70,156 +70,156 @@ async def get_token(request):
         
 
 
-@app.route('/api/v1/date_sort', methods=['POST'])
-async def date_sort(request):
-    data = request.json
-    equipmentinspectionform = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
-    repairrequestform = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
-    devicestatusverificationform = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
-    certificateform = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
-    return json({
-        "equipmentinspectionform":[str(date_today.id) for date_today in equipmentinspectionform],
-        "repairrequestform":[str(date_today.id) for date_today in repairrequestform],
-        "devicestatusverificationform":[str(date_today.id) for date_today in devicestatusverificationform],
-        "certificateform":[str(date_today.id) for date_today in certificateform],
-        })
+# @app.route('/api/v1/date_sort', methods=['POST'])
+# async def date_sort(request):
+#     data = request.json
+#     equipmentinspectionform = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+#     repairrequestform = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+#     devicestatusverificationform = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+#     certificateform = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+#     return json({
+#         "equipmentinspectionform":[str(date_today.id) for date_today in equipmentinspectionform],
+#         "repairrequestform":[str(date_today.id) for date_today in repairrequestform],
+#         "devicestatusverificationform":[str(date_today.id) for date_today in devicestatusverificationform],
+#         "certificateform":[str(date_today.id) for date_today in certificateform],
+#         })
         
-@app.route('/api/v1/count_of_month', methods=['POST'])
-async def count_of_month(request):
-    data = request.json
-    month = ["01","02","03","04","05","06","07","08","09","10","11","12"]
-    month_timestamp = []
-    for i in range(len(month)): 
-        if month[i] == "12":
-            month_timestamp.append({
-                "batdauthang":str(data['nam'])+"-"+month[i]+"-01T00:00:01",
-                "kethucthang":str(data['nam']+1)+"-01-01T00:00:01"
-                })
-        else:
-            month_timestamp.append({
-                "batdauthang":str(data['nam'])+"-"+month[i]+"-01T00:00:01",
-                "kethucthang":str(data['nam'])+"-"+month[i+1]+"-01T00:00:01"
-                })
-    equipmentinspectionform_count = []
-    repairrequestform_count = []
-    devicestatusverificationform_count = []
-    certificateform_count = []
-    for i in month_timestamp: 
-        batdauthang_format = datetime.strptime(i['batdauthang'], '%Y-%m-%dT%H:%M:%S')
-        kethucthang_format = datetime.strptime(i['kethucthang'], '%Y-%m-%dT%H:%M:%S')
-        equipmentinspectionform = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
-        repairrequestform = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
-        devicestatusverificationform = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
-        certificateform = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
-        equipmentinspectionform_count.append(len([str(sl.id) for sl in equipmentinspectionform]))
-        repairrequestform_count.append(len([str(sl.id) for sl in repairrequestform]))
-        devicestatusverificationform_count.append(len([str(sl.id) for sl in devicestatusverificationform]))
-        certificateform_count.append(len([str(sl.id) for sl in certificateform]))
-    return json(
-        {
-            "equipmentinspectionform_count":equipmentinspectionform_count,
-            "repairrequestform_count":repairrequestform_count,
-            "devicestatusverificationform_count":devicestatusverificationform_count,
-            "certificateform_count":certificateform_count,
-        })
+# @app.route('/api/v1/count_of_month', methods=['POST'])
+# async def count_of_month(request):
+#     data = request.json
+#     month = ["01","02","03","04","05","06","07","08","09","10","11","12"]
+#     month_timestamp = []
+#     for i in range(len(month)): 
+#         if month[i] == "12":
+#             month_timestamp.append({
+#                 "batdauthang":str(data['nam'])+"-"+month[i]+"-01T00:00:01",
+#                 "kethucthang":str(data['nam']+1)+"-01-01T00:00:01"
+#                 })
+#         else:
+#             month_timestamp.append({
+#                 "batdauthang":str(data['nam'])+"-"+month[i]+"-01T00:00:01",
+#                 "kethucthang":str(data['nam'])+"-"+month[i+1]+"-01T00:00:01"
+#                 })
+#     equipmentinspectionform_count = []
+#     repairrequestform_count = []
+#     devicestatusverificationform_count = []
+#     certificateform_count = []
+#     for i in month_timestamp: 
+#         batdauthang_format = datetime.strptime(i['batdauthang'], '%Y-%m-%dT%H:%M:%S')
+#         kethucthang_format = datetime.strptime(i['kethucthang'], '%Y-%m-%dT%H:%M:%S')
+#         equipmentinspectionform = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
+#         repairrequestform = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
+#         devicestatusverificationform = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
+#         certificateform = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
+#         equipmentinspectionform_count.append(len([str(sl.id) for sl in equipmentinspectionform]))
+#         repairrequestform_count.append(len([str(sl.id) for sl in repairrequestform]))
+#         devicestatusverificationform_count.append(len([str(sl.id) for sl in devicestatusverificationform]))
+#         certificateform_count.append(len([str(sl.id) for sl in certificateform]))
+#     return json(
+#         {
+#             "equipmentinspectionform_count":equipmentinspectionform_count,
+#             "repairrequestform_count":repairrequestform_count,
+#             "devicestatusverificationform_count":devicestatusverificationform_count,
+#             "certificateform_count":certificateform_count,
+#         })
 
-@app.route('/api/v1/list_today', methods=['POST'])
-async def list_today(request):
-    data = request.json
-    arr = []
-    if data['tableName'] == "equipmentinspectionform" :
-        list = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
-    if data['tableName'] == "repairrequestform" :
-        list = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
-    if data['tableName'] == "devicestatusverificationform" :
-        list = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
-    if data['tableName'] == "certificateform" :
-        list = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
-    for _ in list :
-        arr.append(to_dict(_))
-    return json(arr)
+# @app.route('/api/v1/list_today', methods=['POST'])
+# async def list_today(request):
+#     data = request.json
+#     arr = []
+#     if data['tableName'] == "equipmentinspectionform" :
+#         list = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+#     if data['tableName'] == "repairrequestform" :
+#         list = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+#     if data['tableName'] == "devicestatusverificationform" :
+#         list = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+#     if data['tableName'] == "certificateform" :
+#         list = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+#     for _ in list :
+#         arr.append(to_dict(_))
+#     return json(arr)
 
 
-@app.route('/api/v1/link_file_upload', methods=['POST'])
-async def link_file_upload(request):
-    url = app.config['FILE_SERVICE_URL']
-    fsroot = app.config['FS_ROOT']
-    if request.method == 'POST':
-        file = request.files.get('file', None)
-        if file :
-            rand = ''.join(random.choice(string.digits) for _ in range(15))
-            file_name = os.path.splitext(file.name)[0]
-            extname = os.path.splitext(file.name)[1]
-            newfilename = file_name + extname 
-            new_filename = newfilename.replace(" ", "_")
-            async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
-                await f.write(file.body)
-            df = pandas.read_excel("static/uploads/"+new_filename)
-            count = df.ID.count()
-            i = 0
-            arr = []
-            while i < count:
-                obj = {}
-                obj['ID'] = df.ID[i]
-                obj['name'] = df.name[i]
-                obj['age'] = df.age[i]
-                arr.append(obj)
-                i += 1
-            return json({'data':"success"})
+# @app.route('/api/v1/link_file_upload', methods=['POST'])
+# async def link_file_upload(request):
+#     url = app.config['FILE_SERVICE_URL']
+#     fsroot = app.config['FS_ROOT']
+#     if request.method == 'POST':
+#         file = request.files.get('file', None)
+#         if file :
+#             rand = ''.join(random.choice(string.digits) for _ in range(15))
+#             file_name = os.path.splitext(file.name)[0]
+#             extname = os.path.splitext(file.name)[1]
+#             newfilename = file_name + extname 
+#             new_filename = newfilename.replace(" ", "_")
+#             async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
+#                 await f.write(file.body)
+#             df = pandas.read_excel("static/uploads/"+new_filename)
+#             count = df.ID.count()
+#             i = 0
+#             arr = []
+#             while i < count:
+#                 obj = {}
+#                 obj['ID'] = df.ID[i]
+#                 obj['name'] = df.name[i]
+#                 obj['age'] = df.age[i]
+#                 arr.append(obj)
+#                 i += 1
+#             return json({'data':"success"})
     
-    return json({
-        "error_code": "Upload Error",
-        "error_message": "Could not upload file to store"
-    }, status=520)
+#     return json({
+#         "error_code": "Upload Error",
+#         "error_message": "Could not upload file to store"
+#     }, status=520)
 
 
-@app.route('/api/v1/read_file_json',methods=['POST'])
-async def read_file_json(request):
-    # with open('static/data_thietbiyte.json') as f:
-    #     data = load_json.load(f)
+# @app.route('/api/v1/read_file_json',methods=['POST'])
+# async def read_file_json(request):
+#     # with open('static/data_thietbiyte.json') as f:
+#     #     data = load_json.load(f)
 
-    with open('static/data_thietbiyte.json') as myfile:
-        data = myfile.read()
-        obj = load_json.loads(data)
-        for _ in obj:
-            medicalEquipment_new = MedicalEquipment()
-            medicalEquipment_new.name = _['name']
-            medicalEquipment_new.classify = _['type'][11]
-            medicalEquipment_new.implementing_organization_classification = _['organization_action']
-            medicalEquipment_new.circulation_number = _['code_document_public']
-            medicalEquipment_new.organization_requesting_classification = _['organization_require']
-            medicalEquipment_new.status = _['status']
-            db.session.add(medicalEquipment_new)
-            db.session.commit()
+#     with open('static/data_thietbiyte.json') as myfile:
+#         data = myfile.read()
+#         obj = load_json.loads(data)
+#         for _ in obj:
+#             medicalEquipment_new = MedicalEquipment()
+#             medicalEquipment_new.name = _['name']
+#             medicalEquipment_new.classify = _['type'][11]
+#             medicalEquipment_new.implementing_organization_classification = _['organization_action']
+#             medicalEquipment_new.circulation_number = _['code_document_public']
+#             medicalEquipment_new.organization_requesting_classification = _['organization_require']
+#             medicalEquipment_new.status = _['status']
+#             db.session.add(medicalEquipment_new)
+#             db.session.commit()
 
-    return json({
-        "error_code": "Upload success",
-    })
+#     return json({
+#         "error_code": "Upload success",
+#     })
 
-@app.route('/api/v1/get_data_medical',methods=['POST'])
-async def get_data_medical(request):
-    req = request.json
-    if req  != None and req != "":
-        find_text = req['text']
-        search = "%{}%".format(find_text)
-        list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
-        if len(list) == 0 :
-            find_text = req['text']
-            tex = find_text.capitalize()
-            search = "%{}%".format(tex)
-            list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
-        arr = []
-        for i in range(len(list)):
-            obj = to_dict(list[i])
-            obj['stt'] = i+1
-            arr.append(obj)
-        return json(arr)
-    else :
-        list = db.session.query(MedicalEquipment).all()
-        arr = []
-        for i in range(len(list)):
-            obj = to_dict(list[i])
-            obj['stt'] = i+1
-            arr.append(obj)
-        return json(arr)
+# @app.route('/api/v1/get_data_medical',methods=['POST'])
+# async def get_data_medical(request):
+#     req = request.json
+#     if req  != None and req != "":
+#         find_text = req['text']
+#         search = "%{}%".format(find_text)
+#         list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
+#         if len(list) == 0 :
+#             find_text = req['text']
+#             tex = find_text.capitalize()
+#             search = "%{}%".format(tex)
+#             list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
+#         arr = []
+#         for i in range(len(list)):
+#             obj = to_dict(list[i])
+#             obj['stt'] = i+1
+#             arr.append(obj)
+#         return json(arr)
+#     else :
+#         list = db.session.query(MedicalEquipment).all()
+#         arr = []
+#         for i in range(len(list)):
+#             obj = to_dict(list[i])
+#             obj['stt'] = i+1
+#             arr.append(obj)
+#         return json(arr)
 

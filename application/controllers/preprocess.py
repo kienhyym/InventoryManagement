@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from gatco_restapi import ProcessingException
-from application.models.models import *
+from application.models.user import *
 from application.database import db
 from application.extensions import auth
 

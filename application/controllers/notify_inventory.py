@@ -13,7 +13,7 @@ import json as json_load
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
 # from application.models import User, Permission, Role, Notify,
-from application.models.models import User, Permission, Role
+from application.models.user import User, Permission, Role
 from application.models.notify import Notify, NotifyUser
 
 from application.extensions import auth

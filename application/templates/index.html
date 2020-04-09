@@ -16,7 +16,7 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{static_url}}/vendor/font-awesome/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="{{static_url}}/css/shards-dashboards.1.3.1.css">
+	<!-- <link rel="stylesheet" href="{{static_url}}/css/shards-dashboards.1.3.1.css"> -->
 	<link rel="stylesheet" href="{{static_url}}/css/style.css">
 	<link rel="stylesheet" href="{{static_url}}/css/calendar.css">
 	<link href="{{static_url}}/vendor/GonrinUI/css/gonrin.pagination.css" rel="stylesheet">
@@ -25,9 +25,29 @@
 	<link href="{{static_url}}/vendor/GonrinUI/css/gonrin.radio.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{static_url}}/vendor/GonrinUIBoostrap4/css/gonrin.datetimepicker.css">
 
+<link rel="stylesheet" href="{{static_url}}/temp/css/all.min.css">
+  <!-- Ionicons -->
+  <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <!-- <link rel="stylesheet" href="{{static_url}}/temp/css/tempusdominus-bootstrap-4.min.css"> -->
+  <!-- iCheck -->
+  <!-- <link rel="stylesheet" href="{{static_url}}/temp/css/icheck-bootstrap.min.css"> -->
+  <!-- JQVMap -->
+  <!-- <link rel="stylesheet" href="{{static_url}}/temp/css/jqvmap.min.css"> -->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{static_url}}/temp/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <!-- <link rel="stylesheet" href="{{static_url}}/temp/css/OverlayScrollbars.min.css"> -->
+  <!-- Daterange picker -->
+  <!-- <link rel="stylesheet" href="{{static_url}}/temp/css/daterangepicker.css"> -->
+  <!-- summernote -->
+  <!-- <link rel="stylesheet" href="{{static_url}}/temp/css/summernote-bs4.css"> -->
+  <!-- Google Font: Source Sans Pro -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+
 </head>
 
-<body>
+<body lass="hold-transition sidebar-mini layout-fixed">
 	<!-- Load Facebook SDK for JavaScript -->
 	<div id="fb-root"></div>
 	<div class="fb-customerchat" page_id="2242138346015977">
@@ -37,20 +57,28 @@
 	</div>
 </body>
 <!-- jQuery 3 -->
-<script src="{{static_url}}/vendor/jquery/jquery.min.js"></script>
-<!-- <script src="{{static_url}}/vendor/bootstrap4/js/popper.min.js" crossorigin="anonymous"></script> -->
-<script src="{{static_url}}/vendor/bootstrap4/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script src="{{static_url}}/vendor/bootstrap4/bootstrap-select/js/bootstrap-select.min.js"
-	crossorigin="anonymous"></script>
 <script>
 	var static_url = "{{static_url}}";
 </script>
+<script src="{{static_url}}/vendor/jquery/jquery.min.js"></script>
+<script src="{{static_url}}/vendor/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
+<script src="{{static_url}}/vendor/jquery/jquery.numeric.js" type="text/javascript"></script>
+
+<script src="{{static_url}}/vendor/bootstrap4/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="{{static_url}}/vendor/bootstrap4/bootstrap-select/js/bootstrap-select.min.js" crossorigin="anonymous"></script>
+
+<!-- plugin ngoài -->
 <script src="{{static_url}}/vendor/printer/print.min.js" type="text/javascript"></script>
 <script src="{{static_url}}/vendor/lodash-4.17.10.js" type="text/javascript"></script>
 <script src="{{static_url}}vendor/qrcode.min.js" type="text/javascript"></script>
 <script src="{{static_url}}vendor/chart.js" type="text/javascript"></script>
-<script src="{{static_url}}/vendor/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
-<script src="{{static_url}}/vendor/jquery/jquery.numeric.js" type="text/javascript"></script>
+<!-- <script src="{{static_url}}/js/calendar.js"></script> -->
+<!-- <script src="{{static_url}}/js/locale/vi.js"></script> -->
+<!-- <script src="{{static_url}}/js/moment-timezone-with-data.min.js"></script> -->
+<script src="{{static_url}}/js/axios.js"></script>
+<script src="{{static_url}}/js/toastr.min.js"></script>
+
+<!-- plugin vendor -->
 <script src="{{static_url}}/vendor/hashids/hashids.js" type="text/javascript"></script>
 <script src="{{static_url}}/vendor/GonrinUI/js/gonrin.core.js" type="text/javascript"></script>
 <script src="{{static_url}}/vendor/GonrinUI/js/gonrin.accounting.js" type="text/javascript"></script>
@@ -69,11 +97,23 @@
 <script src="{{static_url}}/vendor/GonrinUIBoostrap4/js/gonrin.datetimepicker.js" type="text/javascript"></script>
 <script src="{{static_url}}/vendor/GonrinUIBoostrap4/js/gonrin.combobox.js" type="text/javascript"></script>
 <script src="{{static_url}}/vendor/GonrinUI/js/gonrin.numeric.js" type="text/javascript"></script>
-<script src="{{static_url}}/js/calendar.js"></script>
-<script src="{{static_url}}/js/locale/vi.js"></script>
-<script src="{{static_url}}/js/moment-timezone-with-data.min.js"></script>
-<script src="{{static_url}}/js/axios.js"></script>
-<script src="{{static_url}}/js/toastr.min.js"></script>
+
+<!-- plugin template -->
+<script src="{{static_url}}/temp/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="{{static_url}}/temp/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<!-- <script src="{{static_url}}/temp/js/Chart.min.js" type="text/javascript"></script> -->
+<script src="{{static_url}}/temp/js/sparkline.js" type="text/javascript"></script>
+<!-- <script src="{{static_url}}/temp/js/jquery.vmap.min.js" type="text/javascript"></script>
+<script src="{{static_url}}/temp/js/jquery.vmap.usa.js" type="text/javascript"></script> -->
+<!-- <script src="{{static_url}}/temp/js/jquery.knob.min.js" type="text/javascript"></script> -->
+<!-- <script src="{{static_url}}/temp/js/moment.min.js" type="text/javascript"></script> -->
+<script src="{{static_url}}/temp/js/daterangepicker.js" type="text/javascript"></script>
+<!-- <script src="{{static_url}}/temp/js/tempusdominus-bootstrap-4.min.js" type="text/javascript"></script> -->
+<!-- <script src="{{static_url}}/temp/js//summernote-bs4.min.js" type="text/javascript"></script> -->
+<script src="{{static_url}}/temp/js/jquery.overlayScrollbars.min.js" type="text/javascript"></script>
+<script src="{{static_url}}/temp/js/adminlte.js" type="text/javascript"></script>
+<!-- <script src="{{static_url}}/temp/js/dashboard.js" type="text/javascript"></script> -->
+<!-- <script src="{{static_url}}/temp/js/demo.js" type="text/javascript"></script> -->
 
 <script data-main="{{static_url}}/app/app" src="{{static_url}}/app/require.js"></script>
 

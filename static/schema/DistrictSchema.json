@@ -37,6 +37,6 @@
         "type": "string"
     },
     "province": {
-        "type": "json"
+        "type": "dict"
     }
 }

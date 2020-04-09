@@ -6,7 +6,7 @@ import hashlib, binascii
 from gatco_restapi.helpers import to_dict
 from application.extensions import auth
 from application.database import db, redisdb
-from application.models.models import *
+from application.models.user import *
 import random, string
 
 

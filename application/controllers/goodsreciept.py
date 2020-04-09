@@ -9,7 +9,7 @@ import time
 from gatco_restapi.helpers import to_dict
 from application.models.warehouse import *
 from application.models.goodsreciept import *
-from application.models.models import *
+from application.models.user import *
 from application.models.consumablesupplies import *
 
 

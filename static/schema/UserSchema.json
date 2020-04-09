@@ -25,47 +25,56 @@
         "type": "string",
         "primary": true
     },
-    "phone_number": {
-        "type": "string",
-        "length": 50
-    },
     "email": {
         "type": "string",
-        "length": 50
+        "required": true,
+        "length": 200
+    },
+    "phone_number": {
+        "type": "string",
+        "length": 20
+    },
+    "password": {
+        "type": "string",
+        "length": 255
     },
     "name": {
         "type": "string",
-        "length": 50
+        "length": 255
     },
-    "password": {
-        "type": "string"
+    "birthday": {
+        "type": "datetime"
     },
     "salt": {
-        "type": "string"
+        "type": "string",
+        "length": 255
     },
-    "type": {
-        "type": "string"
+    "user_image": {
+        "type": "string",
+        "length": 250
+    },
+    "phone_country_prefix": {
+        "type": "string",
+        "length": 10
+    },
+    "phone_national_number": {
+        "type": "string",
+        "length": 20
     },
     "active": {
         "type": "boolean",
-        "default": true
+        "default": false
     },
-    "rank": {
-        "type": "number"
+    "custom_fields": {
+        "type": "json"
     },
-    "department_id": {
+    "config_data": {
+        "type": "json"
+    },
+    "role_id": {
         "type": "string"
     },
-    "room_id": {
-        "type": "string"
-    },
-    "roles": {
-        "type": "list"
-    },
-    "department": {
-        "type": "dict"
-    },
-    "room": {
+    "role": {
         "type": "dict"
     }
 }

@@ -21,7 +21,7 @@ import ujson
 import binascii
 import uuid
 from sqlalchemy import func
-from application.models.models import *
+from application.models.user import *
 
 async def generate_token(user_id, time_expire):
     token =  binascii.hexlify(uuid.uuid4().bytes).decode()

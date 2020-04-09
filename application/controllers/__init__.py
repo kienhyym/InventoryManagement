@@ -3,7 +3,7 @@ from application.extensions import jinja
 
 def init_controllers(app):
     import application.controllers.user_api
-    import application.controllers.danhmuc_api
+    import application.controllers.administrativeunits
     import application.controllers.app_api
     import application.controllers.organization
     import application.controllers.notify

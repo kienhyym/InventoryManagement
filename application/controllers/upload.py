@@ -53,7 +53,7 @@ import base64
 async def upload_file(request):
     url = app.config['FILE_SERVICE_URL']
     print('------url-------------------------------------',url)
-    # url = "http://103.74.122.206:20808"
+    # url = "http://103.74.122.206:7100"
     fsroot = app.config['FS_ROOT']
     if request.method == 'POST':
         file = request.files.get('file', None)
@@ -120,7 +120,7 @@ async def upload_file(request):
 async def upload_file(request):
     url = app.config['FILE_SERVICE_URL']
     print('------url-------------------------------------',url)
-    # url = "http://103.74.122.206:20808"
+    # url = "http://103.74.122.206:7100"
     fsroot = app.config['FS_ROOT']
     if request.method == 'POST':
         file = request.files.get('file', None)

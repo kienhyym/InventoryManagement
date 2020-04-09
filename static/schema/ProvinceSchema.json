@@ -37,6 +37,6 @@
         "type": "string"
     },
     "nation": {
-        "type": "json"
+        "type": "dict"
     }
 }

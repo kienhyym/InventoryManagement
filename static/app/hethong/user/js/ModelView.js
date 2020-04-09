@@ -8,8 +8,6 @@ define(function (require) {
 
 	// var RoleSelectView = require('app/role/js/SelectView');
 	// var VaiTroSelectView = require('app/hethong/rank/js/SelectView');
-	var KhoaSelectView = require('app/hethong/department/view/SelectView');
-	var PhongSelectView = require('app/hethong/room/view/SelectView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -118,34 +116,18 @@ define(function (require) {
 				// 	foreignField: "donvi_id",
 				// 	dataSource: DonViSelectView
 				// },
-				{
-					field: "rank",
-					uicontrol: "combobox",
-					textField: "text",
-					valueField: "value",
-					dataSource: [
-						{ "value": 1, "text": "Giám đốc" },
-						{ "value": 2, "text": "Trưởng phòng vật tư" },
-						{ "value": 3, "text": "Nhân viên kỹ thuật" },
-						{ "value": 4, "text": "Nhân sự department phòng" },
-					],
-				},
-				{
-					field: "room",
-					uicontrol: "ref",
-					textField: "name",
-					foreignRemoteField: "id",
-					foreignField: "room_id",
-					dataSource: PhongSelectView
-				},
-				{
-					field: "department",
-					uicontrol: "ref",
-					textField: "name",
-					foreignRemoteField: "id",
-					foreignField: "department_id",
-					dataSource: KhoaSelectView
-				},
+				// {
+				// 	field: "rank",
+				// 	uicontrol: "combobox",
+				// 	textField: "text",
+				// 	valueField: "value",
+				// 	dataSource: [
+				// 		{ "value": 1, "text": "Giám đốc" },
+				// 		{ "value": 2, "text": "Trưởng phòng vật tư" },
+				// 		{ "value": 3, "text": "Nhân viên kỹ thuật" },
+				// 		{ "value": 4, "text": "Nhân sự department phòng" },
+				// 	],
+				// },
 			]
 		},
 

@@ -25,16 +25,27 @@
         "type": "string",
         "primary": true
     },
-    "code": {
-        "type": "string",
-        "length": 80
+    "role_code": {
+        "type": "string"
     },
-    "name": {
+    "role_name": {
         "type": "string",
-        "length": 80
+        "required": true,
+        "length": 100
+    },
+    "display_name": {
+        "type": "string",
+        "required": true,
+        "length": 255
     },
     "description": {
         "type": "string",
         "length": 255
+    },
+    "tenant_id": {
+        "type": "string"
+    },
+    "permissions": {
+        "type": "list"
     }
 }

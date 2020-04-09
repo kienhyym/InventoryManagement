@@ -9,7 +9,7 @@ from math import floor
 
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
-from application.models.models import *
+from application.models.user import *
 from application.extensions import auth
 from application.database import db, redisdb
 from application.server import app

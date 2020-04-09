@@ -37,6 +37,6 @@
         "type": "string"
     },
     "district": {
-        "type": "json"
+        "type": "dict"
     }
 }

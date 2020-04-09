@@ -46,8 +46,6 @@ def generate_schema(path = None, exclude = None, prettyprint = True):
         for col in cls.__table__.c:
             col_type = str(col.type)
             schema_type = ''
-            if(classname =="KeHoachThanhTra"):
-                print("col_type===",col_type)
             if 'DECIMAL' in col_type:
                 schema_type = 'number'
             if col_type in ['INTEGER','SMALLINT', 'FLOAT','BIGINT' ]:
@@ -105,8 +103,8 @@ def generate_schema(path = None, exclude = None, prettyprint = True):
 
 @manager.command
 def add_danhsach_quocgia_tinhthanh():   
-    quocgias = Nation(code = "VN", name = "Việt Nam")
-    db.session.add(quocgias)
+    quocgia = Nation(code = "VN", name = "Việt Nam")
+    db.session.add(quocgia)
     db.session.flush() 
     db.session.commit()
     try:
@@ -125,7 +123,7 @@ def add_danhsach_quocgia_tinhthanh():
             tinhthanh_filter = db.session.query(Province).filter(Province.code == item_dstinhthanh["matinhthanh"]).first()
             if tinhthanh_filter is None:
 #                 quocgia_filter = db.session.query(Nation).filter(Nation.code == 'VN').first()
-                tinhthanh_filter = Province(name = item_dstinhthanh["tentinhthanh"], code = item_dstinhthanh["matinhthanh"], nation_id = quocgias.id)
+                tinhthanh_filter = Province(name = item_dstinhthanh["tentinhthanh"], code = item_dstinhthanh["matinhthanh"], nation_id = quocgia.id)
                 db.session.add(tinhthanh_filter)
         db.session.commit()
     except Exception as e:
@@ -165,21 +163,20 @@ def add_danhsach_xaphuong():
 @manager.command
 def create_default_user(): 
     #add user
-    user2 = User(email='admin', name='admin',rank=1,password=auth.encrypt_password('123456'))
+    user2 = User(email='admin', name='admin',active=True,password=auth.encrypt_password('123456'))
     db.session.add(user2)
     db.session.flush()
     db.session.commit()
-
 @manager.command
 def run():  
-    quocgiaa = db.session.query(Nation).first()
-    if quocgiaa is None:
+    quocgia = db.session.query(Nation).first()
+    if quocgia is None:
         add_danhsach_quocgia_tinhthanh()
         add_danhsach_quanhuyen()
         add_danhsach_xaphuong()
         create_default_user()
 
-    run_app(host="0.0.0.0", port=20808)
+    run_app(host="0.0.0.0", port=7100)
 
 if __name__ == '__main__':
     manager.main()

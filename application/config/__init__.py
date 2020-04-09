@@ -3,7 +3,7 @@ class Config(object):
     DEBUG = True
     SYSTEM_MAINTAINANCE = False
     STATIC_URL = "static"
-    SQLALCHEMY_DATABASE_URI = 'postgresql://thietbiyteuser:123456abcA@localhost:5432/thietbiyte'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://quanlykhouser:123456abcA@localhost:5432/quanlykho'
     
 
     AUTH_LOGIN_ENDPOINT = 'login'
@@ -17,7 +17,7 @@ class Config(object):
 
     TRANSACTION_TOKEN_EXPIRE_TIME = 120
     
-    DOMAIN_URL = 'http://127.0.0.1:20808'
+    DOMAIN_URL = 'http://127.0.0.1:7100'
     
     MAIL_SERVER_HOST = 'kienhyym.gmail.com'
     MAIL_SERVER_PORT = 587
@@ -37,7 +37,7 @@ class Config(object):
 
 #     FS_ROOT= "/Users/namdv/workspace/thanhtra_moitruong/repo/static/uploads/"
     # FS_ROOT= "/opt/deploy/thanhtra-moitruong/repo/static/uploads/"
-    # FILE_SERVICE_URL = 'http://103.74.120.65:20808/static/uploads'
+    # FILE_SERVICE_URL = 'http://103.74.120.65:7100/static/uploads'
 
 
     FS_ROOT= "static/uploads/"

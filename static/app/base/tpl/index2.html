@@ -1,0 +1,245 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Main Sidebar -->
+    <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+      <div class="main-navbar">
+
+        <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+
+          <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+            <div class="d-table m-auto">
+              <!-- <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="static/img/tbi.png" alt=""> -->
+              <span class="d-none d-md-inline ml-1">Thiết bị y tế</span>
+            </div>
+          </a>
+          <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </nav>
+      </div>
+
+      <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+        <div class="input-group input-group-seamless ml-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-search"></i>
+            </div>
+          </div>
+          <input id="search_keyup_mobile" class="navbar-search form-control" type="text" placeholder="Tìm kiếm..."
+            aria-label="Search">
+
+
+        </div>
+        <!-- <div style="width: 100%;margin-top: -3px;">
+          <div id="list_search_mobile" style="background-color: white;border-radius: 10px;box-shadow: 0px 0px 2px;">
+          </div>
+        </div> -->
+      </form>
+
+      <div class="nav-wrapper">
+      </div>
+
+    </aside>
+    <!-- End Main Sidebar -->
+    <main class="main-content col-lg-10 col-md-12 col-sm-12 p-0 offset-lg-2 offset-md-3">
+
+      <div class="main-navbar sticky-top bg-white">
+        <!-- Main Navbar -->
+        <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+          <form class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+
+            <!-- <div id="grid_search" class="input-group input-group-seamless ml-3">
+              <div class="input-group-prepend w-100">
+                <div class="input-group-text">
+                  <i class="fa fa-search"></i>
+                </div>
+                <div style="width: 100%;margin-top: -3px;">
+                  <div id="list_search"
+                    style="background-color: white;border-radius: 10px;box-shadow: 0px 0px 2px;z-index: 2;">
+                  </div>
+                </div>
+              </div>
+              <input id="search_keyup" class="navbar-search form-control" type="text"
+                placeholder="Nhập tên thiết bị để tìm kiếm ..." aria-label="Search" style="z-index: 99999999999;">
+            </div> -->
+          </form>
+
+          <nav class="nav">
+            <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left"
+              data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+              <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+          </nav>
+          <ul class="navbar-nav border-left flex-row ">
+            <div class="row" style="z-index: 2;">
+              <!-- <div class="col d-flex flex-wrap align-content-center pr-4 ml-2">
+                <div style="position: relative;display: flex;top:-2px" class="clickthongbao">
+                  <i class="fa fa-bell" aria-hidden="true" style="font-size: 18px;margin: 5px;"></i>
+                  <div style="position: relative">
+                    <div id="bgcolor" style="position: absolute;
+                            top: 11px;
+                            left: -12px;
+                            text-align: center;
+                            color: #fff;
+                            background: #5a6169;
+                            width: 17px;
+                            height: 17px;
+                            font-weight: 550;
+                            border: 1px solid white;
+                            font-size: 12px;">
+                      <span id="soluong"></span></div>
+                  </div>
+                </div> -->
+              <!-- </div>
+            </div> -->
+
+            <!-- <div class="row col-md-5 showthongbao" style="position: absolute;    top: 60px;
+                right: 10px;z-index: 3; height: 500px;overflow:auto;">
+              <div class="col">
+                <div class="card  card-small mb-4">
+
+                  <div class="">
+
+                    <table class="table">
+                      <tr class="text-center">
+                        <th>Loại phiếu</th>
+                        <th>Thiết bị</th>
+                      </tr>
+                      <tbody id="bangthongbao"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="user-avatar rounded-circle mr-2" src="static/img/ava.webp" alt="">
+                <span class="d-none d-md-inline-block text-center" id="display_name">User</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-small dropdown-menu-right">
+                <a id="info_myself"" class=" dropdown-item text-danger" href="javascript:;">
+                  <i class="fa fa-cog" aria-hidden="true"></i>Thông tin cá nhân</a>
+                <a id="changepassword" class="dropdown-item text-danger">
+                  <i class="fa fa-cog" aria-hidden="true"></i> Đổi mật khẩu </a>
+                <a id="logout" class="dropdown-item text-danger" href="javascript:;">
+                  <i class="fa fa-cog" aria-hidden="true"></i> Đăng xuất </a>
+
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- / .main-navbar -->
+      <div class="main-content-container container-fluid px-lg-4 px-sm-0 content-area">
+        <br>
+        <div class="card  card-small mb-4">
+
+          <!-- <div class="card-body">
+
+            <div class="d-flex justify-content-center">
+              <h3>Phần mềm quản lý trang thiết bị y tế và vật tư tiêu hao</h3>
+            </div>
+            <br>
+
+            <div class="row m-0">
+              <div class="col-md-3 col-xs-6 col-6 p-1">
+                <div class="p-0 m-0  d-flex align-items-center danhsachhomnay" table-name="equipmentinspectionform"
+                  style="background-color: #14dcdc; height: 70px;color: white;font-weight: 700;">
+                  <div class="w-25 text-center" style="background-color: #64c5c5;height: 70px;line-height: 70px;">
+                    <i style="color: white;" class="fa fa-calendar-check-o fa-2x" aria-hidden="true"></i>
+                  </div>
+                  <div class="w-75 text-center">
+                    <div>Hôm nay kiểm tra</div>
+                    <span id="countTheNumberOfDevicesTested">0 </span><span> thiết bị</span><br>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-xs-6 col-6 p-1">
+
+                <div class=" p-0 m-0  d-flex align-items-center danhsachhomnay" table-name="devicestatusverificationform"
+                  style="background-color: #ffb100; height: 70px;color: white;font-weight: 700;">
+                  <div class="w-25 text-center" style="background-color: #f1a907;height: 70px;line-height: 70px;">
+                    <i style="color: white;" class="fa fa-bug fa-2x" aria-hidden="true"></i>
+                  </div>
+                  <div class="w-75 text-center">
+                    <div>
+                      <span class="dong1">Thiết bị </span>
+                      <span class="dong2">có vấn đề</span>
+                    </div>
+                    <span id="countTheNumberOfDevicesToTest">0 </span><span> thiết bị</span><br>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-xs-6 col-6 p-1">
+
+                <div class=" p-0  m-0  d-flex align-items-center danhsachhomnay " table-name="repairrequestform"
+                  style="background-color: red; height: 70px;color: white;font-weight: 700;">
+                  <div class="w-25 text-center" style="background-color: #e65b4c;height: 70px;line-height: 70px;">
+                    <i style="color: white;" class="fa fa-wrench fa-2x" aria-hidden="true"></i>
+                  </div>
+                  <div class="w-75 text-center">
+                    <div>Yêu cầu sửa chữa</div>
+                    <span id="countTheNumberOfDevicesThatRequireRepair">0 </span><span> thiết bị</span><br>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-xs-6 col-6 p-1">
+
+                <div class=" p-0 m-0 d-flex align-items-center danhsachhomnay" table-name="certificateform"
+                  style="background-color: #01da01; height: 70px;color: white;font-weight: 700;">
+                  <div class="w-25 text-center" style="background-color: #53d02b;height: 70px;line-height: 70px;">
+                    <i style="color: white;" class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
+                  </div>
+                  <div class="w-75 text-center">
+                    <div>Hôm nay kiểm định</div>
+                    <span id="countTheNumberOfVerifiedDevices">0</span><span> thiết bị</span><br>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row m-0">
+              <div class="col-md-9 p-0 d-flex justify-content-start">
+                <canvas id="myChart" width="400" height="200"></canvas>
+              </div>
+              <div class="col-md-3">
+                <div class="border-bottom row pb-4">
+                <label>Danh sách chờ xử lý</label>
+                </div>
+                <div class="border-bottom row mt-2 mb-2 pb-2">
+                  <div class="col-md-10 col-10 p-0">
+                    <label class="m-0 row">Đang chờ&nbsp;<p class="font-weight-bold m-0 text-warning">Kiểm tra</p></label>
+                    <div><button class="btn btn-primary p-0 yeucauxuly dangyeucaukiemtrathietbi">&nbsp;Chi tiết&nbsp;</button></div>
+                  </div>
+                  <div class="col-md-2 col-2 p-0">
+                    <label id="dangyeucaukiemtrathietbi" class="text-warning font-weight-bolder" style="font-size: 23px;">0</label>
+                  </div>
+                </div>
+                <div class="border-bottom row mt-2 mb-2 pb-2">
+                  <div class="col-md-10 col-10 p-0">
+                    <label class="m-0 row">Đang chờ&nbsp;<p class="font-weight-bold m-0 text-danger">Sửa chữa</p></label>
+                    <div><button class="btn btn-primary p-0 yeucauxuly dangyeucausuachua">&nbsp;Chi tiết&nbsp;</button></div>
+                  </div>
+                  <div class="col-md-2 col-2 p-0">
+                    <label id="dangyeucausuachua" class="text-danger font-weight-bolder" style="font-size: 23px;">0</label>
+                  </div>
+                </div>
+                <div class="border-bottom row mt-2 mb-2 pb-2">
+                  <div class="col-md-10 col-10 p-0">
+                    <label class="m-0 row">Đang chờ&nbsp;<p class="font-weight-bold m-0 text-success">Kiểm định</p></label>
+                    <div><button class="btn btn-primary p-0 yeucauxuly dangchokiemdinh">&nbsp;Chi tiết&nbsp;</button></div>
+                  </div>
+                  <div class="col-md-2 col-2 p-0">
+                    <label id="dangchokiemdinh" class="text-success font-weight-bolder" style="font-size: 23px;">0</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </main>
+  </div>
+</div>

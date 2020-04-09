@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.dialects.postgresql import JSONB
 from application.database.model import CommonModel
 import uuid
-from application.models.models import Organization
+from application.models.organization import Organization
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import *
 from sqlalchemy import *
