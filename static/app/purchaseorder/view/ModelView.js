@@ -358,6 +358,7 @@ define(function (require) {
         registerEvent: function () {
             var self = this;
             self.ShowListItem();
+            self.loadWorkstation();
             self.checkRole();
             self.bindPaymentStatus();
             self.printScreen();
@@ -368,6 +369,30 @@ define(function (require) {
             self.calculateItemAmounts();
             self.model.on("change:details", function () {
                 self.calculateItemAmounts();
+            });
+        },
+        loadWorkstation : function(){
+            var self = this;
+            $.ajax({
+                type: "POST",
+                url: self.getApp().serviceURL + "/api/v1/get_purchaseorder_tenant",
+                data: JSON.stringify(self.getApp().currentTenant[0]),
+                success: function (res) {
+                    loader.hide();
+                    if (res) {
+                        self.$el.find("#workstation").combobox({
+                            textField: "workstation_name",
+                            valueField: "id",
+                            dataSource: res,
+                            value: self.model.get("workstation_id")
+                        });
+                    }
+                }
+            })
+
+            self.$el.find("#workstation").on("change.gonrin", function (event) {
+                self.model.set("workstation_id", self.$el.find("#workstation").data("gonrin").getValue());
+                self.model.set("workstation_name", self.$el.find("#workstation").data("gonrin").getText());
             });
         },
 

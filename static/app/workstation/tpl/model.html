@@ -1,31 +1,36 @@
-<div block-bind="toolbar"></div>
 <div block-bind="content" style="margin-top: 30px">
-
-	<div class="row text-center" style="margin-bottom: 10px">
-		<div class="col-lg-2 col-md-2 col-sm-2 col-4">
-			<label>Tên điểm bán</label>
+	<div class="card">
+		<div class="card-header  border-bottom">
+			<div class="row">
+				<div class="col-md-7 col-7">
+					<h6 class="m-0 pt-2">Thông tin điểm bán:</h6>
+				</div>
+				<div class="col-md-5 col-5 text-right">
+					<div block-bind="toolbar"></div>
+				</div>
+			</div>
 		</div>
-		<div class="col-lg-6 col-md-6 col-sm-8 col-12">
-			<input type="text" class="form-control" data-bind="value:workstation_name">
+		<div class="card-body row">
+			<div class="col-md-6 col-lg-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="">Tên điểm bán</label>
+					<input type="text" class="form-control" data-bind="value:workstation_name">
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="">Mã điểm bán</label>
+					<input type="text" class="form-control" data-bind="value:workstation_no">
+				</div>
+			</div>
+
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+				<div class="form-group">
+					<label for="">Địa chỉ</label>
+					<input type="text" class="form-control" data-bind="value:address">
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<div class="row text-center" style="margin-bottom: 10px">
-		<div class="col-lg-2 col-md-2 col-sm-2 col-4">
-			<label class="requireds">Mã điểm bán</label>
-		</div>
-		<div class="col-lg-6 col-md-6 col-sm-8 col-12">
-			<input type="text" class="form-control" data-bind="value:workstation_no">
-		</div>
-	</div>
-
-	<div class="row text-center" style="margin-bottom: 10px">
-		<div class="col-lg-2 col-md-2 col-sm-2 col-4">
-			<label>Địa chỉ</label>
-		</div>
-		<div class="col-lg-6 col-md-6 col-sm-8 col-12">
-			<input data-bind="value:address" type="text" class="form-control">
-			<!-- <label class="checkbox-inline">Thuế này có cho gộp</label> -->
-
-		</div>
-	</div>
+</div>

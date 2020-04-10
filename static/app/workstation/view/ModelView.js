@@ -37,14 +37,24 @@ define(function (require) {
 						command: function () {
 							var self = this;
 							self.model.set("tenant_id", self.getApp().currentTenant[0]);
-							self.model.save({
+							self.model.save(null, {
 								success: function (model, respose, options) {
+
 									toastr.info("Lưu thông tin thành công");
 									self.getApp().getRouter().navigate(self.collectionName + "/collection");
-
 								},
-								error: function (model, xhr, options) {
-									toastr.error('Lưu thông tin không thành công!');
+								error: function (xhr, error) {
+									try {
+										if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+											toastr.error("Hết phiên làm việc, vui lòng đăng nhập lại!");
+											self.getApp().getRouter().navigate("login");
+										} else {
+											self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+										}
+									}
+									catch (err) {
+										toastr.error('Lưu thông tin không thành công!');
+									}
 								}
 							});
 						}

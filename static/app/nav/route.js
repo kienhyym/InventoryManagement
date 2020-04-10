@@ -135,6 +135,17 @@ define(function (require) {
 			"route": "organization/model(/:id)",
 			"$ref": "app/organization/view/ModelView",
 		},
+
+		{
+			"collectionName": "workstation",
+			"route": "workstation/collection",
+			"$ref": "app/workstation/view/CollectionView",
+		},
+		{
+			"collectionName": "workstation",
+			"route": "workstation/model(/:id)",
+			"$ref": "app/workstation/view/ModelView",
+		},
 	];
 
 });

@@ -74,6 +74,16 @@ define(function (require) {
 				return true
 			}
 		},
+		{
+			"text": "Doanh nghiệp",
+			"icon": "fa fa-book",
+			"type": "view",
+			"collectionName": "workstation",
+			"route": "workstation/collection",
+			"visible": function () {
+				return true
+			}
+		},
 	];
 
 });
