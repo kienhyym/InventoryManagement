@@ -104,15 +104,12 @@ define(function (require) {
                     var method = "update";
                     if (!id) {
                         var method = "create";
-                        self.model.set("created_by_name", self.getApp().currentUser.fullname ? self.getApp().currentUser.fullname : self.getApp().currentUser.email);
                         self.model.set("created_at", Helpers.utcToUtcTimestamp());
                         var makeNo = Helpers.makeNoGoods(6, "MH0").toUpperCase();
                         self.model.set("purchaseorder_no", makeNo);
-                        self.model.set("tenant_id", self.getApp().currentTenant);
-
+                        self.model.set("tenant_id", self.getApp().currentTenant[0]);
                         self.getApp().saveLog("create", "purchaseorder", self.model.get("purchaseorder_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
                     }
-
                     self.getApp().saveLog("update", "purchaseorder", self.model.get("purchaseorder_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
                     self.model.sync(method, self.model, {
                         success: function (model, respose, options) {
@@ -121,12 +118,9 @@ define(function (require) {
                             }
                             toastr.info('Lưu thông tin thành công');
                             self.getApp().getRouter().navigate(self.collectionName + "/collection");
-
                         },
                         error: function (model, xhr, options) {
-                            // console.log(model)
                             toastr.error('Đã có lỗi xảy ra');
-
                         }
                     });
                 }
@@ -150,7 +144,7 @@ define(function (require) {
                                     success: function (model, respose, options) {
                                         toastr.info("Lưu thông tin thành công");
                                         $.ajax({
-                                            url: "https://upstart.vn/accounts/api/v1/tenant/get_warehouse_users_roles?tenant_id=" + self.getApp().currentTenant + "&tenant_role=user&warehouse_role=manager",
+                                            url: "https://upstart.vn/accounts/api/v1/tenant/get_warehouse_users_roles?tenant_id=" + self.getApp().currentTenant[0] + "&tenant_role=user&warehouse_role=manager",
                                             success: function (res) {
                                                 var listWarehouse = [];
                                                 if (res) {
@@ -207,7 +201,7 @@ define(function (require) {
                         deliverynote_no: Helpers.makeNoGoods(10, "PX0").toUpperCase(),
                         purchaseorder_id: self.model.get("id"),
                         purchaseorder_no: self.model.get("purchaseorder_no"),
-                        tenant_id: self.getApp().currentTenant,
+                        tenant_id: self.getApp().currentTenant[0],
                         workstation_name: self.model.get("workstation_name"),
                         workstation_id: self.model.get("workstation_id"),
                         address: self.model.get("address"),
@@ -334,14 +328,15 @@ define(function (require) {
             if (self.getApp().platforms == "ANDROID" || self.getApp().platforms == "IOS") {
                 self.$el.find("#print").remove();
             }
+
             var id = this.getApp().getRouter().getParam("id");
             if (id) {
                 this.model.set('id', id);
                 this.model.fetch({
                     success: function (data) {
                         self.applyBindings();
-                        self.$el.find("#show-propressbar").removeClass('hide');
-                        self.propressBar();
+                        // self.$el.find("#show-propressbar").removeClass('hide');
+                        // self.propressBar();
                         self.registerEvent();
                         self.$el.find("#created_at").html(`${Helpers.utcToLocal(self.model.get("created_at") * 1000, "DD-MM-YYYY HH:mm")}`);
                     },
@@ -419,7 +414,7 @@ define(function (require) {
 
         checkRole: function () {
             var self = this;
-            console.log("ROLE=================>", self.getApp().roleInfo);
+            // console.log("ROLE=================>", self.getApp().roleInfo);
             var roles = self.getApp().roleInfo;
             // if (roles === 1 || roles === "1" || roles === 2 || roles === "2") {
             //     self.$el.find(".btn-confirm").addClass('hide');

@@ -183,3 +183,39 @@ async def send_firebase_notify(firebase_tokens, body, data):
         async with session.post(url, json=params) as response:
             # if response.status == 200:
             await response.json()
+
+
+async def send_notify_multiple(user_id, title, content, record_type, action, id_url):
+# type_action
+    if(title is None or title == ""):
+        title = "Thông báo"
+    notify_record = Notify()
+    notify_record.title = title
+    notify_record.content = content
+    notify_record.type = record_type
+    notify_record.action = None
+    notify_record.url = record_type+"/model?id="+str(id_url)
+    db.session.add(notify_record)
+    db.session.flush()
+    list_key = []
+    for key in redisdb_firebase.scan_iter():
+        for _ in user_id:
+            parseKey = key.decode("utf8")
+            if parseKey == _:
+                print("================", parseKey)
+                list_key.append(redisdb_firebase.get(key).decode("utf8"))
+    print("list_key", list_key)
+    if list_key is not None:
+        for _ in user_id:
+            notify_user = NotifyUser()
+            notify_user.user_id = _
+            notify_user.notify_id = notify_record.id
+            notify_user.notify_at = floor(time.time())
+            notify_user.read_at = None
+            db.session.add(notify_user)
+            db.session.commit()
+        await send_firebase_notify(list_key, title, to_dict(notify_record))
+        return json({
+            "ok": True,
+            "message": "Send success"
+        })
