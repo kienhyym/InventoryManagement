@@ -14,6 +14,7 @@ from application.models.unit import *
 from application.models.user import *
 from application.models.warehouse import *
 from application.models.workstation import *
+from application.models.movewarehouse import *
 
 
 

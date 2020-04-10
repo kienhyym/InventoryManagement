@@ -1,0 +1,67 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "movewarehouse_no": {
+        "type": "string"
+    },
+    "status": {
+        "type": "string"
+    },
+    "goodsreciept_from": {
+        "type": "string"
+    },
+    "goodsreciept_to": {
+        "type": "string"
+    },
+    "user_id": {
+        "type": "string"
+    },
+    "tenant_id": {
+        "type": "string"
+    },
+    "goodsreciept_from_id": {
+        "type": "string"
+    },
+    "goodsreciept_to_id": {
+        "type": "string"
+    },
+    "delivery_date": {
+        "type": "number"
+    },
+    "received_date": {
+        "type": "number"
+    },
+    "description": {
+        "type": "string"
+    },
+    "custom_fields": {
+        "type": "json"
+    },
+    "details": {
+        "type": "list"
+    }
+}

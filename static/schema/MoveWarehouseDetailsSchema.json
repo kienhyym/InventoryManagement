@@ -1,0 +1,108 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "movewarehouse_id": {
+        "type": "string"
+    },
+    "item_id": {
+        "type": "string"
+    },
+    "item_name": {
+        "type": "string",
+        "length": 150
+    },
+    "item_no": {
+        "type": "string",
+        "length": 40
+    },
+    "item_image": {
+        "type": "string"
+    },
+    "unit_id": {
+        "type": "string"
+    },
+    "unit_code": {
+        "type": "string"
+    },
+    "user_id": {
+        "type": "string"
+    },
+    "tenant_id": {
+        "type": "string"
+    },
+    "lot_number": {
+        "type": "number"
+    },
+    "item_exid": {
+        "type": "string",
+        "length": 100
+    },
+    "quantity": {
+        "type": "number",
+        "default": 1
+    },
+    "quantity_delivery": {
+        "type": "number"
+    },
+    "list_price": {
+        "type": "number",
+        "default": 0
+    },
+    "discount_percent": {
+        "type": "number",
+        "default": 0
+    },
+    "discount_amount": {
+        "type": "number",
+        "default": 0
+    },
+    "net_amount": {
+        "type": "number",
+        "default": 0
+    },
+    "amount": {
+        "type": "number",
+        "default": 0
+    },
+    "tax_percent": {
+        "type": "number",
+        "default": 0
+    },
+    "tax_amount": {
+        "type": "number",
+        "default": 0
+    },
+    "description": {
+        "type": "string"
+    },
+    "status": {
+        "type": "string"
+    },
+    "custom_fields": {
+        "type": "json"
+    }
+}

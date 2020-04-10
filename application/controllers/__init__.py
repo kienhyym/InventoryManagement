@@ -18,7 +18,8 @@ def init_controllers(app):
     import application.controllers.activitylog
     import application.controllers.payment
     import application.controllers.purchaseorder
-    import application.controllers.workstation
+    import application.controllers.workstation 
+    import application.controllers.movewarehouse
 
     @app.route('/')
     def index(request):

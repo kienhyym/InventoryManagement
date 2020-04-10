@@ -6,7 +6,6 @@ define(function (require) {
 	return [
 		{
 			"text": "Vật tư y tế",
-			"icon": "fa fa-book",
 			"type": "view",
 			"collectionName": "item",
 			"route": "item/collection",
@@ -16,7 +15,6 @@ define(function (require) {
 		},
 		{
 			"text": "Mua hàng",
-			"icon": "fa fa-book",
 			"type": "view",
 			"collectionName": "purchaseorder",
 			"route": "purchaseorder/collection",
@@ -24,9 +22,19 @@ define(function (require) {
 				return true
 			}
 		},
+
+		{
+			"text": "Chuyển kho",
+			"type": "view",
+			"collectionName": "movewarehouse",
+			"route": "movewarehouse/collection",
+			"visible": function () {
+				return true
+			}
+		},	
+
 		{
 			"text": "Khách hàng",
-			"icon": "fa fa-book",
 			"type": "view",
 			"collectionName": "contact",
 			"route": "contact/collection",
@@ -36,7 +44,6 @@ define(function (require) {
 		},
 		{
 			"text": "Nhập hàng",
-			"icon": "fa fa-book",
 			"type": "view",
 			"collectionName": "goodsreciept",
 			"route": "goodsreciept/collection",
@@ -46,7 +53,6 @@ define(function (require) {
 		},
 		{
 			"text": "Kho",
-			"icon": "fa fa-book",
 			"type": "view",
 			"collectionName": "warehouse",
 			"route": "warehouse/collection",
@@ -56,7 +62,6 @@ define(function (require) {
 		},
 		{
 			"text": "Tiền tệ",
-			"icon": "fa fa-book",
 			"type": "view",
 			"collectionName": "currency",
 			"route": "currency/collection",
@@ -66,7 +71,6 @@ define(function (require) {
 		},
 		{
 			"text": "Doanh nghiệp",
-			"icon": "fa fa-book",
 			"type": "view",
 			"collectionName": "organization",
 			"route": "organization/collection",
@@ -76,7 +80,6 @@ define(function (require) {
 		},
 		{
 			"text": "Doanh nghiệp",
-			"icon": "fa fa-book",
 			"type": "view",
 			"collectionName": "workstation",
 			"route": "workstation/collection",

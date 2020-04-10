@@ -58,6 +58,9 @@ define(function (require) {
 			"$ref": "app/danhmuc/Wards/view/ModelView",
 		},
 
+
+
+
 		{
 			"collectionName": "item",
 			"route": "item/collection",
@@ -78,6 +81,17 @@ define(function (require) {
 			"collectionName": "purchaseorder",
 			"route": "purchaseorder/model(/:id)",
 			"$ref": "app/purchaseorder/view/ModelView",
+		},
+
+		{
+			"collectionName": "movewarehouse",
+			"route": "movewarehouse/collection",
+			"$ref": "app/move-warehouse/view/CollectionView",
+		},
+		{
+			"collectionName": "movewarehouse",
+			"route": "movewarehouse/model(/:id)",
+			"$ref": "app/move-warehouse/view/ModelView",
 		},
 
 
