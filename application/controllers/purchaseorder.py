@@ -65,6 +65,7 @@ from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_
 #     return json({})
 
 
+
 @app.route("/api/v1/create_purchase_order_details_item", methods=["POST"])
 def create_purchase_order_details_item(request):
     data = request.json

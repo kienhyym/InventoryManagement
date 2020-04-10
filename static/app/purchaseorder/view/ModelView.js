@@ -375,7 +375,7 @@ define(function (require) {
             var self = this;
             $.ajax({
                 type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/get_purchaseorder_tenant",
+                url: self.getApp().serviceURL + "/api/v1/get_workstation_tenant",
                 data: JSON.stringify(self.getApp().currentTenant[0]),
                 success: function (res) {
                     loader.hide();
