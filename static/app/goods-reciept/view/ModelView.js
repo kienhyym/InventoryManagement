@@ -205,23 +205,32 @@ define(function (require) {
                             'theme': 'red',
                             'onOpen': function ($el) {
                                 $el.find("#yes").on("click", function () {
-                                    self.model.set("deleted", true);
                                     self.getApp().saveLog("delete", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                                    self.model.save(null, {
-                                        success: function (model, respose, options) {
+                                    self.model.destroy({
+                                        success: function (model, response) {
                                             $el.closeAlert();
                                             if ($("body").hasClass("sidebar-icon-only")) {
                                                 $("#btn-menu").trigger("click");
                                             }
-                                            toastr.error('Xóa dữ liệu thành công');
+                                            self.getApp().notify('Xoá dữ liệu thành công');
                                             self.getApp().getRouter().navigate(self.collectionName + "/collection");
-
                                         },
-                                        error: function (model, xhr, options) {
-                                            toastr.error('Lưu thông tin không thành công!');
-
+                                        error: function (xhr, status, error) {
+                                            try {
+                                                if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+                                                    self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+                                                    self.getApp().getRouter().navigate("login");
+                                                } else {
+                                                    self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+                                                }
+                                            }
+                                            catch (err) {
+                                                self.getApp().notify({ message: "Xóa dữ liệu không thành công" }, { type: "danger", delay: 1000 });
+                                            }
                                         }
                                     });
+
+
                                 });
                                 $el.find("#no").on("click", function () {
                                     $el.closeAlert();
@@ -256,8 +265,25 @@ define(function (require) {
                                 if (response) {
                                     self.model.set("payment_status", "confirm");
                                     self.getApp().saveLog("confirm", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                                    // self.$el.find(".save").trigger("click");
-                                }
+                                    self.model.save(null, {
+                                        success: function (model, respose, options) {
+                                            self.getApp().notify("Lưu thông tin thành công");
+                                            self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                                        },
+                                        error: function (xhr, status, error) {
+                                            try {
+                                                if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+                                                    self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+                                                    self.getApp().getRouter().navigate("login");
+                                                } else {
+                                                    self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+                                                }
+                                            }
+                                            catch (err) {
+                                                self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+                                            }
+                                        }
+                                    });                             }
                                 loader.hide();
                             },
                             error: function () {
@@ -286,8 +312,25 @@ define(function (require) {
                             self.model.set("payment_status", "paid");
                             self.model.set("payment_no", e.payment_no);
                             self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                            // self.$el.find(".save").trigger("click");
-                        });
+                            self.model.save(null, {
+                                success: function (model, respose, options) {
+                                    self.getApp().notify("Lưu thông tin thành công");
+                                    self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                                },
+                                error: function (xhr, status, error) {
+                                    try {
+                                        if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+                                            self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+                                            self.getApp().getRouter().navigate("login");
+                                        } else {
+                                            self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+                                        }
+                                    }
+                                    catch (err) {
+                                        self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+                                    }
+                                }
+                            });                        });
 
                     }
                 },

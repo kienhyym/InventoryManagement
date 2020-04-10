@@ -15,6 +15,8 @@ def init_controllers(app):
     import application.controllers.currency
     import application.controllers.consumablesupplies
     import application.controllers.goodsreciept
+    import application.controllers.activitylog
+    import application.controllers.payment
 
 
 

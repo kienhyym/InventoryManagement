@@ -62,8 +62,8 @@ require(['jquery',
 
 		window.lodash = lodash;
 		var domain = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')
-		if (domain !== "http://0.0.0.0:7100"){
-			domain = domain+"/inven"
+		if (domain !== "http://0.0.0.0:7100") {
+			domain = domain + "/inven"
 		}
 		var app = new Gonrin.Application({
 			serviceURL: domain,
@@ -113,7 +113,7 @@ require(['jquery',
 				});
 				loader.hide();
 				//edit user-panel
-				$('.user-panel image img').attr('src',self.currentUser.user_image)
+				$('.user-panel image img').attr('src', self.currentUser.user_image)
 				$('.user-info p').html(self.currentUser.name)
 				$('.user-panel').unbind('click').bind('click', function () {
 					var path = 'user/model?id=' + self.currentUser.id;

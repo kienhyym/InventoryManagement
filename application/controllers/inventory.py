@@ -85,42 +85,6 @@ async def sync_item(request):
                     "message": "CREATE " + data["object"].upper() + " SUCCESS"
                 })
 
-@app.route("/api/v1/activitylog/save", methods=["POST"])
-def save_log(request):
-    data = request.json
-    action = data.get('action', None)
-    actor = data.get('actor', None)
-    workstation_id = data.get('workstation_id', None)
-    workstation_name = data.get('workstation_name', None)
-    tenant_id = data.get('tenant_id', None)
-    user_id = data.get('user_id', None)
-    items = data.get('items', [])
-    object_type = data.get('object_type', None)
-    object_no = data.get('object_no', None)
-    created_at = data.get('created_at', None)
-
-    new_log = ActivityLog()
-    new_log.action = action
-    new_log.actor = actor
-    new_log.workstation_id = workstation_id
-    new_log.workstation_name = workstation_name
-    new_log.tenant_id = tenant_id
-    new_log.user_id = user_id
-    new_log.items = items
-    new_log.object_no = object_no
-    new_log.object_type = object_type
-    new_log.created_at = created_at
-
-    db.session.add(new_log)
-    db.session.commit()
-
-    return json({
-        "ok": True,
-        "message": "SAVE LOG SUCCESS"
-    })
-
-
-
 
 sqlapimanager.create_api(Unit, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
