@@ -64,6 +64,48 @@ from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_
 
 #     return json({})
 
+
+@app.route("/api/v1/create_purchase_order_details_item", methods=["POST"])
+def create_purchase_order_details_item(request):
+    data = request.json
+    if data is not None:
+        data_purchaseOrderDetails = data['data']
+        for _ in data_purchaseOrderDetails:
+            purchaseOrderDetails = PurchaseOrderDetails()
+            purchaseOrderDetails.purchaseorder_id = data['purchaseorder_id']
+            purchaseOrderDetails.item_id = _['item_id']
+            purchaseOrderDetails.item_name = _['item_name']
+            purchaseOrderDetails.quantity = _['quantity']
+            purchaseOrderDetails.list_price = _['list_price']
+            purchaseOrderDetails.net_amount = _['net_amount']
+            db.session.add(purchaseOrderDetails)
+            db.session.commit()
+    return json({"message": "Create Success"})
+
+@app.route('/api/v1/update_purchase_order_details_item', methods=["POST"])
+async def update_purchase_order_details_item(request):
+    data_purchaseOrderDetails = request.json
+    for _ in data_purchaseOrderDetails:
+        purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _['item_id']).first()
+        purchaseOrderDetails.quantity = _['quantity']
+        purchaseOrderDetails.list_price = _['list_price']
+        purchaseOrderDetails.net_amount = _['net_amount']
+        db.session.commit()
+    return json({"message": "Update Success"})
+
+@app.route('/api/v1/delete_purchase_order_details_item', methods=["POST"])
+async def delete_purchase_order_details_item(request):
+    list_id = request.json
+    for _ in list_id:
+        purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _).first()
+        db.session.delete(purchaseOrderDetails)
+        db.session.commit()
+    return json({"message": "Delete Success"})
+
+
+
+
+
 @app.route("/api/v1/add-purchase-order",  methods=["POST"])
 async def add_purchase_order(request):
     data = request.json

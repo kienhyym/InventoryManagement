@@ -283,8 +283,7 @@ define(function (require) {
                                                 self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
                                             }
                                         }
-                                    });
-                                }
+                                    });                             }
                                 loader.hide();
                             },
                             error: function () {
@@ -331,8 +330,7 @@ define(function (require) {
                                         self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
                                     }
                                 }
-                            });
-                        });
+                            });                        });
 
                     }
                 },
