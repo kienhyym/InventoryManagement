@@ -148,6 +148,7 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
+						self.listItem();
 					},
 					error: function () {
 						toastr.error("Get data Eror");
@@ -155,6 +156,8 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
+				self.listItem();
+
 			}
 		},
 
@@ -220,6 +223,30 @@ define(function (require) {
 				return;
 			}
 			return true;
+		},
+		listItem : function(){
+			var self = this;
+			$.ajax({
+				type: "POST",
+				url: self.getApp().serviceURL + "/api/v1/get_item_in_warehouse",
+				data: JSON.stringify({
+					id: self.model.get("id"),
+					tenant: self.getApp().currentTenant[0],
+				}), success: function (response) {
+					response.forEach(function(item,index){
+						self.$el.find('#body-items').append(`
+							<tr>
+								<td style="min-width: 250px">${item.item}</td>
+								<td style="min-width: 150px"></td>
+								<td style="min-width: 150px">${item.purchase_cost}</td>
+								<td style="min-width: 150px"></td>
+								<td style="min-width: 130px">${item.quantity}</td>
+							</tr>
+						`)
+
+					})
+				}
+			})
 		}
 	});
 

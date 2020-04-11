@@ -17,8 +17,45 @@ from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_
 from application.models.goodsreciept import GoodsReciept, GoodsRecieptDetails
 from application.models.purchaseorder import *
 
-
-
+@app.route("/api/v1/get_item_in_warehouse", methods=["POST"])
+def get_item_in_warehouse(request):
+    data = request.json
+    goodsReciept = db.session.query(GoodsReciept).filter(and_(GoodsReciept.warehouse_id ==data['id'], GoodsReciept.tenant_id==data['tenant'],GoodsReciept.payment_status == "paid")).all()
+    result = []
+    if goodsReciept is not None:
+        for _ in goodsReciept:
+            itemInWareHouse = db.session.query(GoodsRecieptDetails).filter(GoodsRecieptDetails.goodsreciept_id == _.id).all()
+            for _item in itemInWareHouse:
+                list_item = to_dict(_item)
+                result.append(list_item)
+    resultNew = []  
+    _index = 0
+    while True:
+        length = len(result)
+        itemDraft = result[_index]['item_id']
+        count = 0
+        coincide = 0
+        indexDel = []
+        for _index2 in range(length):
+            obj = {}
+            if itemDraft == result[_index2]['item_id']:
+                count = count + result[_index2]['quantity']
+                coincide = coincide + 1
+                if coincide > 1:
+                    indexDel.append(_index2)
+        
+        obj['item'] = result[_index]['item_name']
+        obj['quantity'] = count
+        obj['purchase_cost'] = result[_index]['purchase_cost']
+        resultNew.append(obj)
+        indexDel.sort(reverse=True)
+        for _ind in indexDel:
+            result.pop(_ind)
+        _index += 1
+        if _index == length:
+            break
+    return json(resultNew)
+        
 @app.route("/api/v1/warehouse/add-item", methods=["POST"])
 async def add_item_in_warehouse(request):
     data = request.json
