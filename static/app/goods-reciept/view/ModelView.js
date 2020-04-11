@@ -161,7 +161,8 @@ define(function (require) {
                     label: "TRANSLATE:Lưu",
                     command: function () {
                         var self = this;
-
+                        var tenant_id = self.getApp().currentTenant[0];
+                        self.model.set("tenant_id", tenant_id);
                         self.model.save(null, {
                             success: function (model, respose, options) {
                                 self.createItem(respose.id);
