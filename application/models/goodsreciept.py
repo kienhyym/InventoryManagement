@@ -49,12 +49,9 @@ class GoodsReciept(CommonModel):
     currency_id = db.Column(UUID(as_uuid=True), ForeignKey('currency.id'))
     currency_name = db.Column(db.String)
     conversion_rate = db.Column(DECIMAL(10,3)) # ty gia currency
-
     note = db.Column(Text())
     # description = db.Column(Text())
-
     payment_status = db.Column(String(20), default="created")
-
     details = db.relationship("GoodsRecieptDetails", order_by="GoodsRecieptDetails.created_at", cascade="all, delete-orphan")
     custom_fields = db.Column(JSONB(), nullable=True)
 
@@ -73,6 +70,8 @@ class GoodsRecieptDetails(CommonModel):
 
     user_id = db.Column(db.String)
     tenant_id = db.Column(db.String)
+    warehouse_id = db.Column(UUID(as_uuid=True))
+    payment_status = db.Column(String(20), default="created")
 
     unit_id = db.Column(UUID(as_uuid=True))
     unit_code = db.Column(db.String)

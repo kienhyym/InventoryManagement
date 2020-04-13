@@ -31,6 +31,9 @@
     "item_id": {
         "type": "string"
     },
+    "item_id_origin": {
+        "type": "string"
+    },
     "item_name": {
         "type": "string",
         "length": 150
@@ -48,8 +51,18 @@
     "unit_code": {
         "type": "string"
     },
+    "warehouse_from_id": {
+        "type": "string"
+    },
+    "warehouse_to_id": {
+        "type": "string"
+    },
     "user_id": {
         "type": "string"
+    },
+    "purchase_cost": {
+        "type": "number",
+        "default": 0
     },
     "tenant_id": {
         "type": "string"

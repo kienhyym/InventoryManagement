@@ -53,6 +53,14 @@
     "tenant_id": {
         "type": "string"
     },
+    "warehouse_id": {
+        "type": "string"
+    },
+    "payment_status": {
+        "type": "string",
+        "length": 20,
+        "default": "created"
+    },
     "unit_id": {
         "type": "string"
     },

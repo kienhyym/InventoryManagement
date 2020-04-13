@@ -36,6 +36,9 @@ class MoveWarehouse(CommonModel):
     goodsreciept_from_id = db.Column(UUID(as_uuid=True))
     goodsreciept_to_id = db.Column(UUID(as_uuid=True))
 
+    warehouse_from_id = db.Column(UUID(as_uuid=True))
+    warehouse_to_id = db.Column(UUID(as_uuid=True))
+
     delivery_date = db.Column(db.BigInteger) # ngay chuyen
     received_date = db.Column(db.BigInteger) # ngay nhan
 
@@ -51,7 +54,8 @@ class MoveWarehouseDetails(CommonModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
 
     movewarehouse_id = db.Column(UUID(as_uuid=True), ForeignKey('movewarehouse.id'), nullable=True)
-    item_id = db.Column(UUID(as_uuid=True), ForeignKey('item.id', ondelete=None), nullable=True)
+    item_id = db.Column(String)
+    item_id_origin = db.Column(String)
 
     item_name = db.Column(String(150))
     item_no = db.Column(String(40))
@@ -59,8 +63,10 @@ class MoveWarehouseDetails(CommonModel):
 
     unit_id = db.Column(UUID(as_uuid=True), ForeignKey('unit.id'))
     unit_code = db.Column(db.String)
-
+    warehouse_from_id = db.Column(db.String)
+    warehouse_to_id = db.Column(db.String)
     user_id = db.Column(db.String)
+    purchase_cost = db.Column(DECIMAL(27,8), default=0)  #purchase price, unit price, don gia
     tenant_id = db.Column(db.String)
 
     lot_number = db.Column(db.DECIMAL)

@@ -234,12 +234,12 @@ define(function (require) {
 					tenant: self.getApp().currentTenant[0],
 				}), success: function (response) {
 					response.forEach(function(item,index){
+						console.log(item[0])
 						self.$el.find('#body-items').append(`
 							<tr>
-								<td style="min-width: 250px">${item.item}</td>
+								<td style="min-width: 250px">${item.item_name}</td>
 								<td style="min-width: 150px"></td>
 								<td style="min-width: 150px">${item.purchase_cost}</td>
-								<td style="min-width: 150px"></td>
 								<td style="min-width: 130px">${item.quantity}</td>
 							</tr>
 						`)

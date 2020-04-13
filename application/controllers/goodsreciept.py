@@ -33,6 +33,8 @@ def create_goods_reciept_details_item(request):
             goodsRecieptDetails.quantity = _['quantity']
             goodsRecieptDetails.purchase_cost = _['purchase_cost']
             goodsRecieptDetails.net_amount = _['net_amount']
+            goodsRecieptDetails.tenant_id = _['tenant_id']
+            goodsRecieptDetails.warehouse_id = _['warehouse_id']
             db.session.add(goodsRecieptDetails)
             db.session.commit()
     return json({"message": "Create Success"})
@@ -45,6 +47,16 @@ async def update_goods_reciept_details_item(request):
         goodsRecieptDetails.quantity = _['quantity']
         goodsRecieptDetails.purchase_cost = _['purchase_cost']
         goodsRecieptDetails.net_amount = _['net_amount']
+        goodsRecieptDetails.tenant_id = _['tenant_id']
+        goodsRecieptDetails.warehouse_id = _['warehouse_id']
+        db.session.commit()
+    return json({"message": "Update Success"})
+@app.route('/api/v1/update_goods_reciept_details_item_bill', methods=["POST"])
+async def update_goods_reciept_details_item_bill(request):
+    data_goodsRecieptDetails = request.json
+    for _ in data_goodsRecieptDetails:
+        goodsRecieptDetails = db.session.query(GoodsRecieptDetails).filter(GoodsRecieptDetails.id == _['id']).first()
+        goodsRecieptDetails.payment_status = 'paid'
         db.session.commit()
     return json({"message": "Update Success"})
 

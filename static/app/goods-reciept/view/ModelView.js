@@ -315,6 +315,7 @@ define(function (require) {
                             self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
                             self.model.save(null, {
                                 success: function (model, respose, options) {
+                                    self.updateItemBill()
                                     self.getApp().notify("Lưu thông tin thành công");
                                     self.getApp().getRouter().navigate(self.collectionName + "/collection");
                                 },
@@ -627,6 +628,9 @@ define(function (require) {
                 obj.purchase_cost = Number($(item).find('td .purchase-cost').val())
                 obj.quantity = Number($(item).find('td .quantity').val())
                 obj.net_amount = Number($(item).find('td .net-amount').val())
+                obj.warehouse_id = self.model.get('warehouse_id')
+                obj.tenant_id = self.getApp().currentTenant[0]
+
                 arr.push(obj)
             })
             $.ajax({
@@ -647,12 +651,26 @@ define(function (require) {
                 obj.purchase_cost = Number($(item).find('td .purchase-cost').val())
                 obj.quantity = Number($(item).find('td .quantity').val())
                 obj.net_amount = Number($(item).find('td .net-amount').val())
+                obj.warehouse_id = self.model.get('warehouse_id')
+                obj.tenant_id = self.getApp().currentTenant[0]
                 arr.push(obj)
             })
             $.ajax({
                 type: "POST",
                 url: self.getApp().serviceURL + "/api/v1/update_goods_reciept_details_item",
                 data: JSON.stringify(arr),
+                success: function (res) {
+                    console.log(res)
+                }
+            })
+        },
+        updateItemBill: function () {
+            var self = this;
+            console.log(self.model.get('details'))
+            $.ajax({
+                type: "POST",
+                url: self.getApp().serviceURL + "/api/v1/update_goods_reciept_details_item_bill",
+                data: JSON.stringify(self.model.get('details')),
                 success: function (res) {
                     console.log(res)
                 }

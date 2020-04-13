@@ -49,6 +49,12 @@
     "goodsreciept_to_id": {
         "type": "string"
     },
+    "warehouse_from_id": {
+        "type": "string"
+    },
+    "warehouse_to_id": {
+        "type": "string"
+    },
     "delivery_date": {
         "type": "number"
     },
