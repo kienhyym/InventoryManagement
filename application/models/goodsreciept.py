@@ -61,7 +61,7 @@ class GoodsRecieptDetails(CommonModel):
 
     goodsreciept_id = db.Column(UUID(as_uuid=True), ForeignKey('goodsreciept.id'), nullable=True)
 
-    item_id = db.Column(UUID(as_uuid=True), nullable=True)
+    item_id = db.Column(String)
     item_name = db.Column(String(150))
     item_no = db.Column(String(40))
 

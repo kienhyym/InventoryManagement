@@ -59,8 +59,8 @@ async def get_all_item_warehouse_tennat_id(request):
         arr = []
         for i in dataWarehouse:
             obj = {}
-            obj['id'] = str(i[0].urn[9:])+'-'+str(int(i[2]))
-            obj['item_id'] = i[0].urn[9:]
+            obj['id'] = str(i[0])+'-'+str(int(i[2]))
+            obj['item_id'] = i[0]
             obj['item_name'] = i[1]
             obj['purchase_cost'] = i[2]
             obj['quantity'] = i[3]

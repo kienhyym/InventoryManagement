@@ -233,8 +233,8 @@ define(function (require) {
 					id: self.model.get("id"),
 					tenant: self.getApp().currentTenant[0],
 				}), success: function (response) {
+					// console.log(response)
 					response.forEach(function(item,index){
-						console.log(item[0])
 						self.$el.find('#body-items').append(`
 							<tr>
 								<td style="min-width: 250px">${item.item_name}</td>
@@ -245,6 +245,20 @@ define(function (require) {
 						`)
 
 					})
+				}
+			})
+
+			$.ajax({
+				type: "POST",
+				url: self.getApp().serviceURL + "/api/v1/get_item_in_warehouse_after_movewarehouse",
+				data: JSON.stringify({
+					id: self.model.get("id"),
+					tenant: self.getApp().currentTenant[0],
+				}), success: function (response) {
+					console.log(response)
+
+					// response.forEach(function(item,index){
+					// })
 				}
 			})
 		}
