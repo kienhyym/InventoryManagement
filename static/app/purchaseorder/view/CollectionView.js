@@ -156,64 +156,65 @@ define(function(require) {
         },
 
         render: function() {
-            var self = this;
-            loader.show();
-            axios.get("https://upstart.vn/accounts/api/v1/tenant/user_permission?user_id=" + self.getApp().currentUser.id + "&tenant_id=" + self.getApp().currentTenant).then(res => {
-                if (res.data.role[0] == "admin" || self.getApp().roleInfo == 1 || self.getApp().roleInfo == "1" || self.getApp().roleInfo == 2 || self.getApp().roleInfo == "2") {
-                    console.log("ROLE FILTERS==============>", self.getApp().roleInfo);
-                    var filters = {
-                        "$and": [{
-                                "tenant_id": {
-                                    "$eq": self.getApp().currentTenant
-                                }
-                            },
-                            {
-                                "deleted": {
-                                    "$eq": false
-                                }
-                            }
-                        ]
-                    };
-                    self.uiControl.filters = filters;
-                } else if (res.data.role[0] == "user" || self.getApp().roleInfo == 4 || self.getApp().roleInfo == "4") {
-                    var workstations = lodash.get(res, 'data.workstations', null);
+            this.applyBindings();
+            return this;
+            // loader.show();
+            // axios.get("https://upstart.vn/accounts/api/v1/tenant/user_permission?user_id=" + self.getApp().currentUser.id + "&tenant_id=" + self.getApp().currentTenant).then(res => {
+            //     if (res.data.role[0] == "admin" || self.getApp().roleInfo == 1 || self.getApp().roleInfo == "1" || self.getApp().roleInfo == 2 || self.getApp().roleInfo == "2") {
+            //         console.log("ROLE FILTERS==============>", self.getApp().roleInfo);
+            //         var filters = {
+            //             "$and": [{
+            //                     "tenant_id": {
+            //                         "$eq": self.getApp().currentTenant
+            //                     }
+            //                 },
+            //                 {
+            //                     "deleted": {
+            //                         "$eq": false
+            //                     }
+            //                 }
+            //             ]
+            //         };
+            //         self.uiControl.filters = filters;
+            //     } else if (res.data.role[0] == "user" || self.getApp().roleInfo == 4 || self.getApp().roleInfo == "4") {
+            //         var workstations = lodash.get(res, 'data.workstations', null);
 
 
-                    console.log("workstations", workstations);
-                    workstations = workstations.filter(w => w.role == "manager");
-                    console.log("workstations manager", workstations);
-                    var arr = [];
-                    workstations.forEach(item => {
-                        arr.push(item.workstation_id);
-                        console.log("item workstion", item);
+            //         console.log("workstations", workstations);
+            //         workstations = workstations.filter(w => w.role == "manager");
+            //         console.log("workstations manager", workstations);
+            //         var arr = [];
+            //         workstations.forEach(item => {
+            //             arr.push(item.workstation_id);
+            //             console.log("item workstion", item);
 
-                    });
-                    var filters = {
-                        "$and": [{
-                                "tenant_id": {
-                                    "$eq": self.getApp().currentTenant
-                                }
-                            },
-                            {
-                                "deleted": {
-                                    "$eq": false
-                                }
-                            },
-                            {
-                                "workstation_id": {
-                                    "$in": arr
-                                }
-                            }
-                        ]
-                    };
-                    console.log("filter", filters);
-                    self.uiControl.filters = filters;
-                }
-                self.applyBindings();
-            });
-            self.registerEvent();
-            self.searchCombobox();
-            loader.hide();
+            //         });
+            //         var filters = {
+            //             "$and": [{
+            //                     "tenant_id": {
+            //                         "$eq": self.getApp().currentTenant
+            //                     }
+            //                 },
+            //                 {
+            //                     "deleted": {
+            //                         "$eq": false
+            //                     }
+            //                 },
+            //                 {
+            //                     "workstation_id": {
+            //                         "$in": arr
+            //                     }
+            //                 }
+            //             ]
+            //         };
+            //         console.log("filter", filters);
+            //         self.uiControl.filters = filters;
+            // //     }
+            //     self.applyBindings();
+            // });
+            // self.registerEvent();
+            // self.searchCombobox();
+            // loader.hide();
         },
 
         searchCombobox: function() {

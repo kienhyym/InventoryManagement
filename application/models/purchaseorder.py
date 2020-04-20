@@ -51,6 +51,7 @@ class PurchaseOrder(CommonModel):
     discount_percent = db.Column(DECIMAL(7,3), default=0) # % giảm theo chương trình KM
     discount_amount = db.Column(DECIMAL(25,8), default=0) # tiền giảm theo chương trình KM
     item_discount = db.Column(DECIMAL(25,8), default=0)
+    warehouse_id = db.Column(db.String)
 
     details = db.relationship("PurchaseOrderDetails", order_by="PurchaseOrderDetails.created_at", cascade="all, delete-orphan")
     custom_fields = db.Column(JSONB(), nullable=True)
@@ -69,10 +70,12 @@ class PurchaseOrderDetails(CommonModel):
 
     user_id = db.Column(db.String)
     tenant_id = db.Column(db.String)
-
+    warehouse_id = db.Column(db.String)
+    warehouse_name = db.Column(db.String)
+    payment_status = db.Column(db.String)
     unit_id = db.Column(UUID(as_uuid=True))
     unit_code = db.Column(db.String)
-
+    purchase_cost = db.Column(DECIMAL(27,8), default=0)
     lot_number = db.Column(db.DECIMAL)
     quantity = db.Column(DECIMAL(25,3), default=0)
     list_price = db.Column(DECIMAL(27,8), default=0)

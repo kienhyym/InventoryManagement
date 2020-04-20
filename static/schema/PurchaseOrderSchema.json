@@ -90,6 +90,9 @@
         "type": "number",
         "default": 0
     },
+    "warehouse_id": {
+        "type": "string"
+    },
     "custom_fields": {
         "type": "json"
     },

@@ -13,43 +13,7 @@
             position: absolute; width: 100%;"></div>
             </div>
         </div> -->
-<div block-bind="content" style="position: relative;">
-    <div class="card chose-item">
-        <div class="card-body">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="d-flex justify-content-between">
-                    <label class="m-0 pt-2">Danh sách hàng hóa</label>
-                    <div class="btn-group ">
-                        <button class="btn btn-dark p-1 btn-quaylai "><i class="fas fa-reply"></i></button>
-                        <button class="btn btn-primary p-1 btn-hoantat">Hoàn tất</button>
-                    </div>
-                </div>
-                <div>
-                    <input type="text" class="col-lg-12 col-md-12 col-sm-12 col-12 form-control m-2" id="input-search"
-                        placeholder="nhập tên thiết bị để tìm kiếm ..">
-                </div>
-
-                <div class="trang-thiet-bi-y-te row">
-                </div>
-                <div class="row text-right d-flex justify-content-end">
-                    <ul class="pagination">
-                        <li class="page-item page-number page-min"><a class="page-link" style="cursor: pointer">1</a>
-                        </li>
-                        <li class="page-item page-3dot-min"><a class="page-link" style="cursor: pointer">...</a></li>
-
-                        <li class="page-item page-number active"><a class="page-link" style="cursor: pointer">1</a></li>
-                        <li class="page-item page-number"><a class="page-link" style="cursor: pointer">2</a></li>
-                        <li class="page-item page-number"><a class="page-link" style="cursor: pointer">3</a></li>
-                        <li class="page-item page-number"><a class="page-link" style="cursor: pointer">4</a></li>
-
-                        <li class="page-item page-3dot-max"><a class="page-link" style="cursor: pointer">...</a></li>
-                        <li class="page-item page-number page-max"><a class="page-link" style="cursor: pointer">0</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+<div block-bind="content">
     <div class="card">
         <div class="card-header  border-bottom">
             <div class="row">
@@ -90,10 +54,6 @@
                                     <input class="form-control" id="workstation" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Mã số thuế</label>
-                                    <input class="form-control" data-bind="value:tax_code" />
-                                </div>
-                                <div class="form-group">
                                     <label>Địa chỉ</label>
                                     <input class="form-control" data-bind="value:address" />
                                 </div>
@@ -121,8 +81,14 @@
                         <div class="card-body">
                             <div class="row">
                                 <!-- <div id="add-item" style="margin: 7px"></div> -->
-                                <button id="show-list-item" style="margin: 7px" class="btn btn-outline-secondary pt-0 pb-0">+</button>
-
+                                <div class="show-list-warehouse mb-1">
+                                    <div>
+                                        <p class="pt-3 m-0">Chọn kho hàng:</p>
+                                    </div>
+                                    <div>
+                                        <input type="text">
+                                    </div>
+                                </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12"
                                     style="overflow: auto; height: 500px;">
                                     <table class="table table-responsive" style="height: 500px; overflow: auto;">
@@ -132,10 +98,29 @@
                                                 <td style="min-width: 170px; text-align: center;">Giá bán</td>
                                                 <td style="min-width: 100px; text-align: center;">Số lượng</td>
                                                 <td style="min-width: 170px; text-align: center;">Thành tiền</td>
+                                                <td style="min-width: 170px; text-align: center;">Kho</td>
                                             </tr>
                                         </thead>
                                         <!-- <tbody id="" data-bind="list:details"></tbody>\ -->
-                                        <tbody id="body-items"></tbody>
+                                        <tbody id="body-items">
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 250px;position: relative;">
+                                                    <input type="text" class="form-control search"
+                                                        placeholder="+ Tìm kiếm">
+                                                    <div class="bg-white border list-item"
+                                                        style="display: none; max-height:150px;overflow: scroll;overflow-x: hidden;width: 90%;position: absolute;">
+                                                    </div>
+                                                </td>
+                                                <td style="min-width: 170px; text-align: center;"><input type="text"
+                                                        class="form-control"></td>
+                                                <td style="min-width: 100px; text-align: center;"><input type="text"
+                                                        class="form-control"></td>
+                                                <td style="min-width: 170px; text-align: center;"><input type="text"
+                                                        class="form-control"></td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

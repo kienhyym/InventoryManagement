@@ -51,11 +51,24 @@
     "tenant_id": {
         "type": "string"
     },
+    "warehouse_id": {
+        "type": "string"
+    },
+    "warehouse_name": {
+        "type": "string"
+    },
+    "payment_status": {
+        "type": "string"
+    },
     "unit_id": {
         "type": "string"
     },
     "unit_code": {
         "type": "string"
+    },
+    "purchase_cost": {
+        "type": "number",
+        "default": 0
     },
     "lot_number": {
         "type": "number"

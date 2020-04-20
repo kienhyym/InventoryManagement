@@ -233,31 +233,17 @@ define(function (require) {
 					id: self.model.get("id"),
 					tenant: self.getApp().currentTenant[0],
 				}), success: function (response) {
-					// console.log(response)
-					response.forEach(function(item,index){
-						self.$el.find('#body-items').append(`
-							<tr>
-								<td style="min-width: 250px">${item.item_name}</td>
-								<td style="min-width: 150px"></td>
-								<td style="min-width: 150px">${item.purchase_cost}</td>
-								<td style="min-width: 130px">${item.quantity}</td>
-							</tr>
-						`)
-
-					})
-				}
-			})
-
-			$.ajax({
-				type: "POST",
-				url: self.getApp().serviceURL + "/api/v1/get_item_in_warehouse_after_movewarehouse",
-				data: JSON.stringify({
-					id: self.model.get("id"),
-					tenant: self.getApp().currentTenant[0],
-				}), success: function (response) {
 					console.log(response)
-
 					// response.forEach(function(item,index){
+					// 	self.$el.find('#body-items').append(`
+					// 		<tr>
+					// 			<td style="min-width: 250px">${item.item_name}</td>
+					// 			<td style="min-width: 150px"></td>
+					// 			<td style="min-width: 150px">${item.purchase_cost}</td>
+					// 			<td style="min-width: 130px">${item.quantity}</td>
+					// 		</tr>
+					// 	`)
+
 					// })
 				}
 			})
