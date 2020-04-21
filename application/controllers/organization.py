@@ -40,6 +40,8 @@ async def save_organizationstaff(request):
     for _ in danhSachNhanVien:
         organizationStaff = OrganizationStaff()
         organizationStaff.name = _["name"]
+        organizationStaff.phone = _["phone"]
+        organizationStaff.email = _["email"]
         organizationStaff.role = _["vaitro"]
         organizationStaff.organization_id = data["organization_id"]
         db.session.add(organizationStaff)
@@ -53,6 +55,8 @@ async def save_organizationstaff(request):
     for _ in danhSachNhanVien:
         organizationStaff = db.session.query(OrganizationStaff).filter(OrganizationStaff.id == _["id"]).first()
         organizationStaff.name = _["name"]
+        organizationStaff.phone = _["phone"]
+        organizationStaff.email = _["email"]
         organizationStaff.role = _["vaitro"]
         db.session.add(organizationStaff)
         db.session.commit()

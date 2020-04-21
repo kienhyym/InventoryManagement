@@ -29,6 +29,14 @@
         "type": "string",
         "length": 255
     },
+    "phone": {
+        "type": "string",
+        "length": 255
+    },
+    "email": {
+        "type": "string",
+        "length": 255
+    },
     "role": {
         "type": "string",
         "length": 255

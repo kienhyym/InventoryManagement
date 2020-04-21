@@ -192,8 +192,10 @@ define(function (require) {
 				self.$el.find('#nhanvien').append(`
 				<tr class='nhanviendaco' nhanvien_id ="${item.id}">
 					<td style="width: 10%;" class="p-2"><input type="text" class="w-100 nhanvien_stt form-control" value="${index + 1} "></td>
-					<td style="width: 40%;" class="p-2"><input type="text" class="w-100 nhanvien_ten form-control" value="${item.name}"></td>
-					<td style="width: 40%;" class="p-2"><input type="text" class="w-100 nhanvien_vaitro nhanvien_vaitro${item.id}"value="${item.role}" ></td>
+					<td style="width: 20%;" class="p-2"><input type="text" class="w-100 nhanvien_ten form-control" value="${item.name}"></td>
+					<td style="width: 20%;" class="p-2"><input type="text" class="w-100 nhanvien_dienthoai form-control" value="${item.phone}"></td>
+					<td style="width: 20%;" class="p-2"><input type="text" class="w-100 nhanvien_email form-control" value="${item.email}"></td>
+					<td style="width: 20%;" class="p-2"><input type="text" class="w-100 nhanvien_vaitro nhanvien_vaitro${item.id}"value="${item.role}" ></td>
 					<td style="width: 10%;" class="p-2"><button class="btn btn-outline-dark btnXoa" nhanvien_id_del ="${item.id}">x</button></td>
 					</tr>
 				`)
@@ -240,8 +242,10 @@ define(function (require) {
 				self.$el.find('#nhanvien').append(`
 				<tr class='thongtinnhanvienmoi' nhanvien_stt="${stt}">
 					<td style="width: 10%;" class="p-2"><input type="text" class="w-100 nhanvien_stt form-control" value = "${stt}"></td>
-					<td style="width: 40%;" class="p-2"><input type="text" class="w-100 nhanvien_ten form-control"></td>
-					<td style="width: 40%;" class="p-2"><input type="text" class="w-100 nhanvien_vaitro nhanvien_vaitro${stt}"></td>
+					<td style="width: 20%;" class="p-2"><input type="text" class="w-100 nhanvien_ten form-control"></td>
+					<td style="width: 20%;" class="p-2"><input type="text" class="w-100 nhanvien_dienthoai form-control"></td>
+					<td style="width: 20%;" class="p-2"><input type="text" class="w-100 nhanvien_email form-control"></td>
+					<td style="width: 20%;" class="p-2"><input type="text" class="w-100 nhanvien_vaitro nhanvien_vaitro${stt}"></td>
 					<td style="width: 10%;" class="p-2"><button class="btn btn-outline-dark btnXoa${stt}">x</button></td>
 					</tr>
 				`)
@@ -272,6 +276,8 @@ define(function (require) {
 					var obj = {};
 					obj.stt = $(self.$el.find('.thongtinnhanvienmoi .nhanvien_stt')[i]).val()
 					obj.name = $(self.$el.find('.thongtinnhanvienmoi .nhanvien_ten')[i]).val()
+					obj.phone = $(self.$el.find('.thongtinnhanvienmoi .nhanvien_dienthoai')[i]).val()
+					obj.email = $(self.$el.find('.thongtinnhanvienmoi .nhanvien_email')[i]).val()
 					obj.vaitro = $(self.$el.find('.thongtinnhanvienmoi .nhanvien_vaitro')[i]).val()
 					danhSachNhanVienMoi.push(obj)
 				}
@@ -296,6 +302,8 @@ define(function (require) {
 					var obj = {};
 					obj.id = $(self.$el.find('.nhanviendaco')[i]).attr('nhanvien_id')
 					obj.name = $(self.$el.find('.nhanviendaco .nhanvien_ten')[i]).val()
+					obj.phone = $(self.$el.find('.nhanviendaco .nhanvien_dienthoai')[i]).val()
+					obj.email = $(self.$el.find('.nhanviendaco .nhanvien_email')[i]).val()
 					obj.vaitro = $(self.$el.find('.nhanviendaco .nhanvien_vaitro')[i]).val()
 					danhSachNhanVienDaCo.push(obj)
 				}
