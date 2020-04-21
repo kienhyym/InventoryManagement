@@ -243,9 +243,12 @@ define(function (require) {
             })
             self.$el.find("#warehouse_from").on("change.gonrin", function (event) {
                 self.model.set("warehouse_from_id", self.$el.find("#warehouse_from").data("gonrin").getValue());
+                self.model.set("warehouse_from_name", self.$el.find("#warehouse_from").data("gonrin").getText());
+
             });
             self.$el.find("#warehouse_to").on("change.gonrin", function (event) {
                 self.model.set("warehouse_to_id", self.$el.find("#warehouse_to").data("gonrin").getValue());
+                self.model.set("warehouse_to_name", self.$el.find("#warehouse_to").data("gonrin").getText());
             });
         },
 

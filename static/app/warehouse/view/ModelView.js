@@ -234,17 +234,17 @@ define(function (require) {
 					tenant: self.getApp().currentTenant[0],
 				}), success: function (response) {
 					console.log(response)
-					// response.forEach(function(item,index){
-					// 	self.$el.find('#body-items').append(`
-					// 		<tr>
-					// 			<td style="min-width: 250px">${item.item_name}</td>
-					// 			<td style="min-width: 150px"></td>
-					// 			<td style="min-width: 150px">${item.purchase_cost}</td>
-					// 			<td style="min-width: 130px">${item.quantity}</td>
-					// 		</tr>
-					// 	`)
+					response.forEach(function(item,index){
+						self.$el.find('#body-items').append(`
+							<tr>
+								<td style="min-width: 250px">${item.item_name}</td>
+								<td style="min-width: 150px"></td>
+								<td style="min-width: 150px">${item.purchase_cost}</td>
+								<td style="min-width: 130px">${item.quantity}</td>
+							</tr>
+						`)
 
-					// })
+					})
 				}
 			})
 		}

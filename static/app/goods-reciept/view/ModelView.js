@@ -161,8 +161,17 @@ define(function (require) {
                     label: "TRANSLATE:Lưu",
                     command: function () {
                         var self = this;
-                        var tenant_id = self.getApp().currentTenant[0];
-                        self.model.set("tenant_id", tenant_id);
+                        var id = self.getApp().getRouter().getParam("id");
+                        // if (id == null) {
+                            var tenant_id = self.getApp().currentTenant[0];
+                            self.model.set("tenant_id", tenant_id);
+                            var makeNo = Helpers.makeNoGoods(6, "NH0").toUpperCase();
+                            self.model.set("goodsreciept_no", makeNo);
+                            var payNo = Helpers.makeNoGoods(6, "PM0").toUpperCase();
+                            self.model.set("payment_no", payNo);
+                        // }
+                        
+                        
                         self.model.save(null, {
                             success: function (model, respose, options) {
                                 self.createItem(respose.id);
@@ -284,7 +293,8 @@ define(function (require) {
                                                 self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
                                             }
                                         }
-                                    });                             }
+                                    });
+                                }
                                 loader.hide();
                             },
                             error: function () {
@@ -332,7 +342,8 @@ define(function (require) {
                                         self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
                                     }
                                 }
-                            });                        });
+                            });
+                        });
 
                     }
                 },

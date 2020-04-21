@@ -36,12 +36,6 @@ define(function (require) {
 				]
 			}],
 		uiControl: {
-			// orderBy: [
-			// 	{ field: "id", direction: "desc" },
-			// 	{ field: "payment_no", direction: "desc"},
-			// 	{ field: "goodsreciept_no", direction: "desc" },
-			// 	{ field: "discount_amount", direction: "desc" }
-			// ],
 			fields: [
 				{
 					field: "", label: "Mã phiếu", template: function (e) {
@@ -50,7 +44,7 @@ define(function (require) {
 				},
 				{
 					field: "", label: "Từ kho -> Đến kho", template: function (e) {
-						return `<div>${e.goodsreciept_from} -> ${e.goodsreciept_to}</div>`;
+						return `<div>${e.warehouse_from_name} -> ${e.warehouse_to_name}</div>`;
 					}
 				},
 				{

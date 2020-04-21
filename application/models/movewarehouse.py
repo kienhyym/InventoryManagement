@@ -27,21 +27,17 @@ class MoveWarehouse(CommonModel):
     movewarehouse_no = db.Column(db.String)
     status = db.Column(db.String) # initialization khoi tao , translation dang chuyen, finish hoàn thành
 
-    goodsreciept_from = db.Column(db.String)
-    goodsreciept_to = db.Column(db.String)
 
     user_id = db.Column(db.String)
     tenant_id = db.Column(db.String)
 
-    goodsreciept_from_id = db.Column(UUID(as_uuid=True))
-    goodsreciept_to_id = db.Column(UUID(as_uuid=True))
-
     warehouse_from_id = db.Column(UUID(as_uuid=True))
     warehouse_to_id = db.Column(UUID(as_uuid=True))
+    warehouse_from_name = db.Column(db.String)
+    warehouse_to_name = db.Column(db.String)
 
     delivery_date = db.Column(db.BigInteger) # ngay chuyen
     received_date = db.Column(db.BigInteger) # ngay nhan
-
 
     description = db.Column(db.Text())
 

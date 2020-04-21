@@ -31,28 +31,22 @@
     "status": {
         "type": "string"
     },
-    "goodsreciept_from": {
-        "type": "string"
-    },
-    "goodsreciept_to": {
-        "type": "string"
-    },
     "user_id": {
         "type": "string"
     },
     "tenant_id": {
         "type": "string"
     },
-    "goodsreciept_from_id": {
-        "type": "string"
-    },
-    "goodsreciept_to_id": {
-        "type": "string"
-    },
     "warehouse_from_id": {
         "type": "string"
     },
     "warehouse_to_id": {
+        "type": "string"
+    },
+    "warehouse_from_name": {
+        "type": "string"
+    },
+    "warehouse_to_name": {
         "type": "string"
     },
     "delivery_date": {
