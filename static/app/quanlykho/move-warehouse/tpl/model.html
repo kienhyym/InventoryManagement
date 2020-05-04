@@ -1,0 +1,80 @@
+<div block-bind="content" style="position: relative;">
+    <div class="card">
+        <div class="card-header  border-bottom">
+            <div class="row">
+                <div class="col-md-7 col-7">
+                    <h6 class="m-0 pt-2">Thông tin phiếu nhập:</h6>
+                </div>
+                <div class="col-md-5 col-5 text-right">
+                    <div block-bind="toolbar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div style="margin-top: 25px;">
+                <h5 style="margin: 15px">THÔNG TIN PHIẾU</h5>
+                <div class="row">
+                    <div class=" col-md-6 ">
+                        <span>Mã phiếu:</span>
+                        <!-- </div> -->
+                        <!-- <div class="col-md-4 "> -->
+                        <i id="movewarehouse_no" class="bg-secondary rounded">(Hệ thống tự động tạo)</i>
+                    </div>
+                    <div class="col-md-6 ">
+                        <span>Trạng thái:</span>
+                        <!-- </div>
+                    <div class="col-md-4 "> -->
+                        <i id="status" class="bg-danger rounded"></i>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div>
+                            <span>Từ kho:</span>
+                            <input id="warehouse_from" class="form-control ">
+                        </div>
+                        <div>
+                            <span>Đến kho</span>
+                            <input id="warehouse_to" class="form-control ">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <span>Ghi chú</span>
+                        <textarea rows="4" class="form-control-sm " data-bind="value:description "></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 25px;">
+                <div class="card-body">
+                    <div style="overflow-x: scroll;height: 500px;" class="out-click">
+                        <div style="width: 955px;height: 50px;box-sizing: border-box;">
+                            <div style="width: 45px;display: inline-block;text-align: center;padding: 5px;">STT</div>
+                            <div style="width: 290px;display: inline-block;padding: 5px;">Hàng hóa</div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">Giá nhập
+                            </div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">Số lượng
+                            </div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">Thành tiền
+                            </div>
+                        </div>
+
+                        <div style="width: 955px;height: 50px;" id="list-item">
+                            <div style="width: 45px;display: inline-block;text-align: center;padding: 5px;"><input disabled class="form-control text-center stt" value="+"></div>
+                            <div style="width: 290px;display: inline-block;padding: 5px;position: relative;">
+                                <input type="text" class="form-control search-item" placeholder="Nhập tên mặt hàng để tìm kiếm" disabled>
+                                <div class="card" style="position: absolute;top: 45px;left: 5px;width: 280px;">
+                                    <div class="dropdown-menu dropdown-menu-item" disabled style="height: 110px;overflow-x: hidden;width:280px;"></div>
+                                </div>
+                            </div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input disabled class="form-control text-center"></div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input disabled type="number" class="form-control text-center"></div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input disabled class="form-control text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

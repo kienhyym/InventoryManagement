@@ -1,0 +1,121 @@
+[2020-04-24 14:54:49 +0700] [4980] [INFO] Goin' Fast @ http://0.0.0.0:7100
+[2020-04-24 14:54:49 +0700] [4980] [INFO] Starting worker [4980]
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/  200 7519
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/vendor/bootstrap4/css/bootstrap.min.css  200 155852
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/vendor/bootstrap4/bootstrap-select/css/bootstrap-select.min.css  200 10389
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39446]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/css/gonrin.grid.css  200 5123
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/vendor/font-awesome/css/font-awesome.min.css  200 31000
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/css/gonrin.tokenfield.css  200 4773
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/vendor/GonrinUIBoostrap4/css/gonrin.datetimepicker.css  200 9343
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/js/jAlert/jAlert.css  200 62330
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/css/style.css  304 0
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/temp/css/adminlte.min.css  200 686707
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/temp/css/all.min.css  200 58578
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39446]: GET http://0.0.0.0:7100/static/css/gonrin.css  200 7741
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/js/bootstrap-select-1.13.9/dist/css/bootstrap-select.css  200 12331
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/vendor/jquery/jquery.min.js  200 86927
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/vendor/jquery-validation/js/jquery.validate.js  200 42526
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/vendor/bootstrap4/js/bootstrap.min.js  200 51039
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/vendor/jquery/jquery.numeric.js  200 11092
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39446]: GET http://0.0.0.0:7100/static/vendor/bootstrap4/js/popper.min.js  200 19188
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/vendor/printer/print.min.js  200 13998
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/vendor/lodash-4.17.10.js  200 539838
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/vendor/bootstrap4/bootstrap-select/js/bootstrap-select.min.js  200 51942
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/js/axios.js  200 44602
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39446]: GET http://0.0.0.0:7100/staticvendor/chart.js  200 737516
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/staticvendor/qrcode.min.js  200 19927
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/js/toastr.min.js  200 5503
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/js/jAlert/jAlert.min.js  200 10025
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/js/bootstrap-select-1.13.9/dist/js/bootstrap-select.min.js  200 50638
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.core.js  200 7651
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/vendor/hashids/hashids.js  200 9437
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.accounting.js  200 13504
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.currency.js  200 16339
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.dialog.js  200 26716
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.notify.js  200 12828
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.radio.js  200 11710
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.checkbox.js  200 11102
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39446]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.uploadfile.js  200 10643
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/vendor/GonrinUIBoostrap4/js/gonrin.pagination.js  200 18717
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.textbox.js  200 4699
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/moment.js  200 104409
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/vendor/GonrinUIBoostrap4/js/gonrin.ref.js  200 19122
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/vendor/GonrinUIBoostrap4/js/gonrin.grid.js  200 55420
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39446]: GET http://0.0.0.0:7100/static/vendor/GonrinUIBoostrap4/js/gonrin.imagelink.js  200 9662
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/vendor/GonrinUIBoostrap4/js/gonrin.datetimepicker.js  200 109555
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/temp/js/adminlte.js  200 57530
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/vendor/GonrinUIBoostrap4/js/gonrin.combobox.js  200 31811
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/app/require.js  200 15524
+[2020-04-24 14:54:55 +0700] - (sanic.access)[INFO][127.0.0.1:39440]: GET http://0.0.0.0:7100/static/vendor/GonrinUI/js/gonrin.numeric.js  200 3658
+[2020-04-24 14:54:56 +0700] [4980] [ERROR] Exception occurred while handling uri: 'http://0.0.0.0:7100/favicon.ico'
+Traceback (most recent call last):
+  File "/home/kien/Documents/workspace/SoThietBi/lib/python3.7/site-packages/sanic/app.py", line 736, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "/home/kien/Documents/workspace/SoThietBi/lib/python3.7/site-packages/sanic/router.py", line 396, in get
+    return self._get(request.path, request.method, "")
+  File "/home/kien/Documents/workspace/SoThietBi/lib/python3.7/site-packages/sanic/router.py", line 458, in _get
+    raise NotFound("Requested URL {} not found".format(url))
+sanic.exceptions.NotFound: Requested URL /favicon.ico not found
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/favicon.ico  404 43
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/app/app.js  200 17690
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/app/router.js  200 3357
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/app/nav/NavbarView.js  200 4872
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/js/lib/i18n.js  200 8057
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/js/lib/text.js  200 15641
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/js/lib/underscore.js  200 52919
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/app/login/js/ForgotPasswordView.js  200 8291
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/app/login/js/RegisterView.js  200 3841
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/app/nav/route.js  200 3891
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/app/base/tpl/index.html  200 56135
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/app/nav/nav.js  200 1731
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/app/nls/app.js  304 0
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/app/login/tpl/login.html  304 0
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39450]: GET http://0.0.0.0:7100/static/js/lib/backbone.js  200 71428
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/app/login/tpl/changepassword.html  304 0
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39452]: GET http://0.0.0.0:7100/static/app/login/tpl/forgotpassword.html  304 0
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39448]: GET http://0.0.0.0:7100/static/app/login/tpl/register.html  304 0
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/vendor/store.js  200 7383
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/static/js/lib/gonrin.js  200 86393
+=============== None
+[2020-04-24 14:54:56 +0700] - (sanic.access)[INFO][127.0.0.1:39442]: GET http://0.0.0.0:7100/api/v1/current_user  520 98
+==================data {'username': 'admin', 'password': '123456'}
+==================USER NAME admin
+==================PASSWORD 123456
+================== <User: None>
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39454]: POST http://0.0.0.0:7100/api/v1/login  200 447
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39454]: GET http://0.0.0.0:7100/static/temp/img/user1-128x128.jpg  200 2879
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39460]: GET http://0.0.0.0:7100/static/temp/img/user3-128x128.jpg  200 3511
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39458]: GET http://0.0.0.0:7100/static/temp/img/user8-128x128.jpg  200 5060
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39462]: GET http://0.0.0.0:7100/static/temp/img/user7-128x128.jpg  200 6434
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39464]: GET http://0.0.0.0:7100/static/temp/img/user5-128x128.jpg  200 6446
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39466]: GET http://0.0.0.0:7100/static/temp/img/user6-128x128.jpg  200 4342
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39466]: GET http://0.0.0.0:7100/static/img/avatar.jpg  200 6607
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39466]: GET http://0.0.0.0:7100/static/temp/webfonts/fa-solid-900.woff2  200 79444
+[2020-04-24 14:55:03 +0700] - (sanic.access)[INFO][127.0.0.1:39464]: GET http://0.0.0.0:7100/static/temp/webfonts/fa-regular-400.woff2  200 13584
+[2020-04-24 14:55:08 +0700] - (sanic.access)[INFO][127.0.0.1:39464]: GET http://0.0.0.0:7100/  200 7519
+=============== <User: None>
+[2020-04-24 14:55:08 +0700] - (sanic.access)[INFO][127.0.0.1:39464]: GET http://0.0.0.0:7100/api/v1/current_user  200 734
+=============== <User: None>
+[2020-04-24 14:55:13 +0700] - (sanic.access)[INFO][127.0.0.1:39480]: GET http://0.0.0.0:7100/api/v1/current_user  200 734
+[2020-04-24 14:55:14 +0700] - (sanic.access)[INFO][127.0.0.1:39480]: GET http://0.0.0.0:7100/static/app/quanlykho/move-warehouse/view/CollectionView.js  200 5425
+[2020-04-24 14:55:14 +0700] - (sanic.access)[INFO][127.0.0.1:39480]: GET http://0.0.0.0:7100/static/js/lib/json.js  200 2642
+[2020-04-24 14:55:14 +0700] - (sanic.access)[INFO][127.0.0.1:39494]: GET http://0.0.0.0:7100/static/app/quanlykho/move-warehouse/tpl/collection.html  304 0
+[2020-04-24 14:55:14 +0700] - (sanic.access)[INFO][127.0.0.1:39490]: GET http://0.0.0.0:7100/static/app/base/view/TemplateHelper.js  200 4894
+[2020-04-24 14:55:14 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/static/app/base/view/Helper.js  200 10845
+[2020-04-24 14:55:14 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/static/schema/MoveWarehouseSchema.json  304 0
+TODO: datatime in paramstring - gatco_restapi views line 1146
+[2020-04-24 14:55:14 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/api/v1/movewarehouse?page=1&results_per_page=15  200 13323
+[2020-04-24 14:55:15 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/static/app/quanlykho/goods-reciept/view/CollectionView.js  200 9534
+[2020-04-24 14:55:15 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/static/schema/GoodsRecieptSchema.json  304 0
+TODO: datatime in paramstring - gatco_restapi views line 1146
+[2020-04-24 14:55:15 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/api/v1/goodsreciept?page=1&results_per_page=15&q={%22order_by%22:[{%22field%22:%22created_at%22,%22direction%22:%22desc%22}]}  200 18258
+[2020-04-24 14:55:16 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/static/app/quanlykho/item/view/CollectionView.js  200 10028
+[2020-04-24 14:55:16 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/static/app/quanlykho/item/tpl/collection.html  304 0
+[2020-04-24 14:55:16 +0700] - (sanic.access)[INFO][127.0.0.1:39490]: GET http://0.0.0.0:7100/static/schema/ItemSchema.json  304 0
+TODO: datatime in paramstring - gatco_restapi views line 1146
+[2020-04-24 14:55:16 +0700] - (sanic.access)[INFO][127.0.0.1:39490]: GET http://0.0.0.0:7100/api/v1/item?page=1&results_per_page=15&q={%22order_by%22:[{%22field%22:%22item_name%22,%22direction%22:%22asc%22},{%22field%22:%22created_at%22,%22direction%22:%22desc%22}]}  200 3871
+[2020-04-24 14:55:16 +0700] - (sanic.access)[INFO][127.0.0.1:39490]: GET http://0.0.0.0:7100/static/app/quanlykho/currency/view/CollectionView.js  200 3297
+[2020-04-24 14:55:16 +0700] - (sanic.access)[INFO][127.0.0.1:39492]: GET http://0.0.0.0:7100/static/schema/CurrencySchema.json  200 743
+[2020-04-24 14:55:16 +0700] - (sanic.access)[INFO][127.0.0.1:39490]: GET http://0.0.0.0:7100/static/app/quanlykho/currency/tpl/collection.html  200 253
+TODO: datatime in paramstring - gatco_restapi views line 1146
+[2020-04-24 14:55:16 +0700] - (sanic.access)[INFO][127.0.0.1:39490]: GET http://0.0.0.0:7100/api/v1/currency?page=1&results_per_page=15  200 359

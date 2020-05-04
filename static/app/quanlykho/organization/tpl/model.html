@@ -1,0 +1,146 @@
+<div block-bind="content" style="margin-top: 30px">
+    <div class="card col-md-8">
+        <div class="card-header  border-bottom">
+            <div class="row">
+                <div class="col-md-7 col-7">
+                    <h6 class="m-0 pt-2">Thông tin đơn vị:</h6>
+                </div>
+                <div class="col-md-5 col-5 text-right">
+                    <div block-bind="toolbar"></div>
+                </div>
+            </div>
+        </div>
+        <div class=" card-body">
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    <label>Mã đơn vị</label>
+                    <input type="text" data-bind="value:organization_no" class="form-control">
+                </div>
+                <div class="col-md-8 col-12">
+                    <label>Tên đơn vị</label>
+                    <input type="text" data-bind="value:organization_name" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <label>Loại đơn vị</label>
+                    <input class="form-control" type="text" data-bind="value:organization_type">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label>Giám đốc</label>
+                    <input class="form-control" type="text" data-bind="value:director">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <label>Số điện thoại</label>
+                    <input class="form-control" type="text" data-bind="value:phone" />
+                </div>
+                <div class="col-md-6 col-12">
+                    <label>Email</label>
+                    <input class="form-control" type="text" data-bind="value:email" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <label>Website</label>
+                    <input class="form-control" type="text" data-bind="value:website" />
+                </div>
+                <div class="col-md-6 col-12">
+                    <label>Fax</label>
+                    <input class="form-control" type="text" data-bind="value:fax" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <label>Địa chỉ</label>
+                    <input class="form-control" type="text" data-bind="value:address" />
+                </div>
+            </div>
+            <!-- <div class="row col-md-12 text-center" style="margin-top: 15px">
+                <div class="col-md-6">
+                    <div class="col-lg-12 col-md-12 col-12" style="padding: 0px; margin-bottom: 10px;">
+                        <div style="margin-bottom: 5px;">
+                            <b>Địa chỉ thanh toán</b>
+                        </div>
+                        <div class="col-md-12" style="padding: 0px">
+                            <label>Đường phố</label>
+                            <div>
+                                <textarea rows="2" class="form-control" data-bind="value:bill_address_street"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-12" style="padding: 0px; margin-bottom: 10px;">
+                        <div class="col-md-12" style="padding: 0px">
+                            <label>Tỉnh thành</label>
+                            <div>
+                                <input class="form-control" data-bind="value:bill_address_city"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12" style="padding: 0px; margin-bottom: 10px;">
+                        <div class="col-md-12" style="padding: 0px">
+                            <label>Quốc gia</label>
+                            <div>
+                                <input class="form-control" data-bind="value:bill_address_country"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="col-lg-12 col-md-12 col-12" style="padding: 0px; margin-bottom: 10px;">
+                        <div style="margin-bottom: 5px;">
+                            <b>Địa chỉ giao hàng</b>
+                        </div>
+                        <div class="col-md-12" style="padding: 0px">
+                            <label>Đường phố</label>
+                            <div>
+                                <textarea rows="2" class="form-control" data-bind="value:ship_address_street"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12" style="padding: 0px; margin-bottom: 10px;">
+                        <div class="col-md-12" style="padding: 0px">
+                            <label>Tỉnh thành</label>
+                            <div>
+                                <input class="form-control" data-bind="value:ship_address_city"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12" style="padding: 0px; margin-bottom: 10px;">
+                        <div class="col-md-12" style="padding: 0px">
+                            <label>Quốc gia</label>
+                            <div>
+                                <input class="form-control" data-bind="value:ship_address_country"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-left">
+                    <label>Danh sách nhân viên</label>
+                </div>
+                <div class="col-md-12">
+                    <table class="table border table-bordered">
+                        <tr>
+                            <td style="width: 10%;" class="p-2">STT</td>
+                            <td style="width: 20%;" class="p-2">Tên nhân viên</td>
+                            <td style="width: 20%;" class="p-2">Điện thoại</td>
+                            <td style="width: 20%;" class="p-2">Email</td>
+                            <td style="width: 20%;" class="p-2">Vai trò</td>
+                            <td style="width: 10%;" class="p-2">Xóa</td>
+
+                        </tr>
+                        <tbody id="nhanvien"></tbody>
+                        <tr>
+                            <td colspan="6" class="p-0"><button id="themnhanvien" class="btn btn-light btn-sm w-100 btn-them p-2">+ Thêm nhân viên</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div> -->
+        </div>
+        <!-- End contact information -->
+    </div>

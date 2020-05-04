@@ -25,32 +25,38 @@
         "type": "string",
         "primary": true
     },
+    "item_balances_type": {
+        "type": "string",
+        "length": 40
+    },
     "warehouse_id": {
         "type": "string"
     },
-    "item_exid": {
+    "warehouse_name": {
+        "type": "string",
+        "length": 100
+    },
+    "goodsreciept_id": {
         "type": "string"
     },
-    "item_name": {
-        "type": "string",
-        "length": 150
+    "purchaseorder_id": {
+        "type": "string"
+    },
+    "item_id": {
+        "type": "string"
+    },
+    "unit_id": {
+        "type": "string"
     },
     "item_no": {
         "type": "string",
         "length": 40
     },
-    "item_image": {
+    "item_name": {
         "type": "string",
-        "default": "static/images/default-dist.jpeg"
+        "length": 150
     },
-    "item_type": {
-        "type": "string",
-        "default": "is_material"
-    },
-    "unit_id": {
-        "type": "string"
-    },
-    "unit_code": {
+    "tenant_id": {
         "type": "string"
     },
     "purchase_cost": {
@@ -61,12 +67,39 @@
         "type": "number",
         "default": 0
     },
-    "lot_number": {
-        "type": "number"
-    },
     "quantity": {
         "type": "number",
         "default": 1
+    },
+    "net_amount": {
+        "type": "number",
+        "default": 0
+    },
+    "payment_status": {
+        "type": "string",
+        "length": 20,
+        "default": "created"
+    },
+    "warehouse_from_id": {
+        "type": "string",
+        "length": 150
+    },
+    "warehouse_to_id": {
+        "type": "string",
+        "length": 150
+    },
+    "move_warehouse_id": {
+        "type": "string"
+    },
+    "item_image": {
+        "type": "string",
+        "default": "static/images/default-dist.jpeg"
+    },
+    "unit_code": {
+        "type": "string"
+    },
+    "lot_number": {
+        "type": "number"
     },
     "amount": {
         "type": "number",
@@ -74,5 +107,12 @@
     },
     "description": {
         "type": "string"
+    },
+    "item_exid": {
+        "type": "string"
+    },
+    "item_type": {
+        "type": "string",
+        "default": "is_material"
     }
 }

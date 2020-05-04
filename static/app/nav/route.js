@@ -64,101 +64,101 @@ define(function (require) {
 		{
 			"collectionName": "item",
 			"route": "item/collection",
-			"$ref": "app/item/view/CollectionView",
+			"$ref": "app/quanlykho/item/view/CollectionView",
 		},
 		{
 			"collectionName": "item",
 			"route": "item/model(/:id)",
-			"$ref": "app/item/view/ModelView",
+			"$ref": "app/quanlykho/item/view/ModelView",
 		},
 
 		{
 			"collectionName": "purchaseorder",
 			"route": "purchaseorder/collection",
-			"$ref": "app/purchaseorder/view/CollectionView",
+			"$ref": "app/quanlykho/purchaseorder/view/CollectionView",
 		},
 		{
 			"collectionName": "purchaseorder",
 			"route": "purchaseorder/model(/:id)",
-			"$ref": "app/purchaseorder/view/ModelView",
+			"$ref": "app/quanlykho/purchaseorder/view/ModelView",
 		},
 
 		{
 			"collectionName": "movewarehouse",
 			"route": "movewarehouse/collection",
-			"$ref": "app/move-warehouse/view/CollectionView",
+			"$ref": "app/quanlykho/move-warehouse/view/CollectionView",
 		},
 		{
 			"collectionName": "movewarehouse",
 			"route": "movewarehouse/model(/:id)",
-			"$ref": "app/move-warehouse/view/ModelView",
+			"$ref": "app/quanlykho/move-warehouse/view/ModelView",
 		},
 
 
 		{
 			"collectionName": "contact",
 			"route": "contact/collection",
-			"$ref": "app/contact/view/CollectionView",
+			"$ref": "app/quanlykho/contact/view/CollectionView",
 		},
 		{
 			"collectionName": "contact",
 			"route": "contact/model(/:id)",
-			"$ref": "app/contact/view/ModelView",
+			"$ref": "app/quanlykho/contact/view/ModelView",
 		},
 
 		{
 			"collectionName": "goodsreciept",
 			"route": "goodsreciept/collection",
-			"$ref": "app/goods-reciept/view/CollectionView",
+			"$ref": "app/quanlykho/goods-reciept/view/CollectionView",
 		},
 		{
 			"collectionName": "goodsreciept",
 			"route": "goodsreciept/model(/:id)",
-			"$ref": "app/goods-reciept/view/ModelView",
+			"$ref": "app/quanlykho/goods-reciept/view/ModelView",
 		},
 
 		{
 			"collectionName": "warehouse",
 			"route": "warehouse/collection",
-			"$ref": "app/warehouse/view/CollectionView",
+			"$ref": "app/quanlykho/warehouse/view/CollectionView",
 		},
 		{
 			"collectionName": "warehouse",
 			"route": "warehouse/model(/:id)",
-			"$ref": "app/warehouse/view/ModelView",
+			"$ref": "app/quanlykho/warehouse/view/ModelView",
 		},
 
 		{
 			"collectionName": "currency",
 			"route": "currency/collection",
-			"$ref": "app/currency/view/CollectionView",
+			"$ref": "app/quanlykho/currency/view/CollectionView",
 		},
 		{
 			"collectionName": "currency",
 			"route": "currency/model(/:id)",
-			"$ref": "app/currency/view/ModelView",
+			"$ref": "app/quanlykho/currency/view/ModelView",
 		},
 
 		{
 			"collectionName": "organization",
 			"route": "organization/collection",
-			"$ref": "app/organization/view/CollectionView",
+			"$ref": "app/quanlykho/organization/view/CollectionView",
 		},
 		{
 			"collectionName": "organization",
 			"route": "organization/model(/:id)",
-			"$ref": "app/organization/view/ModelView",
+			"$ref": "app/quanlykho/organization/view/ModelView",
 		},
 
 		{
 			"collectionName": "workstation",
 			"route": "workstation/collection",
-			"$ref": "app/workstation/view/CollectionView",
+			"$ref": "app/quanlykho/workstation/view/CollectionView",
 		},
 		{
 			"collectionName": "workstation",
 			"route": "workstation/model(/:id)",
-			"$ref": "app/workstation/view/ModelView",
+			"$ref": "app/quanlykho/workstation/view/ModelView",
 		},
 	];
 

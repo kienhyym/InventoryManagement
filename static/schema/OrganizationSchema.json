@@ -110,6 +110,10 @@
         "type": "string",
         "length": 1
     },
+    "director": {
+        "type": "string",
+        "length": 100
+    },
     "address": {
         "type": "string"
     },

@@ -85,6 +85,9 @@
         "type": "number",
         "default": 0
     },
+    "user_id": {
+        "type": "string"
+    },
     "currency_id": {
         "type": "string"
     },

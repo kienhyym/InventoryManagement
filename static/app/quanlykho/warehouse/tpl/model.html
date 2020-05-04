@@ -1,0 +1,120 @@
+<div block-bind="content" style="position: relative;">
+    <div class="card">
+        <div class="card-header  border-bottom">
+            <div class="row">
+                <div class="col-md-7 col-7">
+                    <h6 class="m-0 pt-2">Thông tin kho:</h6>
+                </div>
+                <div class="col-md-5 col-5 text-right">
+                    <div block-bind="toolbar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Tên kho</label>
+                    <input type="text" class="form-control" data-bind="value:warehouse_name">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Mã</label>
+                    <input type="text" class="form-control" data-bind="value:warehouse_no">
+                </div>
+            </div>
+            <!-- <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Số nhà</label>
+                    <input type="text" class="form-control" data-bind="value:address_code">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Quốc gia</label>
+                    <input type="text" class="form-control" data-bind="value:address_country">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Địa chỉ đường phố</label>
+                    <input type="text" class="form-control" data-bind="value:address_street">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Địa chỉ đường khác</label>
+                    <input type="text" class="form-control" data-bind="value:address_street2">
+                </div>
+            </div> -->
+            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" data-bind="value:email">
+                </div>
+            </div>
+            <!-- <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Email khác</label>
+                    <input type="text" class="form-control" placeholder="email@gmail.com" data-bind="value:email_other">
+                </div>
+            </div> -->
+            <!-- <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Zip code</label>
+                    <input type="text" class="form-control" data-bind="value:zip_code">
+                </div>
+            </div> -->
+
+
+            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Số điện thoại</label>
+                    <input type="text" class="form-control" data-bind="value:phone">
+                </div>
+            </div>
+            <!-- <div class="col-md-6 col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="">Địa chỉ thành phố</label>
+                    <input type="text" class="form-control" data-bind="value:address_city">
+                </div>
+            </div> -->
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                <div class="form-group">
+                    <label for="">Địa chỉ thành phố</label>
+                    <textarea type="text" class="form-control" data-bind="value:address" />
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div style="overflow-x: scroll;height: 500px;" class="out-click">
+                        <div style="width: 955px;height: 50px;box-sizing: border-box;">
+                            <div style="width: 45px;display: inline-block;text-align: center;padding: 5px;">STT</div>
+                            <div style="width: 290px;display: inline-block;padding: 5px;">Hàng hóa</div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">Giá nhập
+                            </div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">Số lượng
+                            </div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">Thành tiền
+                            </div>
+                        </div>
+
+                        <div style="width: 955px;height: 50px;" id="list-item">
+                            <div style="width: 45px;display: inline-block;text-align: center;padding: 5px;"><input class="form-control text-center stt" value="+"></div>
+                            <div style="width: 290px;display: inline-block;padding: 5px;position: relative;">
+                                <input type="text" class="form-control search-item" placeholder="Nhập tên mặt hàng để tìm kiếm">
+                                <div class="card" style="position: absolute;top: 45px;left: 5px;width: 280px;">
+                                    <div class="dropdown-menu dropdown-menu-item" style="height: 110px;overflow-x: hidden;width:280px;"></div>
+                                </div>
+                            </div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input class="form-control text-center"></div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input type="number" class="form-control text-center"></div>
+                            <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input class="form-control text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
