@@ -156,7 +156,7 @@ define(function(require) {
                         var method = "update";
                         if (!id) {
                             var method = "create";
-                            self.model.set("tenant_id", self.getApp().currentTenant);
+                            self.model.set("tenant_id", self.getApp().currentTenant[0]);
                         }
                         self.model.sync(method, self.model, {
                             success: function(model, respose, options) {
@@ -228,7 +228,7 @@ define(function(require) {
 
         regsiterEvent: function() {
             var self = this;
-            self.chooseEquipment();
+            self.chooseUnit();
             var id = this.getApp().getRouter().getParam("id");
             self.$el.find("#item-image").attr("src", self.model.get("image"));
             self.$el.find("#item_no").unbind("keypress").bind("keypress", function() {
@@ -276,10 +276,44 @@ define(function(require) {
             }
             return true;
         },
-        chooseEquipment: function() {
+        chooseUnit: function() {
             var self = this;
-            self.$el.find('.choose-equipment .selectpicker').selectpicker();
-        }
+            var filters = {
+                filters: {
+                    "$and": [
+                        { "tenant_id": { "$eq": self.getApp().currentTenant[0] } }
+                    ]
+                },
+                order_by: [{ "field": "created_at", "direction": "desc" }]
+            }
+            $.ajax({
+                type: "GET",
+                url: self.getApp().serviceURL + "/api/v1/unit?results_per_page=100000&max_results_per_page=1000000",
+                data: "q=" + JSON.stringify(filters),
+                success: function(res) {
+                    loader.hide();
+                    if (res.objects) {
+                        res.objects.forEach(function(item, index) {
+                            self.$el.find(".unit .selectpicker").append(`
+                            <option value="${item.id}">${item.code} (${item.name})</option>
+                            `)
+                        })
+                        if (self.model.get('unit_id') != null) {
+                            self.$el.find('.unit .selectpicker').selectpicker('val', self.model.get('unit_id'));
+
+                        } else {
+                            self.$el.find('.unit .selectpicker').selectpicker('val', 'deselectAllText');
+
+                        }
+                        self.$el.find(".unit .selectpicker").on('changed.bs.select', function(e, clickedIndex, isSelected, previousValue) {
+                            self.model.set('unit_id', $(this).val())
+                        });
+
+                    }
+                }
+            })
+        },
+
     });
 
 });

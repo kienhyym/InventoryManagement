@@ -176,7 +176,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   <tr>
     <td>noneSelectedText</td>
     <td>string</td>
-    <td><code>'Nothing selected'</code></td>
+    <td><code>''</code></td>
     <td>
       <p>The text that is displayed when a multiple select has no selected options.</p>
     </td>

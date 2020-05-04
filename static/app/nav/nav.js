@@ -69,6 +69,15 @@ define(function(require) {
             }
         },
         {
+            "text": "Đơn vị tính",
+            "type": "view",
+            "collectionName": "unit",
+            "route": "unit/collection",
+            "visible": function() {
+                return true
+            }
+        },
+        {
             "text": "Doanh nghiệp",
             "type": "view",
             "collectionName": "organization",

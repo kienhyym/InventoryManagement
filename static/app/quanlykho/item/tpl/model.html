@@ -36,12 +36,7 @@
                             <input type="text" class="form-control" data-bind="value:item_name">
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 col-sm-8 col-12">
-                        <div class="form-group">
-                            <label for="">Loại sản phẩm</label>
-                            <input type="text" class="form-control" data-bind="value:item_type">
-                        </div>
-                    </div>
+
                     <!-- <div class="col-md-6 col-lg-6 col-sm-8 col-12">
                         <div class="form-group">
                             <label for="">Danh mục</label>
@@ -62,8 +57,21 @@
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-8 col-12">
                         <div class="form-group">
+                            <label for="">Loại sản phẩm</label>
+                            <input type="text" class="form-control" data-bind="value:item_type">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-8 col-12">
+                        <div class="form-group">
                             <label for="">Đơn vị tính</label>
-                            <input type="text" class="form-control" data-bind="dict:unit">
+                            <!-- <input type="text" class="form-control" data-bind="dict:unit"> -->
+                            <div class="unit">
+                                <select class="selectpicker border rounded " data-live-search="true" data-width="100%">
+                                <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                                <option data-tokens="frosting">Sugar, Spice and all things nice</option> -->
+                              </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-8 col-12">
