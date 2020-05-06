@@ -653,7 +653,7 @@ def assets_in_each_warehouse(request):
                         obj['warehouse_name'] = warehouseInfo[0]
                         obj['list_price'] = ItemInfo[2]
                         obj['quantity'] = itemBalancesPlus[plus][2] - itemBalancesMinus[minus][2]
-                        obj['unit_id'] = ItemInfo[3]
+                        obj['unit_id'] = str(ItemInfo[3])
                         arr.append(obj)
                         itemBalancesMinus.pop(minus)
                         break
@@ -671,7 +671,7 @@ def assets_in_each_warehouse(request):
                     obj['warehouse_name'] = warehouseName[0]
                     obj['list_price'] = itemNameAndItemNoAndListPriceAndUnitId[2]
                     obj['quantity'] = itemBalancesPlus[plus][2]
-                    obj['unit_id'] = itemNameAndItemNoAndListPriceAndUnitId[3]
+                    obj['unit_id'] = str(itemNameAndItemNoAndListPriceAndUnitId[3])
                     arr.append(obj)
             return json(arr)
         else:
@@ -687,7 +687,7 @@ def assets_in_each_warehouse(request):
                 obj['warehouse_name'] = warehouseName[0]
                 obj['list_price'] = itemNameAndItemNoAndListPriceAndUnitId[2]
                 obj['quantity'] = _[2]
-                obj['unit_id'] = itemNameAndItemNoAndListPriceAndUnitId[3]
+                obj['unit_id'] = str(itemNameAndItemNoAndListPriceAndUnitId[3])
                 arr.append(obj)
             return json(arr)
     return json({"message":"error"})
@@ -727,7 +727,6 @@ def assets_in_each_warehouse_no_search(request):
             if count == length:
                 warehouseName = db.session.query(Warehouse.warehouse_name).filter(Warehouse.id==data['warehouse_id']).first();
                 itemNameAndItemNoAndListPriceAndUnitId = db.session.query(Item.item_name,Item.item_no,Item.list_price,Item.unit_id).filter(Item.id==itemBalancesPlus[plus][0].urn[9:]).first();
-                print ('________________itemNameAndItemNoAndListPriceAndUnitId[3]_____________',str(itemNameAndItemNoAndListPriceAndUnitId[3]))
                 obj= {}
                 obj['item_id'] = itemBalancesPlus[plus][0].urn[9:]
                 obj['item_name'] = itemNameAndItemNoAndListPriceAndUnitId[0]
@@ -754,7 +753,7 @@ def assets_in_each_warehouse_no_search(request):
             obj['warehouse_name'] = warehouseName[0]
             obj['list_price'] = itemNameAndItemNoAndListPriceAndUnitId[2]
             obj['quantity'] = _[2]
-            obj['unit_id'] = itemNameAndItemNoAndListPriceAndUnitId[3]
+            obj['unit_id'] = str(itemNameAndItemNoAndListPriceAndUnitId[3])
             arr.append(obj)
         print ('_________________else_____________',arr)
         return json(arr)
@@ -792,7 +791,7 @@ def assets_all_warehouse(request):
                             obj['warehouse_name'] = warehouseInfo[0]
                             obj['list_price'] = ItemInfo[2]
                             obj['quantity'] = itemBalancesPlus[plus][2] - itemBalancesMinus[minus][2]
-                            obj['unit_id'] = ItemInfo[3]
+                            obj['unit_id'] = str(ItemInfo[3])
                             arr.append(obj)
                             itemBalancesMinus.pop(minus)
                             break
@@ -810,7 +809,7 @@ def assets_all_warehouse(request):
                         obj['warehouse_name'] = warehouseName[0]
                         obj['list_price'] = itemNameAndItemNoAndListPriceAndUnitId[2]
                         obj['quantity'] = itemBalancesPlus[plus][2]
-                        obj['unit_id'] = itemNameAndItemNoAndListPriceAndUnitId[3]
+                        obj['unit_id'] = str(itemNameAndItemNoAndListPriceAndUnitId[3])
                         arr.append(obj)
                 # return json(arr)
             else:
@@ -826,7 +825,7 @@ def assets_all_warehouse(request):
                     obj['warehouse_name'] = warehouseName[0]
                     obj['list_price'] = itemNameAndItemNoAndListPriceAndUnitId[2]
                     obj['quantity'] = _[2]
-                    obj['unit_id'] = itemNameAndItemNoAndListPriceAndUnitId[3]
+                    obj['unit_id'] = str(itemNameAndItemNoAndListPriceAndUnitId[3])
                     arr.append(obj)
         return json(arr)
     return json({"message":"error"})
