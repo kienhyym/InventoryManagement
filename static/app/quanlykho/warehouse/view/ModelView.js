@@ -473,6 +473,7 @@ define(function(require) {
                     self.clickPurchaseCost();
                 }
             } else {
+                console.log(self.model.get("id"))
                 $.ajax({
                     type: "POST",
                     url: self.getApp().serviceURL + "/api/v1/assets_in_each_warehouse_no_search",
