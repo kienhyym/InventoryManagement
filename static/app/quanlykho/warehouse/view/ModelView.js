@@ -473,7 +473,6 @@ define(function(require) {
                     self.clickPurchaseCost();
                 }
             } else {
-                console.log(self.model.get("id"))
                 $.ajax({
                     type: "POST",
                     url: self.getApp().serviceURL + "/api/v1/assets_in_each_warehouse_no_search",
@@ -482,6 +481,8 @@ define(function(require) {
                         tenant_id: self.getApp().currentTenant[0],
                     }),
                     success: function(response) {
+                        console.log(response)
+
                         response.forEach(function(item, index) {
                             var resultPurchaseCost = new Number(item.purchase_cost).toLocaleString("en-AU");
                             var resultNetAmount = new Number(item.purchase_cost * item.quantity).toLocaleString("en-AU");
