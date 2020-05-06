@@ -718,7 +718,7 @@ def assets_in_each_warehouse_no_search(request):
                     obj['warehouse_name'] = warehouseInfo[0]
                     obj['list_price'] = ItemInfo[2]
                     obj['quantity'] = itemBalancesPlus[plus][2] - itemBalancesMinus[minus][2]
-                    obj['unit_id'] = ItemInfo[3].urn[9:]
+                    obj['unit_id'] = str(ItemInfo[3])
                     arr.append(obj)
                     itemBalancesMinus.pop(minus)
                     break
