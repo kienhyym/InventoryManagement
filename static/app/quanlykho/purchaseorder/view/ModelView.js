@@ -98,6 +98,7 @@ define(function(require) {
                     label: "TRANSLATE:SAVE",
                     command: function() {
                         var self = this;
+                        self.amountListItem();
                         var id = self.getApp().getRouter().getParam("id");
                         var method = "update";
                         if (!id) {
@@ -421,27 +422,27 @@ define(function(require) {
             // self.caculateTaxPercent();
         },
 
-        caculateTaxAmount: function() {
-            const self = this;
-            var netAmount = parseFloat(self.model.get("net_amount"));
-            var saleorderDiscount = parseFloat(self.model.get("tax_amount"));
-            var taxAmount = saleorderDiscount / netAmount * 100;
-            self.model.set("tax_percent", Math.round(taxAmount * 100) / 100);
-            var amount = parseFloat(netAmount + saleorderDiscount);
-            self.model.set("amount", amount);
-        },
+        // caculateTaxAmount: function() {
+        //     const self = this;
+        //     var netAmount = parseFloat(self.model.get("net_amount"));
+        //     var saleorderDiscount = parseFloat(self.model.get("tax_amount"));
+        //     var taxAmount = saleorderDiscount / netAmount * 100;
+        //     self.model.set("tax_percent", Math.round(taxAmount * 100) / 100);
+        //     var amount = parseFloat(netAmount + saleorderDiscount);
+        //     self.model.set("amount", amount);
+        // },
 
-        caculateTaxPercent: function() {
-            const self = this;
-            var netAmount = parseFloat(self.model.get("net_amount"));
+        // caculateTaxPercent: function() {
+        //     const self = this;
+        //     var netAmount = parseFloat(self.model.get("net_amount"));
 
-            if (netAmount > 0) {
-                var saleorderDiscount = netAmount / 100 * parseFloat(self.model.get("tax_percent"));
-                self.model.set("tax_amount", saleorderDiscount);
-                var amount = netAmount + saleorderDiscount;
-                self.model.set("amount", amount);
-            }
-        },
+        //     if (netAmount > 0) {
+        //         var saleorderDiscount = netAmount / 100 * parseFloat(self.model.get("tax_percent"));
+        //         self.model.set("tax_amount", saleorderDiscount);
+        //         var amount = netAmount + saleorderDiscount;
+        //         self.model.set("amount", amount);
+        //     }
+        // },
 
         checkRole: function() {
             var self = this;
@@ -863,6 +864,22 @@ define(function(require) {
                 })
                 self.clickPurchaseCost();
             }
+        },
+        amountListItem: function() {
+            var self = this;
+            var arr = [];
+            self.$el.find('.selected-item-new,.selected-item-old').each(function(index, item) {
+                var obj = {
+                    "quantity": $(item).find('[col-type="QUANTITY"]').val(),
+                    "list_price": $(item).find('[col-type="LIST_PRICE"]').attr('list-price'),
+                }
+                arr.push(obj)
+            })
+            var amount = 0;
+            arr.forEach(function(item,index){
+                amount = amount + (item.quantity * item.list_price)
+            })
+            self.model.set('amount',amount)
         },
 
         // HẾT CHỨC NĂNG CHỌN ITEM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

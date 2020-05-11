@@ -28,10 +28,22 @@
     "payment_no": {
         "type": "string"
     },
+    "type": {
+        "type": "string"
+    },
     "goodsreciept_id": {
         "type": "string"
     },
     "goodsreciept_no": {
+        "type": "string"
+    },
+    "purchaseorder_id": {
+        "type": "string"
+    },
+    "purchaseorder_no": {
+        "type": "string"
+    },
+    "organization_id": {
         "type": "string"
     },
     "user_id": {
@@ -55,5 +67,8 @@
     },
     "custom_fields": {
         "type": "json"
+    },
+    "organization": {
+        "type": "dict"
     }
 }

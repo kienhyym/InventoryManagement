@@ -20,9 +20,14 @@ class Payment(CommonModel):
     __tablename__ = 'payment'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     payment_no = db.Column(db.String)
-
+    type = db.Column(db.String)
     goodsreciept_id = db.Column(UUID(as_uuid=True), ForeignKey('goodsreciept.id'), nullable=True)
     goodsreciept_no = db.Column(db.String)
+    purchaseorder_id = db.Column(UUID(as_uuid=True), ForeignKey('purchaseorder.id'), nullable=True)
+    purchaseorder_no = db.Column(db.String)
+
+    organization_id = db.Column(UUID(as_uuid=True), ForeignKey('organization.id'), nullable=True)
+    organization = relationship('Organization')
 
     user_id = db.Column(db.String)
     tenant_id = db.Column(db.String)
@@ -31,9 +36,7 @@ class Payment(CommonModel):
     receiver_address = db.Column(db.String)
 
     amount = db.Column(DECIMAL(25,8), default=0) # so tien
-
     description = db.Column(db.Text())
-    
     custom_fields = db.Column(JSONB(), nullable=True)
 
 

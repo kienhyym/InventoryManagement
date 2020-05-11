@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -26,26 +26,59 @@ define(function(require) {
                 type: "button",
                 buttonClass: "btn btn-primary font-weight-bold btn-sm",
                 label: "+ Công Ty",
-                command: function() {
+                command: function () {
                     var self = this;
                     this.getApp().getRouter().navigate("#organization/model");
                 }
-            }, ]
+            },]
         }],
 
         uiControl: {
-            fields: [{
-                field: "organization_name",
-                label: "Tên công ty",
-                template: function(r) {
-                    if (r.organization_name) {
-                        return `<div class="ellipsis-300" style="min-width: 200px">${r.organization_name}</div>`;
-                    } else {
-                        return ``;
+            fields: [
+                {
+                    field: "stt",
+                    label: "STT",
+                },
+                {
+                    field: "organization_name",
+                    label: "Tên công ty",
+                    template: function (r) {
+                        if (r.organization_name) {
+                            return `<div class="ellipsis-300" style="min-width: 200px">${r.organization_name}</div>`;
+                        } else {
+                            return ``;
+                        }
                     }
-                }
-            }, ],
-            onRowClick: function(event) {
+                },
+                {
+                    field: "organization_type",
+                    label: "Loại doanh nghiệp",
+                    template: function (r) {
+                        if (r.organization_type == 'customer') {
+                            return `<div class="ellipsis-300" style="min-width: 200px">Đơn vị mua hàng</div>`;
+                        }
+                        if (r.organization_type == 'reseller') {
+                            return `<div class="ellipsis-300" style="min-width: 200px">Đơn vị cung cấp hàng</div>`;
+                        }
+                         else {
+                            return ``;
+                        }
+                    }
+                },
+                {
+                    field: "amount",
+                    label: "Tiền nợ",
+                    template: function (rowObject) {
+                        if (rowObject.amount) {
+                            var resultNetAmount = new Number(rowObject.amount).toLocaleString("en-AU");
+                            return `<div class="text-danger font-weight-bold">${resultNetAmount} vnđ</div>`;
+                        } else {
+                            return ``;
+                        }
+                    }
+                },
+            ],
+            onRowClick: function (event) {
                 if (event.rowId) {
                     var path = this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
@@ -54,7 +87,7 @@ define(function(require) {
             }
         },
 
-        render: function() {
+        render: function () {
             var self = this;
             self.registerEvent();
 
@@ -78,7 +111,7 @@ define(function(require) {
             }
             self.applyBindings();
 
-            filter.on('filterChanged', function(evt) {
+            filter.on('filterChanged', function (evt) {
                 var $col = self.getCollectionElement();
                 var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
                 var textUpper = !!filter.model.get("text") ? filter.model.get("text").trim().toUpperCase() : "";
@@ -116,7 +149,7 @@ define(function(require) {
             return this;
         },
 
-        registerEvent: function() {
+        registerEvent: function () {
             var self = this;
             var currentURL = window.location.href;
             if (self.getApp().isMobile == "ANDROID") {

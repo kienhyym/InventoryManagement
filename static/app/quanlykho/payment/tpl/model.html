@@ -1,0 +1,77 @@
+<div block-bind="content" style="margin-top: 30px">
+    <div class="card">
+        <div class="card-header  border-bottom">
+            <div class="row">
+                <div class="col-md-7 col-7">
+                    <h6 class="m-0 pt-2">Thông tin đơn vị tính:</h6>
+                </div>
+                <div class="col-md-5 col-5 text-right">
+                    <div block-bind="toolbar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body row pt-0 pb-0">
+            <!-- <div class="col-md-12">
+                <label>THÔNG TIN PHIẾU</label>
+            </div> -->
+            <div class="col-md-12 pt-1 pb-1 row">
+                <div class="col-md-4">
+                    <span>Mã Phiếu:</span>
+               </div>
+                <div class="col-md-6">
+                    <span id="payment_no"></span>
+               </div>
+            </div>
+            <div class="col-md-12 pt-1 pb-1 border-bottom row">
+                <div class="col-md-4">
+                    <span>Thời gian tạo:</span>
+               </div>
+                <div class="col-md-6">
+                    <span id="created_at"></span>
+               </div>
+            </div>
+        </div>
+        <div class="card-body row">
+            
+            <div class="col-md-6" style="position: relative;">
+                <label>Thanh toán cho phiếu:</label>
+                <input type="text" class="form-control search-item" placeholder="Nhập mã phiếu để tìm kiếm "
+                    required="" />
+                <div class="card" style="position: absolute;top: 66px;left: 8px;">
+                    <div class="dropdown-menu dropdown-menu-item"
+                        style="height: 110px;overflow-x: hidden;min-width: 320px;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="position: relative;">
+                <label>Chọn doanh nghiệp:</label>
+                <input type="text" class="form-control search-item-organization" placeholder="Nhập tên doanh nghiệp để tìm kiếm "
+                    required="" />
+                <div class="card" style="position: absolute;top: 66px;left: 8px;">
+                    <div class="dropdown-menu dropdown-menu-item-organization"
+                        style="height: 110px;overflow-x: hidden;min-width: 320px;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Người nhận tiền:</label>
+                <input type="text" class="form-control" data-bind="value:receiver" placeholder="..." required="">
+            </div>
+            <div class="col-md-6">
+                <label>Số tiền:</label>
+                <input type="text" class="form-control" data-bind="value:amount" placeholder="..." required="" />
+            </div>
+            <div class="col-md-6">
+                <label>Địa chỉ người nhận:</label>
+                <input type="text" class="form-control" data-bind="value:receiver_address" placeholder="..."
+                    required="">
+            </div>
+
+            <div class="col-md-6">
+                <label>Lý do thanh toán:</label>
+                <input type="text" class="form-control" data-bind="value:description" placeholder="..." required="" />
+            </div>
+        </div>
+    </div>
+</div>

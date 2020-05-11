@@ -96,6 +96,9 @@
     "custom_fields": {
         "type": "json"
     },
+    "payment": {
+        "type": "list"
+    },
     "details": {
         "type": "list"
     }

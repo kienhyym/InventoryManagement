@@ -53,7 +53,7 @@ class PurchaseOrder(CommonModel):
     discount_amount = db.Column(DECIMAL(25,8), default=0) # tiền giảm theo chương trình KM
     item_discount = db.Column(DECIMAL(25,8), default=0)
     warehouse_id = db.Column(db.String)
-
+    payment = db.relationship("Payment", order_by="Payment.created_at", cascade="all, delete-orphan")
     details = db.relationship("ItemBalances", order_by="ItemBalances.created_at", cascade="all, delete-orphan")
     custom_fields = db.Column(JSONB(), nullable=True)
 

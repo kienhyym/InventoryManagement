@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -73,88 +73,91 @@ define(function(require) {
             type: "group",
             groupClass: "toolbar-group",
             buttons: [{
-                    name: "back",
-                    type: "button",
-                    buttonClass: "btn-dark btn btn-sm",
-                    label: "TRANSLATE:BACK",
-                    command: function() {
-                        var self = this;
+                name: "back",
+                type: "button",
+                buttonClass: "btn-dark btn btn-sm",
+                label: "TRANSLATE:BACK",
+                command: function () {
+                    var self = this;
 
-                        Backbone.history.history.back();
-                    }
-                },
-                {
-                    name: "save",
-                    type: "button",
-                    buttonClass: "btn-primary btn btn-sm",
-                    label: "TRANSLATE:SAVE",
-                    command: function() {
-                        var self = this;
-                        var tenant_id = self.getApp().currentTenant[0];
-                        // if (!self.validate()) {
-                        // 	return;
-                        // }
-                        self.model.set("tenant_id", tenant_id);
-                        self.model.save(null, {
-                            success: function(model, respose, options) {
-                                self.guiYeuCauThemNhanVien(respose);
-                                self.xoaNhanVien();
-                                toastr.info("Lưu thông tin thành công");
-                                self.getApp().getRouter().navigate(self.collectionName + "/collection");
-                            },
-                            error: function(xhr, error) {
-                                try {
-                                    if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
-                                        toastr.error("Hết phiên làm việc, vui lòng đăng nhập lại!");
-                                        self.getApp().getRouter().navigate("login");
-                                    } else {
-                                        self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
-                                    }
-                                } catch (err) {
-                                    toastr.error('Lưu thông tin không thành công!');
+                    Backbone.history.history.back();
+                }
+            },
+            {
+                name: "save",
+                type: "button",
+                buttonClass: "btn-primary btn btn-sm",
+                label: "TRANSLATE:SAVE",
+                command: function () {
+                    var self = this;
+                    var tenant_id = self.getApp().currentTenant[0];
+                    // if (!self.validate()) {
+                    // 	return;
+                    // }
+                    self.model.set("tenant_id", tenant_id);
+                    self.model.save(null, {
+                        success: function (model, respose, options) {
+                            self.guiYeuCauThemNhanVien(respose);
+                            self.xoaNhanVien();
+                            toastr.info("Lưu thông tin thành công");
+                            self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                        },
+                        error: function (xhr, error) {
+                            try {
+                                if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+                                    toastr.error("Hết phiên làm việc, vui lòng đăng nhập lại!");
+                                    self.getApp().getRouter().navigate("login");
+                                } else {
+                                    self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
                                 }
+                            } catch (err) {
+                                toastr.error('Lưu thông tin không thành công!');
                             }
-                        });
-                    }
+                        }
+                    });
+                }
+            },
+            {
+                name: "delete",
+                type: "button",
+                buttonClass: "btn-danger btn btn-sm",
+                label: "TRANSLATE:DELETE",
+                visible: function () {
+                    return this.getApp().getRouter().getParam("id") !== null;
                 },
-                {
-                    name: "delete",
-                    type: "button",
-                    buttonClass: "btn-danger btn btn-sm",
-                    label: "TRANSLATE:DELETE",
-                    visible: function() {
-                        return this.getApp().getRouter().getParam("id") !== null;
-                    },
-                    command: function() {
-                        var self = this;
-                        self.model.destroy({
-                            success: function(model, response) {
-                                toastr.info('Xoá dữ liệu thành công');
-                                self.getApp().getRouter().navigate(self.collectionName + "/collection");
-                            },
-                            error: function(model, xhr, options) {
-                                toastr.error('Xoá dữ liệu không thành công!');
+                command: function () {
+                    var self = this;
+                    self.model.destroy({
+                        success: function (model, response) {
+                            toastr.info('Xoá dữ liệu thành công');
+                            self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                        },
+                        error: function (model, xhr, options) {
+                            toastr.error('Xoá dữ liệu không thành công!');
 
-                            }
-                        });
-                    }
-                },
+                        }
+                    });
+                }
+            },
             ],
         }],
 
-        render: function() {
+        render: function () {
             var self = this;
             var id = this.getApp().getRouter().getParam("id");
             self.bamThemNhanVien()
             if (id) {
                 this.model.set('id', id);
                 this.model.fetch({
-                    success: function(data) {
+                    success: function (data) {
                         self.hienThiDanhSachNhanVien();
                         self.danhSachNhanVienBiXoa();
                         self.applyBindings();
+                        self.historyPay();
+                        self.historyImportExport();
+                        self.debtCalculation();
                     },
-                    error: function() {
+                    error: function () {
                         toastr.error("Get data Eror");
                     },
                 });
@@ -164,7 +167,7 @@ define(function(require) {
 
         },
 
-        validate: function() {
+        validate: function () {
             var self = this;
             if (!self.model.get("organization_no")) {
                 toastr.error("Vui lòng nhập mã");
@@ -181,10 +184,10 @@ define(function(require) {
             }
             return true;
         },
-        hienThiDanhSachNhanVien: function() {
+        hienThiDanhSachNhanVien: function () {
             var self = this;
             var mangSapXep = lodash.orderBy(self.model.get('employees'), ['created_at'], ['asc']);
-            mangSapXep.forEach(function(item, index) {
+            mangSapXep.forEach(function (item, index) {
                 self.$el.find('#nhanvien').append(`
 				<tr class='nhanviendaco' nhanvien_id ="${item.id}">
 					<td style="width: 10%;" class="p-2"><input type="text" class="w-100 nhanvien_stt form-control" value="${index + 1} "></td>
@@ -207,14 +210,14 @@ define(function(require) {
                 })
             })
         },
-        danhSachNhanVienBiXoa: function() {
+        danhSachNhanVienBiXoa: function () {
             var self = this;
-            self.$el.find('.nhanviendaco .btnXoa').unbind('click').bind('click', function() {
+            self.$el.find('.nhanviendaco .btnXoa').unbind('click').bind('click', function () {
                 self.$el.find('[nhanvien_id=' + $(this).attr('nhanvien_id_del') + ']').remove();
                 self.mangNhanVienBiXoa.push($(this).attr('nhanvien_id_del'))
             })
         },
-        xoaNhanVien: function() {
+        xoaNhanVien: function () {
             var self = this;
             var soLuongNhanVienBiXoa = self.mangNhanVienBiXoa.length;
             if (soLuongNhanVienBiXoa > 0) {
@@ -222,7 +225,7 @@ define(function(require) {
                     type: "POST",
                     url: self.getApp().serviceURL + "/api/v1/delete_organizationstaff",
                     data: JSON.stringify(self.mangNhanVienBiXoa),
-                    success: function(response) {
+                    success: function (response) {
                         self.mangNhanVienBiXoa.splice(0, soLuongNhanVienBiXoa);
                         console.log(response)
                     }
@@ -230,9 +233,9 @@ define(function(require) {
             }
 
         },
-        bamThemNhanVien: function() {
+        bamThemNhanVien: function () {
             var self = this;
-            self.$el.find('#themnhanvien').unbind('click').bind('click', function() {
+            self.$el.find('#themnhanvien').unbind('click').bind('click', function () {
                 var stt = self.$el.find('.nhanvien_stt').length;
                 stt++;
                 self.$el.find('#nhanvien').append(`
@@ -255,14 +258,14 @@ define(function(require) {
                         { text: "Kế toán", value: "accountant" },
                     ],
                 })
-                self.$el.find('.thongtinnhanvienmoi .btnXoa' + stt).unbind('click').bind('click', function() {
+                self.$el.find('.thongtinnhanvienmoi .btnXoa' + stt).unbind('click').bind('click', function () {
                     self.$el.find('[nhanvien_stt=' + stt + ']').remove();
                     stt--;
                 })
             })
         },
 
-        guiYeuCauThemNhanVien: function(respose) {
+        guiYeuCauThemNhanVien: function (respose) {
             var self = this;
             //Thêm mới
             var soLuongNhanVienMoi = self.$el.find('.thongtinnhanvienmoi').length;
@@ -284,7 +287,7 @@ define(function(require) {
                         "data": danhSachNhanVienMoi,
                         "organization_id": respose.id
                     }),
-                    success: function(response) {
+                    success: function (response) {
                         console.log(response)
                     }
                 });
@@ -309,12 +312,155 @@ define(function(require) {
                     data: JSON.stringify({
                         "data": danhSachNhanVienDaCo,
                     }),
-                    success: function(response) {
+                    success: function (response) {
                         console.log(response)
                     }
                 });
             }
         },
+        historyPay: function () {
+            var self = this;
+            $.ajax({
+                type: "POST",
+                url: self.getApp().serviceURL + "/api/v1/history_pay",
+                data: JSON.stringify({ "organization_id": self.model.get('id'), "tenant_id": self.getApp().currentTenant[0] }),
+                success: function (response) {
+                    self.$el.find("#grid-TT").grid({
+                        showSortingIndicator: true,
+                        onValidateError: function () {
+                            alert("eror");
+                        },
+                        orderByMode: "client",
+                        fields: [
+                            { field: 'stt', label: "STT" },
+
+                            { field: "payment_no", label: "Mã phiếu"},
+                            {
+                                label: "Thời gian", template: function (rowObject) {
+                                    if (rowObject.created_at) {
+                                        return `<div style="min-width: 100px;">${Helpers.utcToLocal(rowObject.created_at * 1000, "DD/MM/YYYY HH:mm")}</div>`;
+                                    } else {
+                                        return ``;
+                                    }
+                                }
+                            },
+                            {
+                                field: "amount",
+                                label: 'Số tiền',
+                                width: "100px",
+                                template: function (rowObject) {
+                                    if (rowObject.amount) {
+                                        var resultNetAmount = new Number(rowObject.amount).toLocaleString("en-AU");
+                                        return `<div style="min-width: 100px;">${resultNetAmount} vnđ</div>`;
+                                    } else {
+                                        return ``;
+                                    }
+                                }
+
+                            },
+                        ],
+                        dataSource: response,
+                        primaryField: "id",
+                        selectionMode: "multiple",
+                        pagination: {
+                            page: 1,
+                            pageSize: 3
+                        },
+                        events: {
+                            "rowclick": function (e) {
+                                var path = '/payment/model?id=' + e.rowId;
+                                self.getApp().getRouter().navigate(path);
+                            },
+                        },
+                    });
+                }
+            })
+        },
+        historyImportExport: function () {
+            var self = this;
+            $.ajax({
+                type: "POST",
+                url: self.getApp().serviceURL + "/api/v1/history_import_export",
+                data: JSON.stringify({ "organization_id": self.model.get('id'), "tenant_id": self.getApp().currentTenant[0],"organization_type":self.model.get('organization_type') }),
+                success: function (response) {
+                    var field = null;
+                    var url = null;
+                    if(self.model.get("organization_type") == "reseller"){
+                        field = "goodsreciept_no"
+                        url = "/goodsreciept"
+                        self.$el.find('.xuat-nhap').html('Lịch sử<span class="bg-secondary rounded"> nhập hàng:</span>')
+                    }
+                    if(self.model.get("organization_type") == "customer"){
+                        field = "purchaseorder_no"
+                        url = "/purchaseorder"
+                        self.$el.find('.xuat-nhap').html('Lịch sử <span class="bg-secondary rounded"> mua hàng:</span>')
+
+                    }
+                    console.log(response)
+                    self.$el.find("#grid-IE").grid({
+                        showSortingIndicator: true,
+                        onValidateError: function () {
+                            alert("eror");
+                        },
+                        orderByMode: "client",
+                        fields: [
+                            { field: 'stt', label: "STT" },
+
+                            { field: field, label: "Mã phiếu" },
+                            {
+                                label: "Thời gian", 
+                                template: function (rowObject) {
+                                    if (rowObject.created_at) {
+                                        return `<div style="min-width: 100px;">${Helpers.utcToLocal(rowObject.created_at * 1000, "DD/MM/YYYY HH:mm")}</div>`;
+                                    } else {
+                                        return ``;
+                                    }
+                                }
+                            },
+                            {
+                                field: "amount",
+                                label: 'Số tiền',
+                                width: "100px",
+                                template: function (rowObject) {
+                                    if (rowObject.amount) {
+                                        var resultNetAmount = new Number(rowObject.amount).toLocaleString("en-AU");
+                                        return `<div style="min-width: 100px;">${resultNetAmount} vnđ</div>`;
+                                    } else {
+                                        return ``;
+                                    }
+                                }
+
+                            },
+                        ],
+                        dataSource: response,
+                        primaryField: "id",
+                        selectionMode: "multiple",
+                        pagination: {
+                            page: 1,
+                            pageSize: 3
+                        },
+                        events: {
+                            "rowclick": function (e) {
+                                var path = url+'/model?id=' + e.rowId;
+                                self.getApp().getRouter().navigate(path);
+                            },
+                        },
+                    });
+                }
+            })
+        },
+        debtCalculation:function(){
+            var self = this;
+            $.ajax({
+                type: "POST",
+                url: self.getApp().serviceURL + "/api/v1/debt_calculation",
+                data: JSON.stringify({ "organization_id": self.model.get('id'), "tenant_id": self.getApp().currentTenant[0],"organization_type":self.model.get('organization_type') }),
+                success: function (response) {
+                    var resultNetAmount = new Number(response).toLocaleString("en-AU");
+                    self.$el.find('.debt-calculation').text(resultNetAmount+' VNĐ')
+                }
+            })
+        }
 
     });
 

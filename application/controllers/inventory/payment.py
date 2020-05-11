@@ -8,6 +8,10 @@ from datetime import datetime
 import time
 from gatco_restapi.helpers import to_dict
 from application.models.inventory.payment import *
+from application.models.inventory.warehouse import *
+from application.models.inventory.purchaseorder import *
+from application.models.inventory.goodsreciept import *
+
 
 from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_user_tenant_id, get_tennat_id, current_user, auth_func
 
@@ -63,3 +67,64 @@ sqlapimanager.create_api(Payment,
                     PUT_SINGLE=[]),
     collection_name='payment')
 
+
+@app.route('/api/v1/load_import_export_dropdown',methods=['POST'])
+async def load_import_export_dropdown(request):
+    req = request.json
+    if req['text'] is not None and req['text'] != "":
+        keySearch = req['text']
+        tenant_id = req['tenant_id']
+        search = "%{}%".format(keySearch)
+        tex_capitalize = keySearch.capitalize()
+        search_capitalize = "%{}%".format(req['text'].upper())
+        if len(req['text']) >3:
+            if req['text'].upper().find('NH', 0, 3) != -1:
+                list = db.session.query(GoodsReciept).filter(and_(GoodsReciept.goodsreciept_no.like(search_capitalize),GoodsReciept.tenant_id == tenant_id)).all()
+                print ('_______________________',search_capitalize,list)
+                arr = []
+                for i in list:
+                    obj = {}
+                    obj['item_id'] = to_dict(i)['id']
+                    obj['item_no'] = to_dict(i)['goodsreciept_no']
+                    obj['item_organization_id'] = to_dict(i)['organization_id']
+                    obj['item_type'] = 'goodsreciept'
+
+                    arr.append(obj)
+                return json(arr)
+            if req['text'].upper().find('MH', 0, 3) != -1:
+                list = db.session.query(PurchaseOrder).filter(and_(PurchaseOrder.purchaseorder_no.like(search_capitalize),PurchaseOrder.tenant_id == tenant_id)).all()
+                arr = []
+                for i in list:
+                    obj = {}
+                    obj['item_id'] = to_dict(i)['id']
+                    obj['item_no'] = to_dict(i)['purchaseorder_no']
+                    obj['item_organization_id'] = to_dict(i)['organization_id']
+                    obj['item_type'] = 'purchaseorder'
+                    arr.append(obj)
+                return json(arr)
+        else:
+            result = []
+            return json(result)
+    else:
+        result = []
+        return json(result)
+
+
+@app.route('/api/v1/load_organization',methods=['POST'])
+async def load_organization(request):
+    req = request.json
+    if req['text'] is not None and req['text'] != "":
+        keySearch = req['text']
+        tenant_id = req['tenant_id']
+        search = "%{}%".format(keySearch)
+        tex_capitalize = keySearch.capitalize()
+        search_capitalize = "%{}%".format(req['text'].upper())
+        list = db.session.query(Organization).filter(and_(Organization.organization_name.like(search),Organization.tenant_id == tenant_id)).all()
+        print ('_______________________',search,list)
+        arr = []
+        for i in list:
+            arr.append(to_dict(i))
+        return json(arr)
+    else:
+        result = []
+        return json(result)

@@ -166,6 +166,8 @@ async def get_goodsreciept(request):
             return json(result)
 
 
+
+
 sqlapimanager.create_api(GoodsReciept,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
@@ -175,6 +177,7 @@ sqlapimanager.create_api(GoodsReciept,
                     PUT_SINGLE=[auth_func]),
     postprocess=dict(
         POST=[],
+        GET_MANY=[],
         PUT_SINGLE=[],
         DELETE_SINGLE=[]),
     collection_name='goodsreciept')

@@ -7,6 +7,10 @@ from sqlalchemy import or_, and_
 from datetime import datetime
 import time
 from application.models.inventory.organization import *
+from application.models.inventory.payment import * 
+from application.models.inventory.goodsreciept import *
+from application.models.inventory.purchaseorder import *
+
 from gatco_restapi.helpers import to_dict
 from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_user_tenant_id, get_tennat_id, current_user, auth_func
 
@@ -106,6 +110,41 @@ async def organization_add_first(request):
             "message": "success",
             "objects": result
         })
+async def response_debt_calculation(request=None, Model=None, result=None, **kw):
+    if result is not None and "objects" in result:
+        objects = to_dict(result["objects"])
+        datas = []
+        i =1
+        page = request.args.get("page",None)
+        results_per_page = request.args.get("results_per_page",None)
+        if page is not None and results_per_page is not None and int(page) != 1:
+            i = i + int(results_per_page)*int(page)
+        for obj in objects:
+            if obj is not None:
+                obj_tmp = to_dict(obj)
+                if obj_tmp['organization_type'] == "reseller":
+                    list = db.session.query(func.sum(GoodsReciept.amount)).filter(and_(GoodsReciept.organization_id == obj_tmp['id'], GoodsReciept.tenant_id==obj_tmp['tenant_id'])).all()
+                if obj_tmp['organization_type'] == "customer":
+                    list = db.session.query(func.sum(PurchaseOrder.amount)).filter(and_(PurchaseOrder.workstation_id == obj_tmp['id'], PurchaseOrder.tenant_id==obj_tmp['tenant_id'])).all()
+                payment = db.session.query(func.sum(Payment.amount)).filter(and_(Payment.organization_id == obj_tmp['id'], Payment.tenant_id==obj_tmp['tenant_id'])).all()
+                result = 0
+                if list[0][0] is not None and payment[0][0] is not None:
+                    result = list[0][0] - payment[0][0]
+                if payment[0][0] is not None and list[0][0] is None:
+                    result =  payment[0][0]
+                if payment[0][0] is None and list[0][0] is not None:
+                    result = list[0][0]
+                if payment[0][0] is None and list[0][0] is None:
+                    result = 0
+
+                obj_tmp["stt"] = i
+                obj_tmp["amount"] = result
+                i = i +1
+                datas.append(obj_tmp)
+        result = datas
+
+
+        
 
 
 sqlapimanager.create_api(Organization,
@@ -116,7 +155,13 @@ sqlapimanager.create_api(Organization,
     POST=[auth_func],
     PUT_SINGLE=[auth_func],
     DELETE_SINGLE=[auth_func]),
+    postprocess=dict(GET_SINGLE=[auth_func,response_debt_calculation],
+    GET_MANY=[auth_func,response_debt_calculation],
+    POST=[auth_func],
+    PUT_SINGLE=[auth_func],
+    DELETE_SINGLE=[auth_func]),
     collection_name='organization')
+
 
 sqlapimanager.create_api(OrganizationStaff,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
@@ -127,4 +172,54 @@ sqlapimanager.create_api(OrganizationStaff,
     PUT_SINGLE=[auth_func],
     DELETE_SINGLE=[auth_func]),
     collection_name='organizationstaff')
+
+@app.route('/api/v1/history_pay', methods=["POST"])
+async def history_pay(request):
+    data = request.json
+    payment = db.session.query(Payment).filter(and_(Payment.organization_id == data['organization_id'], Payment.tenant_id==data['tenant_id'])).all()
+    result = []
+    count = len(payment)
+    if payment is not None:
+        for o in payment:
+            list_o = to_dict(o)
+            list_o['stt'] = count
+            result.append(list_o)
+            count = count-1
+    return json(result)
+
+@app.route('/api/v1/history_import_export', methods=["POST"])
+async def history_pay(request):
+    data = request.json
+    if data['organization_type'] == "reseller":
+        list = db.session.query(GoodsReciept).filter(and_(GoodsReciept.organization_id == data['organization_id'], GoodsReciept.tenant_id==data['tenant_id'])).all()
+    if data['organization_type'] == "customer":
+        list = db.session.query(PurchaseOrder).filter(and_(PurchaseOrder.workstation_id == data['organization_id'], PurchaseOrder.tenant_id==data['tenant_id'])).all()
+    result = []
+    count = len(list)
+    if list is not None:
+        for o in list:
+            list_o = to_dict(o)
+            list_o['stt'] = count
+            result.append(list_o)
+            count = count-1
+    return json(result)
+
+@app.route('/api/v1/debt_calculation', methods=["POST"])
+async def debt_calculation(request):
+    data = request.json
+    if data['organization_type'] == "reseller":
+        list = db.session.query(func.sum(GoodsReciept.amount)).filter(and_(GoodsReciept.organization_id == data['organization_id'], GoodsReciept.tenant_id==data['tenant_id'])).all()
+    if data['organization_type'] == "customer":
+        list = db.session.query(func.sum(PurchaseOrder.amount)).filter(and_(PurchaseOrder.workstation_id == data['organization_id'], PurchaseOrder.tenant_id==data['tenant_id'])).all()
+    payment = db.session.query(func.sum(Payment.amount)).filter(and_(Payment.organization_id == data['organization_id'], Payment.tenant_id==data['tenant_id'])).all()
+    result = 0
+    if list[0][0] is not None and payment[0][0] is not None:
+        result = list[0][0] - payment[0][0]
+    if payment[0][0] is not None and list[0][0] is None:
+        result =  payment[0][0]
+    if payment[0][0] is None and list[0][0] is not None:
+        result = list[0][0]
+    if payment[0][0] is None and list[0][0] is None:
+        result = 0
+    return json(result)
 

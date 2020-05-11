@@ -33,6 +33,15 @@ define(function(require) {
         },
 
         {
+            "text": "Thanh toán",
+            "type": "view",
+            "collectionName": "payment",
+            "route": "payment/collection",
+            "visible": function() {
+                return true
+            }
+        },
+        {
             "text": "Khách hàng",
             "type": "view",
             "collectionName": "contact",

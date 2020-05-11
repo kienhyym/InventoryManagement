@@ -55,6 +55,8 @@ class GoodsReciept(CommonModel):
     # description = db.Column(Text())
     payment_status = db.Column(String(20), default="created")
     details = db.relationship("ItemBalances", order_by="ItemBalances.created_at", cascade="all, delete-orphan")
+    payment = db.relationship("Payment", order_by="Payment.created_at", cascade="all, delete-orphan")
+
     custom_fields = db.Column(JSONB(), nullable=True)
 
 # class GoodsRecieptDetails(CommonModel):

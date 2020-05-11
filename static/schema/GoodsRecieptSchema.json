@@ -110,5 +110,8 @@
     },
     "details": {
         "type": "list"
+    },
+    "payment": {
+        "type": "list"
     }
 }
