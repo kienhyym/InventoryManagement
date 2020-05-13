@@ -12,6 +12,7 @@ from application.models.inventory.currency import Currency
 from application.models.inventory.contact import Contact
 from application.models.inventory.organization import *
 from application.models.user import User
+from application.models.inventory.payment import *
 
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import *
@@ -55,9 +56,11 @@ class GoodsReciept(CommonModel):
     # description = db.Column(Text())
     payment_status = db.Column(String(20), default="created")
     details = db.relationship("ItemBalances", order_by="ItemBalances.created_at", cascade="all, delete-orphan")
-    payment = db.relationship("Payment", order_by="Payment.created_at", cascade="all, delete-orphan")
+    # payment = db.relationship("Payment", order_by="Payment.created_at", cascade="all, delete-orphan")
 
     custom_fields = db.Column(JSONB(), nullable=True)
+    # payment = db.relationship('PaymentDetails', secondary="paymentdetails_goodsreciept", cascade="save-update")
+    paymentdetails = relationship('PaymentDetails')
 
 # class GoodsRecieptDetails(CommonModel):
 #     __tablename__ = 'goodsrecieptdetails'

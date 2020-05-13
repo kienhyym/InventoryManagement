@@ -32,26 +32,24 @@ define(function (require) {
             }, ]
         }],
 		uiControl: {
-			orderBy: [
-				{ field: "id", direction: "desc" },
-				{ field: "payment_no", direction: "desc" },
-				{ field: "goodsreciept_no", direction: "desc" },
-			],
 			fields: [
+				{
+					field: "stt", label: "STT"
+				},
 				{
 					field: "", label: "Mã phiếu chi", template: function (rowObject) {
 						return `<div>${rowObject.payment_no}</div>`;
 					}
 				},
-				// {
-				// 	field: "", label: "Mã phiếu nhập", template: function (rowObject) {
-				// 		return `<div>${rowObject.goodsreciept_no}</div>`;
-				// 	}
-				// },
 				{
-					field: "receiver_address", label: "Địa chỉ"
+					field: "", label: "Tên doanh nghiệp", template: function (rowObject) {
+						if (rowObject.organization) {
+							return `<div>${rowObject.organization.organization_name}</div>`;
+						}else {
+							return ``;
+						}
+					}
 				},
-
 				{
 					field: "", label: "Thời gian", template: function (rowObject) {
 						if (rowObject.created_at) {
@@ -63,7 +61,26 @@ define(function (require) {
 				},
 				{
 					field: "", label: "Tổng tiền", template: function (rowObject) {
-						return `<div class="text-center">${TemplateHelper.currencyFormat(rowObject.amount, true)}</div>`;
+						var amount = new Number(rowObject.amount).toLocaleString("en-AU");
+						return `<div class="text-left">${amount} VNĐ</div>`;
+					}
+				},
+				{
+					field: "status", label: "Trạng thái",template: function (rowObject) {
+						if (rowObject.status == "slacking") {
+							return `<span class="badge badge-warning">Thừa tiền</span>`;
+						}
+						if (rowObject.status == "success") {
+							return `<span class="badge badge-primary">Vừa đủ</span>`;
+						}  
+						if (rowObject.status == "finish") {
+							return `<span class="badge badge-success">Hoàn thành</span>`;
+						}  
+						if (rowObject.status == "wrong") {
+							return `<span class="badge badge-danger">Thiếu tiền</span>`;
+						} else {
+							return ``;
+						}
 					}
 				},
 			],

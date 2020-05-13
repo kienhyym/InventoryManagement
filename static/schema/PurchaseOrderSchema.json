@@ -96,10 +96,10 @@
     "custom_fields": {
         "type": "json"
     },
-    "payment": {
+    "details": {
         "type": "list"
     },
-    "details": {
+    "paymentdetails": {
         "type": "list"
     }
 }

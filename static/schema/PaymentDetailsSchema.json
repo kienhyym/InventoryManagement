@@ -25,44 +25,46 @@
         "type": "string",
         "primary": true
     },
-    "payment_no": {
-        "type": "string"
-    },
-    "type": {
-        "type": "string"
-    },
-    "organization_id": {
-        "type": "string"
-    },
-    "user_id": {
-        "type": "string"
-    },
-    "tenant_id": {
-        "type": "string"
-    },
-    "receiver": {
-        "type": "string"
-    },
-    "receiver_address": {
+    "payment_id": {
         "type": "string"
     },
     "amount": {
         "type": "number",
         "default": 0
     },
-    "description": {
+    "tenant_id": {
         "type": "string"
-    },
-    "custom_fields": {
-        "type": "json"
     },
     "status": {
         "type": "string"
     },
-    "organization": {
-        "type": "dict"
+    "type": {
+        "type": "string"
     },
-    "paymentdetails": {
-        "type": "list"
+    "goodsreciept_id": {
+        "type": "string"
+    },
+    "goodsreciept_amount": {
+        "type": "number",
+        "default": 0
+    },
+    "goodsreciept_no": {
+        "type": "string"
+    },
+    "goodsreciept_create_at": {
+        "type": "number"
+    },
+    "purchaseorder_id": {
+        "type": "string"
+    },
+    "purchaseorder_amount": {
+        "type": "number",
+        "default": 0
+    },
+    "purchaseorder_no": {
+        "type": "string"
+    },
+    "purchaseorder_create_at": {
+        "type": "number"
     }
 }
