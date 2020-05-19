@@ -67,25 +67,48 @@
                             <!-- <input type="text" class="form-control" data-bind="dict:unit"> -->
                             <div class="unit">
                                 <select class="selectpicker border rounded " data-live-search="true" data-width="100%">
-                                <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                    <!-- <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
                                 <option data-tokens="mustard">Burger, Shake and a Smile</option>
                                 <option data-tokens="frosting">Sugar, Spice and all things nice</option> -->
-                              </select>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-8 col-12">
                         <div class="form-group">
-                            <label for="">Hình ảnh</label>
-                            <input type="text" class="form-control" data-bind="value:image">
+                            <label>Hình ảnh</label>
+                            <input type="text" class="form-control " data-bind="value:image">
                         </div>
                     </div>
-                    <!-- <div class="col-md-6 col-lg-6 col-sm-8 col-12">
-                        <div class="form-group">
-                            <label for="">Quy cách</label>
-                            <input type="text" class="form-control" data-bind="value:specification">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div style="overflow-x: scroll;height: 500px;" class="out-click">
+                                    <div style="width: 955px;height: 50px;box-sizing: border-box;">
+                                        <div style="width: 45px;display: inline-block;text-align: center;padding: 5px;">STT</div>
+                                        <div style="width: 290px;display: inline-block;text-align: center;padding: 5px;">Nguyên liệu</div>
+                                        <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">Đơn giá</div>
+                                        <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">Số lượng</div>
+                                        <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">đơn vị tính</div>
+                                    </div>
+                    
+                                    <div style="width: 955px;height: 50px;" id="list-item">
+                                        <div style="width: 45px;display: inline-block;text-align: center;padding: 5px;"><input class="form-control text-center stt" value="+"></div>
+                                        <div style="width: 290px;display: inline-block;padding: 5px;position: relative;">
+                                            <input type="text" class="form-control search-item" placeholder="Nhập tên nguyên liệu">
+                                            <div class="card" style="position: absolute;top: 45px;left: 5px;width: 280px;">
+                                                <div class="dropdown-menu dropdown-menu-item" style="height: 110px;overflow-x: hidden;width:280px;"></div>
+                                            </div>
+                                        </div>
+                                        <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input class="form-control text-center"></div>
+                                        <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input class="form-control text-center"></div>
+                                        <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;"><input class="form-control text-center"></div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>

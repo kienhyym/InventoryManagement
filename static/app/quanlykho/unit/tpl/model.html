@@ -10,18 +10,30 @@
                 </div>
             </div>
         </div>
-        <div class="card-body row">
+        <div class="card-body row out-click">
             <div class="col-md-6">
                 <label>Ký hiệu:</label>
                 <input type="text" class="form-control" data-bind="value:code" placeholder="..." required="">
             </div>
             <div class="col-md-6">
-                <label>Tên:</label>
-                <input type="text" class="form-control" data-bind="value:name" placeholder="..." required="">
+                <label>Tên đơn vị:</label>
+                <input type="text" class="form-control unit-name" data-bind="value:name" placeholder="..." required="">
             </div>
-            <div class="col-md-12">
-                <label>Miêu tả:</label>
-                <textarea type="text" class="form-control" data-bind="value:description" placeholder="..." required="" />
+            <div class="col-md-6">
+                <label>Đơn vị quy đổi:</label>
+                <input type="text" class="form-control search-item" placeholder="Nhập tên nguyên liệu">
+                <div class="card" style="position: absolute;top: 45px;left: 5px;width: 280px;">
+                    <div class="dropdown-menu dropdown-menu-item" style="height: 110px;overflow-x: hidden;width:280px;"></div>
+                </div>
+                <!-- <input type="text" class="form-control unit-name-exchange" data-bind="value:unit_exchange" placeholder="..." required="" /> -->
+            </div>
+            <div class="col-md-6">
+                <label>Giá trị quy đổi: (<span class="quydoi1"></span> = <span class="giatriquydoi"></span> <span class="quydoi2"></span>)</label>
+                <input type="text" class="form-control value-exchange" data-bind="value:unit_price_exchange" placeholder="..." required="" />
+            </div>
+            <div class="col-md-6">
+                <label>Thông tin:</label>
+                <input type="text" class="form-control " data-bind="value:description" placeholder="..." required="" />
             </div>
         </div>
     </div>

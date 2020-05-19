@@ -27,34 +27,12 @@ define(function(require) {
             ],
 
             fields: [
-                // {
-                //     field: "item_no",
-                //     label: "Mã",
-                //     width: "150px"
-                // },
-                // {
-                //     field: "",
-                //     label: "Loại sản phẩm",
-                //     template: function(rowObj) {
-                //         if (rowObj.item_type) {
-                //             if (rowObj.item_type == "material") {
-                //                 return `<div style="min-width: 100px">Nguyên liệu</div>`;
-                //             } else if (rowObj.item_type == "raw_material") {
-                //                 return `<div style="min-width: 100px">Nguyên liệu thô</div>`;
-                //             } else if (rowObj.item_type == "package") {
-                //                 return `<div style="min-width: 100px">Combo</div>`;
-                //             } else if (rowObj.item_type == "service") {
-                //                 return `<div style="min-width: 100px">Dịch vụ</div>`;
-                //             } else if (rowObj.item_type == "product") {
-                //                 return `<div style="min-width: 100px">Là sản phẩm</div>`;
-                //             } else {
-                //                 return `<div style="min-width: 100px"></div>`;
-                //             }
-                //         } else {
-                //             return `<div style="min-width: 100px"></div>`;
-                //         }
-                //     }
-                // },
+                {
+                    field: "stt",
+                    label: "STT",
+                    width: "50px"
+                },
+                
                 {
                     field: "item_name",
                     label: "Tên sản phẩm",
@@ -63,18 +41,50 @@ define(function(require) {
                     }
                 },
                 {
-                    field: "purchase_cost",
-                    label: "Giá mua",
-                    template: function(rowObject) {
-                        console.log("TemplateHelper", TemplateHelper.CurrencyFormat)
-                        return `<div style="min-width: 140px;">${TemplateHelper.currencyFormat(rowObject.purchase_cost)}</div>`;
+                    field: "",
+                    label: "Loại sản phẩm",
+                    template: function(rowObj) {
+                        if (rowObj.item_type) {
+                            if (rowObj.item_type == "material") {
+                                return `<div style="min-width: 100px">Nguyên liệu</div>`;
+                            } else if (rowObj.item_type == "raw_material") {
+                                return `<div style="min-width: 100px">Nguyên liệu thô</div>`;
+                            } else if (rowObj.item_type == "package") {
+                                return `<div style="min-width: 100px">Combo</div>`;
+                            } else if (rowObj.item_type == "service") {
+                                return `<div style="min-width: 100px">Dịch vụ</div>`;
+                            } else if (rowObj.item_type == "product") {
+                                return `<div style="min-width: 100px">sản phẩm</div>`;
+                            } else {
+                                return `<div style="min-width: 100px"></div>`;
+                            }
+                        } else {
+                            return `<div style="min-width: 100px"></div>`;
+                        }
                     }
                 },
                 {
-                    field: "list_price",
-                    label: "Giá bán",
+                    field: "unit_id",
+                    label: "Đơn vị tính",
                     template: function(rowObject) {
-                        return `<div style="min-width: 140px;">${TemplateHelper.currencyFormat(rowObject.list_price)}</div>`;
+                        return `<div style="min-width: 140px;">${rowObject.unit.name}</div>`;
+                    }
+                },
+                {
+                    field: "unit_id",
+                    label: "Quy đổi",
+                    template: function(rowObject) {
+                        if (rowObject.unit){
+                            if (rowObject.unit.unit_exchange != null){
+                                return `<div style="min-width: 140px;"> 1 ${rowObject.unit.name} = ${rowObject.unit.unit_price_exchange} ${rowObject.unit_exchange_name}</div>`;
+
+                            }
+                            else{
+                                return `<div style="min-width: 100px"></div>`;
+    
+                            }
+                        }
+                        
                     }
                 },
                 {

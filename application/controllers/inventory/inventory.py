@@ -79,12 +79,48 @@ async def sync_item(request):
                 })
 
 
+
+async def get_unit_name(request=None, Model=None, result=None, **kw):
+    if result is not None and "objects" in result:
+        objects = to_dict(result["objects"])
+        datas = []
+        i = 1
+        page = request.args.get("page",None)
+        results_per_page = request.args.get("results_per_page",None)
+        currentUser = await current_user(request)
+        if currentUser is None:
+            return json({"error_code":"PERMISSION_DENY","error_message":"Hết phiên làm việc!"}, status=520)
+        if page is not None and results_per_page is not None and int(page) != 1:
+            i = i + int(results_per_page)*int(page)
+        for obj in objects:
+            if obj is not None:
+                obj_tmp = to_dict(obj)
+                unit = db.session.query(Unit.name).filter(and_(Unit.id==to_dict(obj)['unit_exchange'])).first()
+                obj_tmp["stt"] = i
+                obj_tmp["unit_name"] = unit
+                i = i + 1
+                datas.append(obj_tmp)
+        result = datas
+
+def get_singer_unit_name(request=None, Model=None, result=None, **kw):
+    # if result is not None and "objects" in result:
+    print ('_____________________--------------------------', result)
+        # objects = to_dict(result["objects"])
+        # data = []
+        # i = 1
+        # currentUser = await current_user(request)
+        # if currentUser is None:
+        #     return json({"error_code":"PERMISSION_DENY","error_message":"Hết phiên làm việc!"}, status=520)
+        # print ('_____________________',objects)
+        # result = data
+
+
 sqlapimanager.create_api(Unit, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[get_unit_name],GET_SINGLE=[get_singer_unit_name]),
     collection_name='unit')
 
 sqlapimanager.create_api(Contact, max_results_per_page=1000000,
@@ -94,3 +130,16 @@ sqlapimanager.create_api(Contact, max_results_per_page=1000000,
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='contact')
+
+
+@app.route("/api/v1/load_unit", methods=["POST"])
+async def load_unit(request):
+    data = request.json
+    tenant_id = data.get("tenant_id", None)
+    units = db.session.query(Unit).filter(and_(Unit.tenant_id==tenant_id)).all()
+    result = []
+    if units is not None:
+        for _ in units:
+            unit = to_dict(_)    
+            result.append(unit)
+    return json(result)

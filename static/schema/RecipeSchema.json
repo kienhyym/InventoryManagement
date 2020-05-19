@@ -25,24 +25,14 @@
         "type": "string",
         "primary": true
     },
-    "name": {
+    "item_id": {
         "type": "string"
     },
-    "code": {
-        "type": "string",
-        "required": true
-    },
-    "unit_exchange": {
+    "item_exchange_id": {
         "type": "string"
     },
-    "unit_price_exchange": {
+    "quantity": {
         "type": "number"
-    },
-    "description": {
-        "type": "string"
-    },
-    "user_id": {
-        "type": "string"
     },
     "tenant_id": {
         "type": "string"

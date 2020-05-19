@@ -115,5 +115,8 @@
     },
     "unit": {
         "type": "dict"
+    },
+    "recipe": {
+        "type": "list"
     }
 }

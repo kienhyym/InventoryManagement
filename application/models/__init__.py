@@ -15,7 +15,6 @@ from application.models.user import *
 from application.models.inventory.warehouse import *
 from application.models.inventory.workstation import *
 from application.models.inventory.movewarehouse import *
-# from application.models.inventory.payment_relationship import *
 
 
 

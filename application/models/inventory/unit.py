@@ -19,6 +19,8 @@ class Unit (CommonModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     name = db.Column(db.String, nullable=True)
     code = db.Column(db.String, nullable=False)
+    unit_exchange = db.Column(db.String)
+    unit_price_exchange = db.Column(db.Integer)
     description = db.Column(db.String)
     user_id = db.Column(db.String)
     tenant_id = db.Column(db.String)

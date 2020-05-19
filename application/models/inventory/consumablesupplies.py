@@ -109,3 +109,15 @@ class Item (CommonModel):
     status = db.Column(db.String)
     # medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'))
     # medicalequipment = relationship('MedicalEquipment', viewonly=True)
+    recipe = relationship('Recipe')
+
+class Recipe (CommonModel):
+    __tablename__ = 'recipe'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    item_id = db.Column(UUID(as_uuid=True), ForeignKey('item.id'), nullable=True)
+    item_exchange_id = db.Column(db.String)
+    quantity = db.Column(db.Integer())
+    tenant_id = db.Column(db.String, index=True)
+
+
+    

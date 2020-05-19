@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -23,22 +23,30 @@ define(function(require) {
                 type: "button",
                 buttonClass: "btn btn-primary font-weight-bold btn-sm",
                 label: "+ Đơn Vị Tính",
-                command: function() {
+                command: function () {
                     var self = this;
                     this.getApp().getRouter().navigate("#unit/model");
                 }
-            }, ]
+            },]
         }],
 
         uiControl: {
             fields: [
-
-                { field: "name", label: "Tên đơn vị" },
                 { field: "code", label: "Loại đơn vị" },
-                { field: "description", label: "Miêu tả ghi chú" },
+                { field: "name", label: "Tên đơn vị" },
+                {
+                    field: "unit_exchange", label: "Đơn vị quy đổi",
+                    template: function (rowObject) {
+                        if (rowObject.unit_exchange) {
+                            return `<div style="min-width: 100px;">1 ${rowObject.name} =${rowObject.unit_price_exchange} ${rowObject.unit_name[0]}</div>`;
+                        } else {
+                            return ``;
+                        }
+                    }
+                }
 
             ],
-            onRowClick: function(event) {
+            onRowClick: function (event) {
                 if (event.rowId) {
                     var path = this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
@@ -47,7 +55,7 @@ define(function(require) {
             }
         },
 
-        render: function() {
+        render: function () {
             var self = this;
 
             self.registerEvent();
@@ -72,7 +80,7 @@ define(function(require) {
             }
             self.applyBindings();
 
-            filter.on('filterChanged', function(evt) {
+            filter.on('filterChanged', function (evt) {
                 var $col = self.getCollectionElement();
                 var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
                 var textUpper = !!filter.model.get("text") ? filter.model.get("text").trim().toUpperCase() : "";
@@ -103,7 +111,7 @@ define(function(require) {
             return this;
         },
 
-        registerEvent: function() {
+        registerEvent: function () {
             var self = this;
             var currentURL = window.location.href;
             if (self.getApp().isMobile == "ANDROID") {
