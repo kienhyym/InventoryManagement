@@ -853,13 +853,20 @@ def get_phieu_xuat(request):
     arr = []
     recipe = db.session.query(Recipe).filter(Recipe.tenant_id==data).all()
     for _ in recipe:
-        item = db.session.query(Item.item_name).filter(Item.id == to_dict(_)['item_exchange_id']).first()
-        itemBalances = db.session.query(func.sum(ItemBalances.quantity)).group_by(ItemBalances.item_id).filter(and_(ItemBalances.tenant_id==data,ItemBalances.item_id==to_dict(_)['item_id'])).all()
+        item = db.session.query(Item.item_name,Item.unit_id).filter(Item.id == to_dict(_)['item_exchange_id']).first()
+        itemBalances = db.session.query(func.sum(ItemBalances.quantity),ItemBalances.unit_id).group_by(ItemBalances.item_id,ItemBalances.unit_id).filter(and_(ItemBalances.tenant_id==data,ItemBalances.item_id==to_dict(_)['item_id'])).all()
         if len(itemBalances) != 0:
             obj = {}
             obj['item_id'] = to_dict(_)['item_exchange_id']
             obj['item_name'] = item[0]
             obj['item_quantity'] = itemBalances[0][0]*to_dict(_)['quantity']
+            unit = db.session.query(Unit.unit_exchange,Unit.name).filter(Unit.id == item[1]).first()
+            if unit[0] is not None:
+                unit2 = db.session.query(Unit.name).filter(Unit.id == unit[0]).first()
+                obj['unit_name'] = unit2[0]
+            else:
+                obj['unit_name'] = unit[1]
+
             arr.append(obj)
     length = len(arr)
     i = 0
@@ -873,11 +880,12 @@ def get_phieu_xuat(request):
             j +=1
         i +=1
     arr2 = []
-    itemBalances2 = db.session.query(ItemBalances.item_id,ItemBalances.unit_id,func.sum(ItemBalances.quantity)).group_by(ItemBalances.item_id,ItemBalances.unit_id).filter(and_(ItemBalances.tenant_id==data,ItemBalances.item_balances_type=="goodsreciept")).all()
+    itemBalances2 = db.session.query(ItemBalances.item_id,ItemBalances.unit_id,func.sum(ItemBalances.quantity)).group_by(ItemBalances.item_id,ItemBalances.unit_id).filter(and_(ItemBalances.tenant_id==data, or_(ItemBalances.item_balances_type=="goodsreciept",ItemBalances.item_balances_type=="warehouse"))).all()
     for x in itemBalances2:
         objects = {}
         unit = db.session.query(Unit).filter(Unit.id == x[1]).first()
         if to_dict(unit)['unit_price_exchange'] is not None:
+
             unit2 = db.session.query(Unit.name).filter(Unit.id == to_dict(unit)['unit_exchange']).first()
             objects['item_id'] = str(x[0])
             objects['unit_name'] = unit2[0]
@@ -888,9 +896,7 @@ def get_phieu_xuat(request):
             objects['unit_name'] = to_dict(unit)['name']
             objects['item_quantity'] = 1 * x[2]
             arr2.append(objects)
-            print ('_______y_________',objects)
 
-    print ('___________x_________',arr)
 
     m = 0
     while m < len(arr2):
@@ -899,7 +905,12 @@ def get_phieu_xuat(request):
             if arr2[m]['item_id'] == arr[n]['item_id']:
                 arr2[m]['item_quantity'] = arr2[m]['item_quantity'] -  arr[n]['item_quantity']
                 arr2[m]['item_name'] = arr[n]['item_name']
+                arr.pop(n)
             n +=1
         m +=1
+    for ar in arr:
+        ar['item_quantity'] = - ar['item_quantity']
+        arr2.append(ar)
+
     return json(arr2)
     return json({"message":"error"})
