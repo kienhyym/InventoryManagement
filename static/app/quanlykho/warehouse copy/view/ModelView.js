@@ -209,11 +209,6 @@ define(function(require) {
                         if (self.model.get('status_init') == 'chot') {
                             self.$el.find('.body-item-old').hide();
                         }
-
-
-                        
-
-
                     },
                     error: function() {
                         toastr.error("Get data Eror");
@@ -478,67 +473,41 @@ define(function(require) {
                     self.clickPurchaseCost();
                 }
             } else {
-                // $.ajax({
-                //     type: "POST",
-                //     url: self.getApp().serviceURL + "/api/v1/assets_in_each_warehouse_no_search",
-                //     data: JSON.stringify({
-                //         warehouse_id: self.model.get("id"),
-                //         tenant_id: self.getApp().currentTenant[0],
-                //     }),
-                //     success: function(response) {
-                //         console.log(response)
-
-                //         response.forEach(function(item, index) {
-                //             var resultPurchaseCost = new Number(item.purchase_cost).toLocaleString("en-AU");
-                //             var resultNetAmount = new Number(item.purchase_cost * item.quantity).toLocaleString("en-AU");
-                //             self.$el.find('#list-item').before(`
-                //                 <div style="width: 955px;height: 50px;" selected-item-id = "${item.id}" class = "selected-item-old" >
-                //                     <div style="width: 45px; display: inline-block;text-align: center;padding: 5px;">
-                //                         <input selected-item-id = "${item.id}" col-type="STT" class="form-control text-center p-1" value="${index+1}" style="font-size:14px">
-                //                     </div>
-                //                     <div style="width: 290px;display: inline-block;padding: 5px;">
-                //                         <input selected-item-id = "${item.id}" col-type="NAME" class="form-control p-1" value="${item.item_name}" readonly style="font-size:14px">
-                //                     </div>
-                //                     <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
-                //                         <input selected-item-id = "${item.id}" col-type="PURCHASE_COST" class="form-control text-center p-1" purchase-cost = "${item.purchase_cost}" value="${resultPurchaseCost} VNĐ" style="font-size:14px">
-                //                     </div>
-                //                     <div style="width: 190px; display: inline-block; text-align:center;padding: 5px;">
-                //                         <input selected-item-id = "${item.id}" col-type="QUANTITY" type="number" class="form-control text-center p-1" value = "${item.quantity}" style="font-size:14px">
-                //                     </div>
-                //                     <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
-                //                         <input selected-item-id = "${item.id}" col-type="NET_AMOUNT" class="form-control text-center p-1" net-amount="${item.purchase_cost * item.quantity}" value="${resultNetAmount} VNĐ" readonly style="font-size:14px">
-                //                     </div>
-                //                 </div>
-                //                 `)
-                //         })
-                //     }
-                // })
                 $.ajax({
                     type: "POST",
-                    url: self.getApp().serviceURL + "/api/v1/get_phieu_xuat",
-                    data: JSON.stringify(self.getApp().currentTenant[0]),
+                    url: self.getApp().serviceURL + "/api/v1/assets_in_each_warehouse_no_search",
+                    data: JSON.stringify({
+                        warehouse_id: self.model.get("id"),
+                        tenant_id: self.getApp().currentTenant[0],
+                    }),
                     success: function(response) {
-                        console.log('response', response)
-                        response.forEach(function(item,index){
+                        console.log(response)
+
+                        response.forEach(function(item, index) {
+                            var resultPurchaseCost = new Number(item.purchase_cost).toLocaleString("en-AU");
+                            var resultNetAmount = new Number(item.purchase_cost * item.quantity).toLocaleString("en-AU");
                             self.$el.find('#list-item').before(`
-                            <div style="width: 955px;height: 50px;" selected-item-id = "${item.id}" class = "selected-item-old" >
-                                <div style="width: 45px; display: inline-block;text-align: center;padding: 5px;">
-                                    <input selected-item-id = "${item.id}" col-type="STT" class="form-control text-center p-1" value="${index}" style="font-size:14px">
+                                <div style="width: 955px;height: 50px;" selected-item-id = "${item.id}" class = "selected-item-old" >
+                                    <div style="width: 45px; display: inline-block;text-align: center;padding: 5px;">
+                                        <input selected-item-id = "${item.id}" col-type="STT" class="form-control text-center p-1" value="${index+1}" style="font-size:14px">
+                                    </div>
+                                    <div style="width: 290px;display: inline-block;padding: 5px;">
+                                        <input selected-item-id = "${item.id}" col-type="NAME" class="form-control p-1" value="${item.item_name}" readonly style="font-size:14px">
+                                    </div>
+                                    <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
+                                        <input selected-item-id = "${item.id}" col-type="PURCHASE_COST" class="form-control text-center p-1" purchase-cost = "${item.purchase_cost}" value="${resultPurchaseCost} VNĐ" style="font-size:14px">
+                                    </div>
+                                    <div style="width: 190px; display: inline-block; text-align:center;padding: 5px;">
+                                        <input selected-item-id = "${item.id}" col-type="QUANTITY" type="number" class="form-control text-center p-1" value = "${item.quantity}" style="font-size:14px">
+                                    </div>
+                                    <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
+                                        <input selected-item-id = "${item.id}" col-type="NET_AMOUNT" class="form-control text-center p-1" net-amount="${item.purchase_cost * item.quantity}" value="${resultNetAmount} VNĐ" readonly style="font-size:14px">
+                                    </div>
                                 </div>
-                                <div style="width: 290px;display: inline-block;padding: 5px;">
-                                    <input selected-item-id = "${item.id}" col-type="NAME" class="form-control p-1" value="${item.item_name}" readonly style="font-size:14px">
-                                </div>
-                                <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
-                                    <input selected-item-id = "${item.id}" col-type="PURCHASE_COST" class="form-control text-center p-1" purchase-cost = "${item.unit_name}" value="${item.unit_name}" style="font-size:14px">
-                                </div>
-                                <div style="width: 190px; display: inline-block; text-align:center;padding: 5px;">
-                                    <input selected-item-id = "${item.id}" col-type="QUANTITY" type="number" class="form-control text-center p-1" value = "${item.item_quantity}" style="font-size:14px">
-                                </div>
-                            </div>
-                            `)
+                                `)
                         })
                     }
-                });
+                })
             }
 
 

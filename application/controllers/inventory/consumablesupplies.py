@@ -119,10 +119,12 @@ async def load_item_materials_dropdown(request):
         for _ in item:
             items = to_dict(_)    
             unitItem = db.session.query(Unit.name,Unit.unit_exchange).filter(Unit.id==to_dict(_)['unit_id']).first()
-            print ('_______________________________________',unitItem[0])
             items['unit_name'] = str(unitItem[0])
-            unitExchange = db.session.query(Unit.name).filter(Unit.id == str(unitItem[1])).first()
-            items['unit_exchange'] = unitExchange[0]
+            if unitItem[1] is not None:
+                unitExchange = db.session.query(Unit.name).filter(Unit.id == str(unitItem[1])).first()
+                items['unit_exchange'] = unitExchange[0]
+            else:
+                items['unit_exchange'] = str(unitItem[0])
             result.append(items)
     return json(result)
 
@@ -173,7 +175,10 @@ async def recipe_detail(request):
 
             items['name'] = item[0]
             items['unit_name'] = unitName[0]
-            items['unit_exchange'] = unitNameExchange[0]
+            if unitNameExchange is not None:
+                items['unit_exchange'] = unitNameExchange[0]
+            else:
+                items['unit_exchange'] = unitName[0]
             items['purchase_cost'] = item[2]
             result.append(items)
     return json(result)

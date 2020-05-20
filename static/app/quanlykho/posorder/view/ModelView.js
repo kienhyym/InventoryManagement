@@ -603,7 +603,7 @@ define(function(require) {
                 var text = $(this).val()
                 $.ajax({
                     type: "POST",
-                    url: self.getApp().serviceURL + "/api/v1/get_all_item",
+                    url: self.getApp().serviceURL + "/api/v1/assets_all_warehouse",
                     data: JSON.stringify({ "text": text, "tenant_id": self.getApp().currentTenant[0] }),
                     success: function(response) {
                         console.log('response', response)
@@ -616,14 +616,17 @@ define(function(require) {
                             response.forEach(function(item, index) {
                                 self.$el.find('.dropdown-menu-item').append(`
                                 <button
-                                item-id = "${item.id}" 
+                                item-id = "${item.item_id}" 
                                 item-no = "${item.item_no}" 
                                 unit-id = "${item.unit_id}" 
                                 item-name = "${item.item_name}" 
-                                title="${item.item_name}"
+                                title="${item.item_name} - ${item.purchase_cost} vnđ - ${item.warehouse_name} - SL:${item.quantity}"
                                 purchase-cost = "${item.purchase_cost}"
+                                warehouse-id = "${item.warehouse_id}"
+                                warehouse-name = "${item.warehouse_name}"
                                 list-price = "${item.list_price}"
-                                class="dropdown-item" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-size:12px">${item.item_name}</button>
+                                quantity = "${item.quantity}"
+                                class="dropdown-item" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-size:12px">${item.item_name} - ${item.purchase_cost} vnđ - ${item.warehouse_name} - SL:${item.quantity}</button>
                                 `)
                             })
                         }
@@ -642,8 +645,6 @@ define(function(require) {
                         self.chooseItemInListDropdownItem();
                     }
                 });
-
-
             })
             self.$el.find('.out-click').bind('click', function() {
                 self.$el.find('.dropdown-menu-item').hide()
@@ -664,6 +665,7 @@ define(function(require) {
                 item-id = "${dropdownItemClick.attr('item-id')}"
                 item-no = "${dropdownItemClick.attr('item-no')}"
                 unit-id = "${dropdownItemClick.attr('unit-id')}"
+                warehouse-id = "${dropdownItemClick.attr('warehouse-id')}"
                 purchase-cost = "${dropdownItemClick.attr('purchase-cost')}"
                 >
                     <div style="width: 45px; display: inline-block;text-align: center;padding: 5px;">
@@ -680,6 +682,9 @@ define(function(require) {
                     </div>
                     <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
                         <input selected-item-id = "${itemID}" col-type="NET_AMOUNT" class="form-control text-center p-1" readonly style="font-size:14px">
+                    </div>
+                    <div style="width: 130px;display: inline-block;text-align: center;padding: 5px;">
+                        <input selected-item-id = "${itemID}" col-type="WAREHOUSE" class="form-control text-center p-1" readonly value="${dropdownItemClick.attr('warehouse-name')}" style="font-size:14px">
                     </div>
                     <div style="width: 30px;display: inline-block;text-align: center;padding: 5px;">
                             <i selected-item-id = "${itemID}" class="fa fa-trash" style="font-size: 17px"></i>
@@ -755,14 +760,14 @@ define(function(require) {
                     "item_id": $(item).attr('item-id'),
                     "item_no": $(item).attr('item-no'),
                     "unit_id": $(item).attr('unit-id'),
-                    "purchase_cost": null,
-                    "warehouse_id": null,
+                    "purchase_cost": $(item).attr('purchase-cost'),
+                    "warehouse_id": $(item).attr('warehouse-id'),
                     "warehouse_from_id": null,
                     "warehouse_to_id": null,
                     "item_name": $(item).find('[col-type="NAME"]').val(),
                     "tenant_id": tenant_id,
                     "quantity": $(item).find('[col-type="QUANTITY"]').val(),
-                    "warehouse_name": null,
+                    "warehouse_name": $(item).find('[col-type="WAREHOUSE"]').val(),
                     "list_price": $(item).find('[col-type="LIST_PRICE"]').attr('list-price'),
                     "net_amount": $(item).find('[col-type="NET_AMOUNT"]').attr('net-amount'),
                 }
@@ -847,6 +852,9 @@ define(function(require) {
                         </div>
                         <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
                             <input selected-item-id = "${item.id}" col-type="NET_AMOUNT" class="form-control text-center p-1" net-amount="${item.net_amount}" value="${resultNetAmount} VNĐ" readonly style="font-size:14px">
+                        </div>
+                        <div style="width: 130px;display: inline-block;text-align: center;padding: 5px;">
+                            <input selected-item-id = "${item.id}" col-type="WAREHOUSE" class="form-control text-center p-1" value="${item.warehouse_name}" readonly style="font-size:14px">
                         </div>
                         <div style="width: 30px;display: inline-block;text-align: center;padding: 5px;">
                             <i selected-item-id = "${item.id}" class="fa fa-trash" style="font-size: 17px"></i>

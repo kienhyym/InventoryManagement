@@ -67,14 +67,19 @@ define(function(require) {
                     field: "unit_id",
                     label: "Đơn vị tính",
                     template: function(rowObject) {
+                        if (rowObject.unit != null){
                         return `<div style="min-width: 140px;">${rowObject.unit.name}</div>`;
+                        }
+                        else{
+                            return `<div style="min-width: 140px;"></div>`;
+                        }
                     }
                 },
                 {
                     field: "unit_id",
                     label: "Quy đổi",
                     template: function(rowObject) {
-                        if (rowObject.unit){
+                        if (rowObject.unit != null){
                             if (rowObject.unit.unit_exchange != null){
                                 return `<div style="min-width: 140px;"> 1 ${rowObject.unit.name} = ${rowObject.unit.unit_price_exchange} ${rowObject.unit_exchange_name}</div>`;
 
@@ -83,6 +88,9 @@ define(function(require) {
                                 return `<div style="min-width: 100px"></div>`;
     
                             }
+                        }
+                        else{
+                            return `<div style="min-width: 140px;"></div>`;
                         }
                         
                     }

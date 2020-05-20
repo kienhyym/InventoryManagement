@@ -82,6 +82,19 @@ define(function(require) {
             "$ref": "app/quanlykho/purchaseorder/view/ModelView",
         },
 
+
+        {
+            "collectionName": "posorder",
+            "route": "posorder/collection",
+            "$ref": "app/quanlykho/posorder/view/CollectionView",
+        },
+        {
+            "collectionName": "posorder",
+            "route": "posorder/model(/:id)",
+            "$ref": "app/quanlykho/posorder/view/ModelView",
+        },
+
+
         {
             "collectionName": "movewarehouse",
             "route": "movewarehouse/collection",

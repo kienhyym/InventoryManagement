@@ -38,7 +38,12 @@ define(function (require) {
                     field: "unit_exchange", label: "Đơn vị quy đổi",
                     template: function (rowObject) {
                         if (rowObject.unit_exchange) {
-                            return `<div style="min-width: 100px;">1 ${rowObject.name} =${rowObject.unit_price_exchange} ${rowObject.unit_name[0]}</div>`;
+                            if(rowObject.unit_price_exchange){
+                                return `<div style="min-width: 100px;">1 ${rowObject.name} =${rowObject.unit_price_exchange} ${rowObject.unit_name[0]}</div>`;
+                            }
+                            else{
+                                return ``;
+                            }
                         } else {
                             return ``;
                         }

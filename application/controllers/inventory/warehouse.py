@@ -755,7 +755,6 @@ def assets_in_each_warehouse_no_search(request):
             obj['quantity'] = _[2]
             obj['unit_id'] = str(itemNameAndItemNoAndListPriceAndUnitId[3])
             arr.append(obj)
-        print ('_________________else_____________',arr)
         return json(arr)
     return json({"message":"error"})
 
@@ -828,4 +827,79 @@ def assets_all_warehouse(request):
                     obj['unit_id'] = str(itemNameAndItemNoAndListPriceAndUnitId[3])
                     arr.append(obj)
         return json(arr)
+    return json({"message":"error"})
+
+
+
+@app.route("/api/v1/get_all_item", methods=["POST"])
+def get_all_item(request):
+    data = request.json
+    if data['text'] is not None and data['text'] != "":
+        keySearch = data['text']
+        search = "%{}%".format(keySearch)
+        tex_capitalize = keySearch.capitalize()
+        search_capitalize = "%{}%".format(tex_capitalize)
+        items = db.session.query(Item).filter(and_(Item.tenant_id==data['tenant_id'],Item.item_name.like(search_capitalize))).all()
+        arr = []
+        for _ in items:
+            arr.append(to_dict(_))
+        return json(arr)
+    return json({"message":"error"})
+
+
+@app.route("/api/v1/get_phieu_xuat", methods=["POST"])
+def get_phieu_xuat(request):
+    data = request.json
+    arr = []
+    recipe = db.session.query(Recipe).filter(Recipe.tenant_id==data).all()
+    for _ in recipe:
+        item = db.session.query(Item.item_name).filter(Item.id == to_dict(_)['item_exchange_id']).first()
+        itemBalances = db.session.query(func.sum(ItemBalances.quantity)).group_by(ItemBalances.item_id).filter(and_(ItemBalances.tenant_id==data,ItemBalances.item_id==to_dict(_)['item_id'])).all()
+        if len(itemBalances) != 0:
+            obj = {}
+            obj['item_id'] = to_dict(_)['item_exchange_id']
+            obj['item_name'] = item[0]
+            obj['item_quantity'] = itemBalances[0][0]*to_dict(_)['quantity']
+            arr.append(obj)
+    length = len(arr)
+    i = 0
+    while i < length:
+        j = i+1
+        while j < length:
+            if arr[i]['item_id'] == arr[j]['item_id']:
+                arr[i]['item_quantity'] = arr[i]['item_quantity']+  arr[j]['item_quantity']
+                arr.pop(j)
+                length = length-1
+            j +=1
+        i +=1
+    arr2 = []
+    itemBalances2 = db.session.query(ItemBalances.item_id,ItemBalances.unit_id,func.sum(ItemBalances.quantity)).group_by(ItemBalances.item_id,ItemBalances.unit_id).filter(and_(ItemBalances.tenant_id==data,ItemBalances.item_balances_type=="goodsreciept")).all()
+    for x in itemBalances2:
+        objects = {}
+        unit = db.session.query(Unit).filter(Unit.id == x[1]).first()
+        if to_dict(unit)['unit_price_exchange'] is not None:
+            unit2 = db.session.query(Unit.name).filter(Unit.id == to_dict(unit)['unit_exchange']).first()
+            objects['item_id'] = str(x[0])
+            objects['unit_name'] = unit2[0]
+            objects['item_quantity'] = to_dict(unit)['unit_price_exchange'] * x[2]
+            arr2.append(objects)
+        else:
+            objects['item_id'] = str(x[0])
+            objects['unit_name'] = to_dict(unit)['name']
+            objects['item_quantity'] = 1 * x[2]
+            arr2.append(objects)
+            print ('_______y_________',objects)
+
+    print ('___________x_________',arr)
+
+    m = 0
+    while m < len(arr2):
+        n = 0
+        while n < len(arr):
+            if arr2[m]['item_id'] == arr[n]['item_id']:
+                arr2[m]['item_quantity'] = arr2[m]['item_quantity'] -  arr[n]['item_quantity']
+                arr2[m]['item_name'] = arr[n]['item_name']
+            n +=1
+        m +=1
+    return json(arr2)
     return json({"message":"error"})

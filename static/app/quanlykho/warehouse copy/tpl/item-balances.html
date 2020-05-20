@@ -1,0 +1,31 @@
+<td id="item_name">
+	<div>
+		<img id="image_item" src="" />
+		<div class="float-right" style="height: 100%; min-width: 150px; margin-left: 3px">
+			<div class="card-body-item" data-bind="text:item_name">
+				<h5 class="mb-1" data-bind="text:item_name"></h5>
+			</div>
+			<p class="card-text m-0">
+				<i class="fa fa-tag" style="font-size: 10px;"></i>
+				<span class="payment-item-qty" data-bind="text:item_no"></span>
+			</p>
+
+			<!-- <small data-bind="text:net_amount"></small> -->
+		</div>
+	</div>
+</td>
+<td>
+	<p id="item_type"></p>
+</td>
+<td>
+	<input type="text" class="form-control" readonly data-bind="value:purchase_cost" />
+</td>
+<td>
+	<input type="text" class="form-control" readonly data-bind="value:list_price" />
+</td>
+<td><input type="text" readonly class="form-control" data-bind="value:quantity" /></td>
+<td style="width: 50px; line-height: 34px; margin-top: 20px">
+	<div id="itemRemove">
+		<i class="fa fa-trash" style="font-size: 17px"></i>
+	</div>
+</td>

@@ -23,6 +23,16 @@ define(function(require) {
         },
 
         {
+            "text": "Mua hàng",
+            "type": "view",
+            "collectionName": "posorder",
+            "route": "posorder/collection",
+            "visible": function() {
+                return true
+            }
+        },
+
+        {
             "text": "Chuyển kho",
             "type": "view",
             "collectionName": "movewarehouse",
