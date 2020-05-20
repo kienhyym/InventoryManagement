@@ -839,7 +839,7 @@ def get_all_item(request):
         search = "%{}%".format(keySearch)
         tex_capitalize = keySearch.capitalize()
         search_capitalize = "%{}%".format(tex_capitalize)
-        items = db.session.query(Item).filter(and_(Item.tenant_id==data['tenant_id'],Item.item_name.like(search_capitalize))).all()
+        items = db.session.query(Item).filter(and_(Item.tenant_id==data['tenant_id'],Item.item_name.like(search))).all()
         arr = []
         for _ in items:
             arr.append(to_dict(_))

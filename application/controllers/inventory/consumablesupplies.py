@@ -25,7 +25,7 @@ from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
 
 @app.route("/api/v1/item/get", methods=["POST"])
-async def get_all_item(request):
+async def get_item(request):
     data = request.json
     tenant_id = data.get("tenant_id", None)
     item = db.session.query(Item).filter(and_(Item.tenant_id==tenant_id), Item.deleted==False).all()
