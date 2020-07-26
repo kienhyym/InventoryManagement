@@ -165,7 +165,7 @@ define(function(require) {
                     buttonClass: "btn-danger btn btn-sm",
                     label: "TRANSLATE:DELETE",
                     visible: function() {
-                        return false;
+                        return true;
                     },
                     command: function() {
                         var self = this;

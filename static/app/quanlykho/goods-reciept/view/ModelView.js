@@ -868,30 +868,28 @@ define(function(require) {
                 self.$el.find(".btn-delete").hide();
             }
         },
-        paymentStatus : function(){
+        paymentStatus: function() {
             var self = this;
-            
-            if (self.model.get('payment_status')  == "done") {
+
+            if (self.model.get('payment_status') == "done") {
                 self.$el.find('#payment_status').html(`<label style="width: 70px" class="badge badge-dark">Đã về kho</label>`)
-            } else if (self.model.get('payment_status')  == "created") {
+            } else if (self.model.get('payment_status') == "created") {
                 self.$el.find('#payment_status').html(`<label style="width: 70px" class="badge badge-primary">Tạo yêu cầu</label>`)
-            } else if (self.model.get('payment_status')  == "pending") {
+            } else if (self.model.get('payment_status') == "pending") {
                 self.$el.find('#payment_status').html(`<label style="width: 70px class="badge badge-danger">Chờ xử lý</label>`)
-            } else if (self.model.get('payment_status')  == "confirm") {
-                self.$el.find('#payment_status').html( `<label style="width: 90px" class="badge badge-warning">Đã duyệt yêu cầu</label>`)
-            }
-            else if (self.model.get('payment_status')  == "debt") {
-                self.$el.find('#payment_status').html( `<label style="width: 70px" class="badge badge-info">Còn nợ</label>`)
-            }
-            else if (self.model.get('payment_status')  == "paid") {
+            } else if (self.model.get('payment_status') == "confirm") {
+                self.$el.find('#payment_status').html(`<label style="width: 90px" class="badge badge-warning">Đã duyệt yêu cầu</label>`)
+            } else if (self.model.get('payment_status') == "debt") {
+                self.$el.find('#payment_status').html(`<label style="width: 70px" class="badge badge-info">Còn nợ</label>`)
+            } else if (self.model.get('payment_status') == "paid") {
                 self.$el.find('#payment_status').html(`<label style="width: 90px" class="badge badge-success">Đã thanh toán</label>`)
             } else {
                 return ``;
             }
         },
-        historyPay : function(){
+        historyPay: function() {
             var self = this;
-            if (self.model.get('paymentdetails').length >0){
+            if (self.model.get('paymentdetails').length > 0) {
                 self.$el.find('.lich-su-thanh-toan').append(`
                     <div class="row m-2">
                     <div class="col-1 text-center">
@@ -908,9 +906,9 @@ define(function(require) {
                     </div>
                 </div>
                     `)
-                self.model.get('paymentdetails').forEach(function(item,index){
+                self.model.get('paymentdetails').forEach(function(item, index) {
                     var amount = new Number(item.amount).toLocaleString("en-AU");
-					var itemCreatedAtFormat = Helpers.utcToLocal(item.goodsreciept_create_at * 1000, "DD/MM/YYYY HH:mm");
+                    var itemCreatedAtFormat = Helpers.utcToLocal(item.goodsreciept_create_at * 1000, "DD/MM/YYYY HH:mm");
                     self.$el.find('.lich-su-thanh-toan').append(`
                     <div class="row m-2">
                         <div class="col-1 text-center">

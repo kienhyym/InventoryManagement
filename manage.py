@@ -163,18 +163,19 @@ def add_danhsach_xaphuong():
 @manager.command
 def create_default_user(): 
     #add user
-    user2 = User(email='admin', name='admin',active=True,password=auth.encrypt_password('123456'))
-    db.session.add(user2)
+    user3 = User(email='admin3', name='admin3',active=True,password=auth.encrypt_password('123456'))
+    db.session.add(user3)
     db.session.flush()
     db.session.commit()
+    print ('________________________________',user3)
 @manager.command
 def run():  
+    create_default_user()
     quocgia = db.session.query(Nation).first()
     if quocgia is None:
         add_danhsach_quocgia_tinhthanh()
         add_danhsach_quanhuyen()
         add_danhsach_xaphuong()
-        create_default_user()
 
     run_app(host="0.0.0.0", port=7100)
 
